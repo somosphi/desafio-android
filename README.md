@@ -1,8 +1,8 @@
-# Desafio iOS - Phi
+# Desafio Android - Phi
 ---
 ![Banner Phi](assets/20200826084504887_picture.jpg)
 
-## Olá, ficamos felizes por você participar do nosso desafio iOS!
+## Olá, ficamos felizes por você participar do nosso desafio Android!
 
 ---
 
@@ -22,13 +22,12 @@ Vamos avaliar como você lida com as seguintes situações:
 
 Os pré-requisitos são: 
 
-1. que o código seja feito em Swift, de preferência na versão mais atual, dando suporte a iOS 13.0.0+.
-1. que você siga nossa [Style Guide](https://github.com/somosphi/style-guides/blob/master/swift.md). 
+1. Código-fonte deve ser escrito em inglês, pois trata-se do idioma padrão para escrita de qualquer software.
+2. O build sobre a solução deve ter sucesso quando o candidato der o OK que o teste pode ser avaliado pela Phi.
 
 Fora isso, sinta-se a vontade para:
 
 - Usar ou não usar bibliotecas;
-- Estruturar seu layout com storyboards, xibs ou ViewCode;
 - Adotar a arquitetura que você quiser.
 
 Nos preocupamos com qualidade e acreditamos bastante em testes automatizados. Entretanto, sabemos que não é um tópico dominado por todos, por isso aceitamos desafios com todos os perfis e diferentes momentos de experiência e conhecimento técnico.
@@ -41,12 +40,11 @@ Para posições mais Seniors, porém, damos muita importância para a qualidade 
 
 * Tratamento de erros e apresentação de: Error generico, loading;
 * Buscar saldo da rota `myBalance`;
-* Ao tocar no ícone de olho do saldo, o mesmo deve ser escondido e apresentado conforme modelo de tela anexado.
- * 	OBS: Esta flag deverá ser persistida.
+* Ao tocar no ícone de olho do saldo, o mesmo deve ser escondido e apresentado conforme modelo de tela anexado. OBS: Esta flag deverá ser persistida.
 * Buscar lista de itens do extrato da rota `myStatement` com paginação de 10 itens por request(scroll infinito);
 * Ao tocar em um item do extrato deverá abrir uma tela de detalhes.
 * A tela de detalhes deverá consumir a rota de `myStatement/detail` informando o `id` do item selecionado como parâmetro;
-* Ao tocar no botão de compartilhar, deverá ser compartilhada a imagem da área de informações do comprovante abrindo a alert padrão do iOS.
+* Ao tocar no botão de compartilhar, deverá ser compartilhada a imagem da área de informações do comprovante abrindo o componente de compartilhamento (sharing) padrão do Android.
 
 ---
 
@@ -82,13 +80,7 @@ alt="Comprovante" width="375" height="562" border="1" />
 
 ## Processo de submissão
 
-Depois de implementar a solução, envie um Pull Request para este repositório. O processo de Pull Request funciona da seguinte maneira:
 
-Faça um fork deste repositório (não clonar direto!);
-Faça seu projeto neste fork;
-Commit e suba as alterações para o SEU fork;
-Pela interface do Github, envie um Pull Request;
-Deixe o fork público para facilitar a inspeção do código.
 
 :exclamation: **ATENÇÃO** :exclamation:
 
@@ -97,3 +89,7 @@ Não tente fazer o PUSH diretamente para ESTE repositório!
 ## Copyright
 
 Copyright ícones: [zondicons](https://www.iconfinder.com/iconsets/zondicons)
+
+## Agradecimento
+
+Obrigado ao @micheltlutz por ser o idealizador do teste técnico Android/iOS da @somosphi.
