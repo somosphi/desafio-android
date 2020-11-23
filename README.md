@@ -90,7 +90,7 @@ Não tente fazer o PUSH diretamente para ESTE repositório!
 
 ## Avaliação
 
-Tudo será levado em consideração na realização do teste técnico. Recomendamos que o teste não seja realizado com pressa e que você desenvolva a solução como se você estivesse construindo um software dentro da Phi.
+Tudo será levado em consideração na avaliação do teste técnico. Recomendamos que o teste não seja realizado com pressa e que você desenvolva a solução como se você estivesse construindo um software dentro da Phi.
 
 ## Copyright
 
