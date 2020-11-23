@@ -92,4 +92,4 @@ Copyright ícones: [zondicons](https://www.iconfinder.com/iconsets/zondicons)
 
 ## Agradecimento
 
-Obrigado ao @micheltlutz por ser o idealizador do teste técnico Android/iOS da @somosphi.
+Obrigado ao Michel Lutz (https://github.com/micheltlutz) por ser o idealizador do teste técnico Android/iOS da Phi.
