@@ -80,11 +80,17 @@ alt="Comprovante" width="375" height="562" border="1" />
 
 ## Processo de submissão
 
+Antes de iniciar sua implementação, faça um FORK deste repositório (não clonar repositório) e, a partir desse FORK, faça os commits do seu projeto.
 
+Pela interface do Github, envie um Pull Request; Deixe o fork público para facilitar a inspeção do código.
 
 :exclamation: **ATENÇÃO** :exclamation:
 
 Não tente fazer o PUSH diretamente para ESTE repositório!
+
+## Avaliação
+
+Tudo será levado em consideração na realização do teste técnico. Recomendamos que o teste não seja realizado com pressa e que você desenvolva a solução como se você estivesse construindo um software dentro da Phi.
 
 ## Copyright
 
