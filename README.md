@@ -8,7 +8,7 @@
 
 ## Como será seu desafio
 
-Utilizando a nossa [API](https://desafio-ios-phi-bff.herokuapp.com/), você deverá criar uma app que apresente o saldo e as movimentações financeiras de um usuário, uma tela com os detalhes da movimentação selecionada e a opção de compartilhamento do mesmo. O layout deverá ser semelhante ao apresentado neste `README`. Legal, certo?
+Utilizando a nossa [API](https://desafio-mobile-bff.herokuapp.com/), você deverá criar uma app que apresente o saldo e as movimentações financeiras de um usuário, uma tela com os detalhes da movimentação selecionada e a opção de compartilhamento do mesmo. O layout deverá ser semelhante ao apresentado neste `README`. Legal, certo?
 
 Pense no desafio como uma oportunidade de mostrar todo o seu conhecimento. Faça-o com calma! Você pode combinar o tempo com nosso time de RH!
 Vamos avaliar como você lida com as seguintes situações:
@@ -50,7 +50,7 @@ Para posições mais Seniors, porém, damos muita importância para a qualidade 
 
 ## Api
 
-[Documentação](https://desafio-ios-phi-bff.herokuapp.com/)
+[Documentação](https://desafio-mobile-bff.herokuapp.com/)
 
 Seu token deve ser enviado no header de todas as requisições como header param `token`
 
