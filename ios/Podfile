@@ -1,0 +1,43 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '10.0'
+
+target 'PhiReactNativeTest' do
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+  pod 'react-native-view-shot', :path => '../node_modules/react-native-view-shot'
+
+  pod 'RNShare', :path => '../node_modules/react-native-share'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
+  target 'PhiReactNativeTestTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  use_flipper!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
+end
+
+target 'PhiReactNativeTest-tvOS' do
+  # Pods for PhiReactNativeTest-tvOS
+
+  target 'PhiReactNativeTest-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
