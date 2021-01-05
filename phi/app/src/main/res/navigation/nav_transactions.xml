@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_transactions">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_transactions"
+    app:startDestination="@id/extractFragment">
 
+    <fragment
+        android:id="@+id/extractFragment"
+        android:name="com.newton.phi.view.fragment.ExtractFragment"
+        android:label="fragment_extract"
+        tools:layout="@layout/fragment_extract" >
+        <action
+            android:id="@+id/action_extractFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFragment"
+        android:name="com.newton.phi.view.fragment.ReceiptFragment"
+        android:label="fragment_receipt"
+        tools:layout="@layout/fragment_receipt" />
 </navigation>
