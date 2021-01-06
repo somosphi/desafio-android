@@ -17,12 +17,16 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
 
     private val viewModel by viewModel<BankStatementViewModel>()
 
+    private lateinit var adapter: BankStatementAdapter
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         configureObservers()
 
         viewModel.getBalance()
+
+        viewModel.getStatement()
     }
 
     private fun configureObservers() {
@@ -34,7 +38,20 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
                 }
                 Resource.Status.ERROR -> TODO()
                 Resource.Status.LOADING -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Loading Balance", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+        viewModel.statement.observe(viewLifecycleOwner, Observer { resource ->
+            when (resource.status) {
+                Resource.Status.SUCCESS -> {
+                    adapter = BankStatementAdapter(resource.data!!)
+                    binding.recyclerStatement.adapter = adapter
+                }
+                Resource.Status.ERROR -> TODO()
+                Resource.Status.LOADING -> {
+                    Toast.makeText(requireContext(), "Loading Statement", Toast.LENGTH_SHORT).show()
                 }
             }
         })

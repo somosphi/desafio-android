@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_balance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_def"
@@ -39,9 +40,29 @@
                 app:layout_constraintStart_toStartOf="@id/text_your_balance"
                 app:layout_constraintTop_toBottomOf="@id/text_your_balance"
                 tools:text="R$ 1.345,00" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/text_your_movements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_def"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:text="@string/your_movements"
+        android:textColor="@color/almost_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_balance" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_statement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_def"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/text_your_movements"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_statement" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
