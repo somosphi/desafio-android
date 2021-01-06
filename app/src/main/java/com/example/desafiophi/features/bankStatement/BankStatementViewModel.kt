@@ -13,19 +13,19 @@ import kotlinx.coroutines.withContext
 class BankStatementViewModel : ViewModel() {
 
     private val service = PhiService()
-    private val _balance = MutableLiveData<Resource<String>>()
+    private val _balance = MutableLiveData<Resource<Int>>()
 
-    val balance: LiveData<Resource<String>>
+    val balance: LiveData<Resource<Int>>
         get() = _balance
 
     fun getBalance() {
         _balance.value = Resource.loading()
         viewModelScope.launch(Dispatchers.IO) {
-            val res = service.getBalance()
+            val response = service.getBalance()
 
-            if (res.isSuccessful) {
+            if (response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-                    _balance.value = Resource.success(res.body()?.amount?.toString()!!)
+                    _balance.value = Resource.success(response.body()?.amount!!)
                 }
             }
         }

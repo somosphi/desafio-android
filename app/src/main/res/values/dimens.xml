@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_xxs">11sp</dimen>
+    <dimen name="text_xs">12sp</dimen>
+    <dimen name="text_s">14sp</dimen>
+    <dimen name="text_m">18sp</dimen>
+    <dimen name="text_l">20sp</dimen>
+    <dimen name="text_ll">24sp</dimen>
+    <dimen name="text_xl">30sp</dimen>
+    <dimen name="text_xxl">36sp</dimen>
+
+    <dimen name="margin_def">16dp</dimen>
+    <dimen name="margin_xs">3dp</dimen>
+    <dimen name="margin_s">6dp</dimen>
+    <dimen name="margin_m">12dp</dimen>
+    <dimen name="margin_l">18dp</dimen>
+    <dimen name="margin_xl">24dp</dimen>
+    <dimen name="margin_xxl">40dp</dimen>
+</resources>
