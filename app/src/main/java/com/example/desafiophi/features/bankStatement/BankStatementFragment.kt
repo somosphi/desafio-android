@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafiophi.R
@@ -99,7 +100,11 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
     }
 
     private fun setupStatementRecyclerView(list: List<Statement.Item>) {
-        adapter = BankStatementAdapter(list.toMutableList())
+        adapter = BankStatementAdapter(list.toMutableList()) {
+            BankStatementFragmentDirections.actionBankStatementFragmentToBankStatementDetailFragment(it.id).run {
+                findNavController().navigate(this)
+            }
+        }
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerStatement.layoutManager = layoutManager
         binding.recyclerStatement.adapter = adapter

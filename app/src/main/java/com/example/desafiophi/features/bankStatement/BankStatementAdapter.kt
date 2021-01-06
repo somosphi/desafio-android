@@ -10,12 +10,13 @@ import com.example.desafiophi.databinding.ItemStatementBinding
 import com.example.desafiophi.utils.maskBrazilianCurrency
 import com.example.desafiophi.utils.toBrazilianDateFormat
 
-class BankStatementAdapter(private val statementList: MutableList<Statement.Item>) :
+class BankStatementAdapter(private val statementList: MutableList<Statement.Item>,
+                           private val listener: (statementItem: Statement.Item) -> Unit) :
     RecyclerView.Adapter<BankStatementAdapter.PaymentHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentHolder {
         val itemBinding =
             ItemStatementBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PaymentHolder(itemBinding)
+        return PaymentHolder(itemBinding, listener)
     }
 
     override fun onBindViewHolder(holder: PaymentHolder, position: Int) {
@@ -29,7 +30,8 @@ class BankStatementAdapter(private val statementList: MutableList<Statement.Item
         notifyDataSetChanged()
     }
 
-    class PaymentHolder(private val itemBinding: ItemStatementBinding) :
+    class PaymentHolder(private val itemBinding: ItemStatementBinding,
+                        private val listener: (statementItem: Statement.Item) -> Unit) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(statementItem: Statement.Item) {
             itemBinding.textTransferType.text = statementItem.description
@@ -39,6 +41,10 @@ class BankStatementAdapter(private val statementList: MutableList<Statement.Item
                 statementItem.createdAt.toBrazilianDateFormat("yyyy-MM-dd'T'HH:mm:ss", "dd/MM")
 
             configurePixCell(statementItem)
+
+            itemBinding.mainContainer.setOnClickListener {
+                listener.invoke(statementItem)
+            }
         }
 
         private fun configurePixCell(statementItem: Statement.Item) {

@@ -9,6 +9,22 @@
         android:id="@+id/bankStatementFragment"
         android:name="com.example.desafiophi.features.bankStatement.BankStatementFragment"
         android:label="BankStatementFragment"
-        tools:layout="@layout/fragment_bank_statement" />
+        tools:layout="@layout/fragment_bank_statement">
+
+        <action
+            android:id="@+id/action_bankStatementFragment_to_bankStatementDetailFragment"
+            app:destination="@id/bankStatementDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bankStatementDetailFragment"
+        android:name="com.example.desafiophi.features.bankStatementDetail.BankStatementDetailFragment"
+        android:label="BankStatementDetailFragment"
+        tools:layout="@layout/fragment_bank_statement_detail">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
