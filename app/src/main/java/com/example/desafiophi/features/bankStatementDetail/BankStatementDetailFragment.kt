@@ -1,5 +1,7 @@
 package com.example.desafiophi.features.bankStatementDetail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,9 +12,12 @@ import com.example.desafiophi.R
 import com.example.desafiophi.architecture.android.viewBinding
 import com.example.desafiophi.architecture.networking.Resource
 import com.example.desafiophi.databinding.FragmentBankStatementDetailBinding
+import com.example.desafiophi.utils.getBitmap
 import com.example.desafiophi.utils.maskBrazilianCurrency
+import com.example.desafiophi.utils.saveToCache
 import com.example.desafiophi.utils.toBrazilianDateFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class BankStatementDetailFragment : Fragment(R.layout.fragment_bank_statement_detail) {
 
@@ -43,7 +48,9 @@ class BankStatementDetailFragment : Fragment(R.layout.fragment_bank_statement_de
                         )
                         binding.textAuthenticationValue.text = this.authentication
                     }
-
+                    binding.buttonShare.setOnClickListener {
+                        shareReceipt()
+                    }
                 }
                 Resource.Status.ERROR -> {
                     binding.progressStatementDetail.visibility = View.GONE
@@ -58,4 +65,28 @@ class BankStatementDetailFragment : Fragment(R.layout.fragment_bank_statement_de
             }
         })
     }
+
+
+    private fun shareReceipt() {
+        val bitmap = binding.detailContainer.getBitmap()
+        val imageUri = bitmap.saveToCache(requireContext())
+        if (imageUri != null) {
+            val shareIntent = setupShareIntent(imageUri)
+            startActivity(Intent.createChooser(shareIntent, "Choose an app"))
+        }
+    }
+
+    private fun setupShareIntent(imageUri: Uri): Intent {
+        return  Intent().apply {
+            action = Intent.ACTION_SEND
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            setDataAndType(
+                imageUri,
+                requireActivity().contentResolver.getType(imageUri)
+            )
+            putExtra(Intent.EXTRA_STREAM, imageUri)
+            type = "image/png"
+        }
+    }
+
 }

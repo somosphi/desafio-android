@@ -1,6 +1,16 @@
 package com.example.desafiophi.utils
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.net.Uri
+import android.view.View
+import androidx.core.content.FileProvider
 import br.com.concrete.canarinho.formatador.FormatadorValor
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,4 +38,49 @@ fun String.toBrazilianDateFormat(inputPattern: String, outputPattern: String): S
         e.printStackTrace()
     }
     return dateString
+}
+
+fun View.getBitmap(): Bitmap {
+    val viewBitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.RGB_565)
+    val viewCanvas = Canvas(viewBitmap)
+    val backgroundDrawable = this.background
+    if (backgroundDrawable != null) {
+        backgroundDrawable.draw(viewCanvas)
+    } else {
+        viewCanvas.drawColor(Color.WHITE)
+        this.draw(viewCanvas)
+    }
+    return viewBitmap
+}
+
+fun Bitmap.saveToCache(context: Context): Uri? {
+    var imageUri: Uri? = null
+    val file: File?
+    var fos1: FileOutputStream? = null
+    try {
+        val folder = File(
+            context.cacheDir
+                .toString() + File.separator
+        )
+        if (!folder.exists()) {
+            folder.mkdir()
+        }
+        val filename = "img.jpg"
+        file = File(folder.path, filename)
+        fos1 = FileOutputStream(file)
+        this.compress(Bitmap.CompressFormat.JPEG, 100, fos1)
+        imageUri = FileProvider.getUriForFile(
+            context,
+            context.packageName.toString() + ".my.package.name.provider",
+            file
+        )
+    } catch (ex: Exception) {
+    } finally {
+        try {
+            fos1!!.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+    return imageUri
 }
