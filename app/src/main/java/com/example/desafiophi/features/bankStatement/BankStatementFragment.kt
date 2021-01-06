@@ -21,7 +21,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
 
     private val binding by viewBinding(FragmentBankStatementBinding::bind)
-
     private val viewModel by viewModel<BankStatementViewModel>()
 
     private lateinit var adapter: BankStatementAdapter
@@ -34,6 +33,11 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
         configureObservers()
         makeInitialRequests()
         setupVisibilityEye()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        isInitialLoading = true
     }
 
     private fun configureObservers() {
@@ -101,7 +105,9 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
 
     private fun setupStatementRecyclerView(list: List<Statement.Item>) {
         adapter = BankStatementAdapter(list.toMutableList()) {
-            BankStatementFragmentDirections.actionBankStatementFragmentToBankStatementDetailFragment(it.id).run {
+            BankStatementFragmentDirections.actionBankStatementFragmentToBankStatementDetailFragment(
+                it.id
+            ).run {
                 findNavController().navigate(this)
             }
         }
