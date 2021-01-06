@@ -4,4 +4,12 @@
     <string name="pix">Pix</string>
     <string name="your_movements">Suas movimentações</string>
     <string name="generic_network_error">Algum erro aconteceu, por favor tente novamente</string>
+    <string name="receipt">Comprovante</string>
+    <string name="movimentation_type">Tipo de movimentação</string>
+    <string name="value">Valor</string>
+    <string name="recipient">Recebedor</string>
+    <string name="institution">Instituição bancária</string>
+    <string name="date_hour">Data/Hora</string>
+    <string name="authentication">Autenticação</string>
+    <string name="share">Compartilhar</string>
 </resources>
