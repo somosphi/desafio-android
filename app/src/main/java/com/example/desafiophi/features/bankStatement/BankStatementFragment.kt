@@ -30,22 +30,8 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
         super.onActivityCreated(savedInstanceState)
 
         configureObservers()
-
-        viewModel.getBalance()
-
-        viewModel.getStatement(0)
-
+        makeInitialRequests()
         setupVisibilityEye()
-    }
-
-    private fun setupVisibilityEye() {
-        binding.buttonBalanceVisibility.setOnClickListener { visibilityEye ->
-            visibilityEye.isSelected = !visibilityEye.isSelected
-            binding.textYourBalanceValue.visibility =
-                if (visibilityEye.isSelected) View.VISIBLE else View.INVISIBLE
-            binding.viewBalance.visibility =
-                if (visibilityEye.isSelected) View.INVISIBLE else View.VISIBLE
-        }
     }
 
     private fun configureObservers() {
@@ -75,6 +61,21 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
                 }
             }
         })
+    }
+
+    private fun makeInitialRequests() {
+        viewModel.getBalance()
+        viewModel.getStatement(0)
+    }
+
+    private fun setupVisibilityEye() {
+        binding.buttonBalanceVisibility.setOnClickListener { visibilityEye ->
+            visibilityEye.isSelected = !visibilityEye.isSelected
+            binding.textYourBalanceValue.visibility =
+                if (visibilityEye.isSelected) View.VISIBLE else View.INVISIBLE
+            binding.viewBalance.visibility =
+                if (visibilityEye.isSelected) View.INVISIBLE else View.VISIBLE
+        }
     }
 
     private fun setupStatementRecyclerView(list: List<Statement.Item>) {
