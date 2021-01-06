@@ -77,7 +77,7 @@
         app:layout_constraintStart_toStartOf="@id/view_vertical_line"
         app:layout_constraintEnd_toEndOf="@id/view_vertical_line"
         app:layout_constraintTop_toTopOf="@id/view_vertical_line"
-        android:textSize="@dimen/text_l"
+        android:textSize="@dimen/text_xl"
         android:textColor="@color/weird_green"
         app:layout_constraintBottom_toBottomOf="@id/view_vertical_line"
         android:text="•"
