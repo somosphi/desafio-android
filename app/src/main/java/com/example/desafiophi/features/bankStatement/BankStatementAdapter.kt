@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.desafiophi.R
 import com.example.desafiophi.data.models.responses.Statement
 import com.example.desafiophi.databinding.ItemStatementBinding
 import com.example.desafiophi.utils.maskBrazilianCurrency
@@ -42,8 +43,10 @@ class BankStatementAdapter(private val statementList: MutableList<Statement.Item
 
         private fun configurePixCell(statementItem: Statement.Item) {
             if (statementItem.tType.toLowerCase().contains("pix")) {
+                itemBinding.root.setBackgroundColor(itemBinding.root.context.getColor(R.color.light_gray))
                 itemBinding.textIsPix.visibility = View.VISIBLE
             } else {
+                itemBinding.root.setBackgroundColor(itemBinding.root.context.getColor(R.color.white))
                 itemBinding.textIsPix.visibility = View.GONE
             }
         }
