@@ -1,9 +1,9 @@
 package com.example.desafiophi.features.bankStatement
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.desafiophi.architecture.networking.Resource
 import com.example.desafiophi.data.models.responses.Statement
 import com.example.desafiophi.databinding.ItemStatementBinding
 import com.example.desafiophi.utils.maskBrazilianCurrency
@@ -31,11 +31,21 @@ class BankStatementAdapter(private val statementList: MutableList<Statement.Item
     class PaymentHolder(private val itemBinding: ItemStatementBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(statementItem: Statement.Item) {
-            itemBinding.textTransferType.text = statementItem.tType
+            itemBinding.textTransferType.text = statementItem.description
             itemBinding.textTransferTo.text = statementItem.to
             itemBinding.textValue.text = statementItem.amount.toDouble().maskBrazilianCurrency(true)
             itemBinding.textDate.text =
                 statementItem.createdAt.toBrazilianDateFormat("yyyy-MM-dd'T'HH:mm:ss", "dd/MM")
+
+            configurePixCell(statementItem)
+        }
+
+        private fun configurePixCell(statementItem: Statement.Item) {
+            if (statementItem.tType.toLowerCase().contains("pix")) {
+                itemBinding.textIsPix.visibility = View.VISIBLE
+            } else {
+                itemBinding.textIsPix.visibility = View.GONE
+            }
         }
     }
 }
