@@ -29,5 +29,5 @@ class PhiService {
 
 
     suspend fun getBalance(): Response<BalanceResponse> = api.getMyBalance()
-    suspend fun getStatement(): Response<Statement> = api.getMyStatement()
+    suspend fun getStatement(pageNumber: Int): Response<Statement> = api.getMyStatement(offset = pageNumber)
 }

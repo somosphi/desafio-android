@@ -15,11 +15,13 @@ interface PhiAPI {
     @GET("myStatement/{limit}/{offset}")
     suspend fun getMyStatement(
         @Header("token") token: String = TOKEN,
-        @Path("limit") limit: Int = 10,
-        @Path("offset") offset: Int = 0
+        @Path("limit") limit: Int = PAGE_SIZE,
+        @Path("offset") offset: Int = PAGE_NUMBER
     ): Response<Statement>
 
     companion object {
+        private const val PAGE_SIZE = 10
+        private const val PAGE_NUMBER = 0
         private const val TOKEN =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
     }

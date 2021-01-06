@@ -1,15 +1,19 @@
 package com.example.desafiophi.features.bankStatement
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.desafiophi.R
 import com.example.desafiophi.architecture.android.viewBinding
 import com.example.desafiophi.architecture.networking.Resource
+import com.example.desafiophi.data.models.responses.Statement
 import com.example.desafiophi.databinding.FragmentBankStatementBinding
+import com.example.desafiophi.utils.EndlessRecyclerViewScrollListener
 import com.example.desafiophi.utils.maskBrazilianCurrency
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
 
@@ -18,6 +22,8 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
     private val viewModel by viewModel<BankStatementViewModel>()
 
     private lateinit var adapter: BankStatementAdapter
+    
+    private var isInitialLoading = true
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -26,7 +32,7 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
 
         viewModel.getBalance()
 
-        viewModel.getStatement()
+        viewModel.getStatement(0)
     }
 
     private fun configureObservers() {
@@ -38,7 +44,6 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
                 }
                 Resource.Status.ERROR -> TODO()
                 Resource.Status.LOADING -> {
-                    Toast.makeText(requireContext(), "Loading Balance", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -46,14 +51,30 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
         viewModel.statement.observe(viewLifecycleOwner, Observer { resource ->
             when (resource.status) {
                 Resource.Status.SUCCESS -> {
-                    adapter = BankStatementAdapter(resource.data!!)
-                    binding.recyclerStatement.adapter = adapter
+                    if (isInitialLoading) {
+                        setupStatementRecyclerView(resource.data!!)
+                    } else {
+                        adapter.appendToList(resource.data!!)
+                    }
                 }
                 Resource.Status.ERROR -> TODO()
                 Resource.Status.LOADING -> {
-                    Toast.makeText(requireContext(), "Loading Statement", Toast.LENGTH_SHORT).show()
                 }
             }
         })
+    }
+
+    private fun setupStatementRecyclerView(list: List<Statement.Item>) {
+        adapter = BankStatementAdapter(list.toMutableList())
+        val layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerStatement.layoutManager = layoutManager
+        binding.recyclerStatement.adapter = adapter
+        val scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+                isInitialLoading = false
+                viewModel.getStatement(page)
+            }
+        }
+        binding.recyclerStatement.addOnScrollListener(scrollListener)
     }
 }

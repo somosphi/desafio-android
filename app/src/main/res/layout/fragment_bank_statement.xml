@@ -60,7 +60,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_def"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/text_your_movements"
         tools:itemCount="5"
         tools:listitem="@layout/item_statement" />

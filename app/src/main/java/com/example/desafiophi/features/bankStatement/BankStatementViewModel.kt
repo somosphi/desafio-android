@@ -36,10 +36,10 @@ class BankStatementViewModel : ViewModel() {
         }
     }
 
-    fun getStatement() {
+    fun getStatement(pageNumber: Int) {
         _statement.value = Resource.loading()
         viewModelScope.launch(Dispatchers.IO) {
-            val response = service.getStatement()
+            val response = service.getStatement(pageNumber)
 
             if (response.isSuccessful) {
                 withContext(Dispatchers.Main) {
