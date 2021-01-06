@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.desafiophi.data.models.responses.Statement
 import com.example.desafiophi.databinding.ItemStatementBinding
 import com.example.desafiophi.utils.maskBrazilianCurrency
+import com.example.desafiophi.utils.toBrazilianDateFormat
 
 class BankStatementAdapter(private val statementList: List<Statement.Item>) :
     RecyclerView.Adapter<BankStatementAdapter.PaymentHolder>() {
@@ -27,7 +28,8 @@ class BankStatementAdapter(private val statementList: List<Statement.Item>) :
             itemBinding.textTransferType.text = statementItem.tType
             itemBinding.textTransferTo.text = statementItem.to
             itemBinding.textValue.text = statementItem.amount.toDouble().maskBrazilianCurrency(true)
-            itemBinding.textDate.text = statementItem.createdAt
+            itemBinding.textDate.text =
+                statementItem.createdAt.toBrazilianDateFormat("yyyy-MM-dd'T'HH:mm:ss", "dd/MM")
         }
     }
 }
