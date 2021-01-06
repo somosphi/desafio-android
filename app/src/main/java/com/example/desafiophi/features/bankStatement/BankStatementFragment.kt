@@ -2,6 +2,7 @@ package com.example.desafiophi.features.bankStatement
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,11 +39,22 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
         viewModel.balance.observe(viewLifecycleOwner, Observer { resource ->
             when (resource.status) {
                 Resource.Status.SUCCESS -> {
+                    binding.progressBalance.visibility = View.GONE
+
                     binding.textYourBalanceValue.text =
                         resource.data?.toDouble()?.maskBrazilianCurrency(true)
                 }
-                Resource.Status.ERROR -> TODO()
+                Resource.Status.ERROR -> {
+                    binding.progressBalance.visibility = View.GONE
+
+                    Toast.makeText(
+                        requireContext(), getString(R.string.generic_network_error),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
                 Resource.Status.LOADING -> {
+                    binding.progressBalance.visibility = View.VISIBLE
                 }
             }
         })
@@ -50,14 +62,22 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
         viewModel.statement.observe(viewLifecycleOwner, Observer { resource ->
             when (resource.status) {
                 Resource.Status.SUCCESS -> {
+                    binding.progressStatement.visibility = View.GONE
                     if (isInitialLoading) {
                         setupStatementRecyclerView(resource.data!!)
                     } else {
                         adapter.appendToList(resource.data!!)
                     }
                 }
-                Resource.Status.ERROR -> TODO()
+                Resource.Status.ERROR -> {
+                    binding.progressStatement.visibility = View.GONE
+                    Toast.makeText(
+                        requireContext(), getString(R.string.generic_network_error),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
                 Resource.Status.LOADING -> {
+                    binding.progressStatement.visibility = View.VISIBLE
                 }
             }
         })

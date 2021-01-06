@@ -3,4 +3,5 @@
     <string name="your_balance">Seu saldo</string>
     <string name="pix">Pix</string>
     <string name="your_movements">Suas movimentações</string>
+    <string name="generic_network_error">Algum erro aconteceu, por favor tente novamente</string>
 </resources>
