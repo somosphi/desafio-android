@@ -2,6 +2,7 @@ package com.example.desafiophi.data
 
 import com.example.desafiophi.data.models.responses.BalanceResponse
 import com.example.desafiophi.data.models.responses.Statement
+import com.example.desafiophi.data.models.responses.StatementDetail
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -29,5 +30,9 @@ class PhiService {
 
 
     suspend fun getBalance(): Response<BalanceResponse> = api.getMyBalance()
-    suspend fun getStatement(pageNumber: Int): Response<Statement> = api.getMyStatement(offset = pageNumber)
+    suspend fun getStatement(pageNumber: Int): Response<Statement> =
+        api.getMyStatement(offset = pageNumber)
+
+    suspend fun getStatementDetail(id: String): Response<StatementDetail> =
+        api.getStatementDetail(id = id)
 }

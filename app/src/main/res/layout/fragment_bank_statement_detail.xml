@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:id="@+id/progress_statement_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text_title"
         android:layout_width="match_parent"
@@ -98,8 +108,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_def"
         android:layout_marginTop="@dimen/margin_xs"
+        android:text="Não tem na response"
         app:layout_constraintTop_toBottomOf="@id/text_institution"
-        tools:text="Banco Phi" />
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/text_date"

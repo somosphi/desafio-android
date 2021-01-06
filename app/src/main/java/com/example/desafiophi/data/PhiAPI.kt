@@ -2,6 +2,7 @@ package com.example.desafiophi.data
 
 import com.example.desafiophi.data.models.responses.BalanceResponse
 import com.example.desafiophi.data.models.responses.Statement
+import com.example.desafiophi.data.models.responses.StatementDetail
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -18,6 +19,12 @@ interface PhiAPI {
         @Path("limit") limit: Int = PAGE_SIZE,
         @Path("offset") offset: Int = PAGE_NUMBER
     ): Response<Statement>
+
+    @GET("myStatement/detail/{id}")
+    suspend fun getStatementDetail(
+        @Header("token") token: String = TOKEN,
+        @Path("id") id: String
+    ): Response<StatementDetail>
 
     companion object {
         private const val PAGE_SIZE = 10
