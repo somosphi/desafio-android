@@ -63,4 +63,25 @@
         app:layout_constraintEnd_toEndOf="@id/text_date"
         app:layout_constraintStart_toStartOf="@id/text_date" />
 
+    <View
+        android:id="@+id/view_vertical_line"
+        android:background="@color/almost_white"
+        android:layout_marginStart="@dimen/margin_def"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="1dp"
+        android:layout_height="0dp" />
+
+    <TextView
+        app:layout_constraintStart_toStartOf="@id/view_vertical_line"
+        app:layout_constraintEnd_toEndOf="@id/view_vertical_line"
+        app:layout_constraintTop_toTopOf="@id/view_vertical_line"
+        android:textSize="@dimen/text_l"
+        android:textColor="@color/weird_green"
+        app:layout_constraintBottom_toBottomOf="@id/view_vertical_line"
+        android:text="•"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

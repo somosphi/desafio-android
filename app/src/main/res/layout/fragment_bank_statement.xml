@@ -18,6 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <View
+                android:id="@+id/viewBalance"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:background="@color/weird_green"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/text_your_balance_value"
+                app:layout_constraintEnd_toEndOf="@id/text_your_balance_value"
+                app:layout_constraintStart_toStartOf="@id/text_your_balance_value"
+                app:layout_constraintTop_toTopOf="@id/text_your_balance_value" />
+
             <TextView
                 android:id="@+id/text_your_balance"
                 android:layout_width="wrap_content"
@@ -28,6 +39,16 @@
                 app:layout_constraintBottom_toTopOf="@id/text_your_balance_value"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/button_balance_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/selector_visibility_eye"
+                app:layout_constraintBottom_toBottomOf="@id/text_your_balance"
+                app:layout_constraintStart_toEndOf="@id/text_your_balance"
+                app:layout_constraintTop_toTopOf="@id/text_your_balance" />
 
             <TextView
                 android:id="@+id/text_your_balance_value"

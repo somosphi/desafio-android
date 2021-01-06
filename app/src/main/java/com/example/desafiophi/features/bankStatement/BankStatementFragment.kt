@@ -1,6 +1,7 @@
 package com.example.desafiophi.features.bankStatement
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +23,7 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
     private val viewModel by viewModel<BankStatementViewModel>()
 
     private lateinit var adapter: BankStatementAdapter
-    
+
     private var isInitialLoading = true
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -33,6 +34,18 @@ class BankStatementFragment : Fragment(R.layout.fragment_bank_statement) {
         viewModel.getBalance()
 
         viewModel.getStatement(0)
+
+        setupVisibilityEye()
+    }
+
+    private fun setupVisibilityEye() {
+        binding.buttonBalanceVisibility.setOnClickListener { visibilityEye ->
+            visibilityEye.isSelected = !visibilityEye.isSelected
+            binding.textYourBalanceValue.visibility =
+                if (visibilityEye.isSelected) View.VISIBLE else View.INVISIBLE
+            binding.viewBalance.visibility =
+                if (visibilityEye.isSelected) View.INVISIBLE else View.VISIBLE
+        }
     }
 
     private fun configureObservers() {
