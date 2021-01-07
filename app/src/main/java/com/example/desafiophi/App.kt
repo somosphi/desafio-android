@@ -1,7 +1,8 @@
 package com.example.desafiophi
 
 import android.app.Application
-import com.example.desafiophi.architecture.di.phiModule
+import com.example.desafiophi.architecture.di.networkModule
+import com.example.desafiophi.architecture.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -10,7 +11,7 @@ class App : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(listOf(phiModule))
+            modules(listOf(viewModelModule, networkModule))
         }
     }
 }
