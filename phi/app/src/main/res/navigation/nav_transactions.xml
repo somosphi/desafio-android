@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/extractFragment"
         android:name="com.newton.phi.view.fragment.ExtractFragment"
-        android:label="fragment_extract"
-        tools:layout="@layout/fragment_extract" >
+        android:label="@string/extract"
+        tools:layout="@layout/fragment_extract">
         <action
             android:id="@+id/action_extractFragment_to_receiptFragment"
             app:destination="@id/receiptFragment" />
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/receiptFragment"
         android:name="com.newton.phi.view.fragment.ReceiptFragment"
-        android:label="fragment_receipt"
+        android:label="@string/receipt"
         tools:layout="@layout/fragment_receipt" />
 </navigation>
