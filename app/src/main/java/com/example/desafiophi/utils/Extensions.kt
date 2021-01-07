@@ -10,7 +10,6 @@ import androidx.core.content.FileProvider
 import br.com.concrete.canarinho.formatador.FormatadorValor
 import java.io.File
 import java.io.FileOutputStream
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -54,33 +53,27 @@ fun View.getBitmap(): Bitmap {
 }
 
 fun Bitmap.saveToCache(context: Context): Uri? {
-    var imageUri: Uri? = null
+    val imageUri: Uri?
     val file: File?
-    var fos1: FileOutputStream? = null
-    try {
-        val folder = File(
-            context.cacheDir
-                .toString() + File.separator
-        )
-        if (!folder.exists()) {
-            folder.mkdir()
-        }
-        val filename = "img.jpg"
-        file = File(folder.path, filename)
-        fos1 = FileOutputStream(file)
-        this.compress(Bitmap.CompressFormat.JPEG, 100, fos1)
-        imageUri = FileProvider.getUriForFile(
-            context,
-            context.packageName.toString() + ".my.package.name.provider",
-            file
-        )
-    } catch (ex: Exception) {
-    } finally {
-        try {
-            fos1!!.close()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
+    val fos: FileOutputStream?
+    val folder = File(
+        context.cacheDir
+            .toString() + File.separator
+    )
+    if (!folder.exists()) {
+        folder.mkdir()
     }
+    val filename = "img.jpg"
+    file = File(folder.path, filename)
+    fos = FileOutputStream(file)
+    fos.use {
+        this.compress(Bitmap.CompressFormat.JPEG, 100, it)
+    }
+
+    imageUri = FileProvider.getUriForFile(
+        context,
+        context.packageName.toString() + ".my.package.name.provider",
+        file
+    )
     return imageUri
 }
