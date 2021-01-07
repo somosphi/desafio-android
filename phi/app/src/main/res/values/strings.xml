@@ -5,4 +5,5 @@
     <string name="your_balance">Seu saldo</string>
     <string name="extract">Extrato</string>
     <string name="receipt">Comprovante</string>
+    <string name="pix">Pix</string>
 </resources>
