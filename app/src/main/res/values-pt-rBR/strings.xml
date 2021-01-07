@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="statement">Extrato</string>
+    <string name="your_balance">Seu Saldo</string>
+    <string name="your_statement">Suas movimentações</string>
+
+    <string name="receipt">Comprovante</string>
+    <string name="to_share">Compartilhar</string>
+    <string name="unknown">Desconhecido</string>
+    <string name="transaction_type">Tipo de movimentação</string>
+    <string name="amount">Valor</string>
+    <string name="to">Recebedor</string>
+    <string name="banking_institution">Instituição Bancária</string>
+    <string name="date_hour">Data/Hora</string>
+    <string name="authentication">Authenticação</string>
+
+    <string name="loading">Carregando</string>
+
+    <string name="operation_failed_try_again">Esta operação falhou, tente novamente</string>
+</resources>

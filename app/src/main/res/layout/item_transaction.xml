@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:id="@+id/transactionLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        app:shimmer_animation_duration="1000"
+        app:shimmer_color="@color/colorLoading"
+        app:shimmer_gradient_center_color_width="0.5"
+        app:shimmer_mask_width="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/transactionParentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+            <View
+                android:id="@+id/topTimelineBalance"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="2dp"
+                android:background="#828282"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/circle_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/bottomTimelineBalance"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:background="#828282"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/type"
+                style="@style/TransactionItemTitle"
+                android:layout_marginStart="24dp"
+                android:text="@string/loading"
+                app:layout_constraintBottom_toTopOf="@+id/to"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/to"
+                style="@style/TransactionItemName"
+                android:text="@string/loading"
+                app:layout_constraintBottom_toTopOf="@+id/amount"
+                app:layout_constraintStart_toStartOf="@+id/type"
+                app:layout_constraintTop_toBottomOf="@+id/type" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/amount"
+                style="@style/TransactionItemValue"
+                android:text="@string/loading"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/to"
+                app:layout_constraintTop_toBottomOf="@+id/to" />
+
+            <LinearLayout
+                android:id="@+id/pixBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="invisible"
+                android:gravity="center"
+                android:layout_marginEnd="16dp"
+                android:background="@color/emphasis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/pixText"
+                    android:paddingBottom="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/pix"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/createdAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/loading"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/pixBlock"
+                app:layout_constraintStart_toStartOf="@+id/pixBlock"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+
+</LinearLayout>

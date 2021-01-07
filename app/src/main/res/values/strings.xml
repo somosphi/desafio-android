@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name" translatable="false">PhiTest</string>
+
+    <!-- broadcast receiver identify -->
+    <string name="increment_statement_list" translatable="false">increment_statement_list</string>
+
+    <string name="statement">Statement</string>
+    <string name="your_balance">Your Balance</string>
+    <string name="your_statement">Your Statement</string>
+
+    <string name="receipt">Receipt</string>
+    <string name="to_share">Share</string>
+    <string name="unknown">Unknown</string>
+    <string name="transaction_type">Transaction Type</string>
+    <string name="amount">Amount</string>
+    <string name="to">To</string>
+    <string name="banking_institution">Banking institution</string>
+    <string name="date_hour">Date/Hour</string>
+    <string name="authentication">Authentication</string>
+
+    <string name="loading">Loading</string>
+    <string name="pix" translatable="false">Pix</string>
+
+    <!-- Generic error message -->
+    <string name="operation_failed_try_again">This operation failed, please try again</string>
+
+</resources>
