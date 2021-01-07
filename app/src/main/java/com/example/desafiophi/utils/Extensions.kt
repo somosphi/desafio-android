@@ -55,7 +55,6 @@ fun View.getBitmap(): Bitmap {
 fun Bitmap.saveToCache(context: Context): Uri? {
     val imageUri: Uri?
     val file: File?
-    val fos: FileOutputStream?
     val folder = File(
         context.cacheDir
             .toString() + File.separator
@@ -65,10 +64,6 @@ fun Bitmap.saveToCache(context: Context): Uri? {
     }
     val filename = "img.jpg"
     file = File(folder.path, filename)
-    fos = FileOutputStream(file)
-    fos.use {
-        this.compress(Bitmap.CompressFormat.JPEG, 100, it)
-    }
 
     imageUri = FileProvider.getUriForFile(
         context,
