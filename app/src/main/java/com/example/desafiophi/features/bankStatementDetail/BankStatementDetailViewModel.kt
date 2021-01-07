@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class BankStatementDetailViewModel(private val phiAPI: PhiAPI) : ViewModel(){
+class BankStatementDetailViewModel(private val phiAPI: PhiAPI) : ViewModel() {
 
     private val _statementDetail = MutableLiveData<Resource<StatementDetail>>()
 
@@ -30,5 +30,4 @@ class BankStatementDetailViewModel(private val phiAPI: PhiAPI) : ViewModel(){
             }
         }
     }
-
 }

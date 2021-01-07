@@ -1,7 +1,7 @@
 package com.example.desafiophi
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.desafiophi.architecture.android.viewBinding
 import com.example.desafiophi.databinding.ActivityMainBinding
 

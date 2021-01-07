@@ -10,8 +10,10 @@ import com.example.desafiophi.databinding.ItemStatementBinding
 import com.example.desafiophi.utils.maskBrazilianCurrency
 import com.example.desafiophi.utils.toBrazilianDateFormat
 
-class BankStatementAdapter(private val statementList: MutableList<Statement.Item>,
-                           private val listener: (statementItem: Statement.Item) -> Unit) :
+class BankStatementAdapter(
+    private val statementList: MutableList<Statement.Item>,
+    private val listener: (statementItem: Statement.Item) -> Unit
+) :
     RecyclerView.Adapter<BankStatementAdapter.PaymentHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentHolder {
         val itemBinding =
@@ -30,8 +32,10 @@ class BankStatementAdapter(private val statementList: MutableList<Statement.Item
         notifyDataSetChanged()
     }
 
-    class PaymentHolder(private val itemBinding: ItemStatementBinding,
-                        private val listener: (statementItem: Statement.Item) -> Unit) :
+    class PaymentHolder(
+        private val itemBinding: ItemStatementBinding,
+        private val listener: (statementItem: Statement.Item) -> Unit
+    ) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(statementItem: Statement.Item) {
             itemBinding.textTransferType.text = statementItem.description

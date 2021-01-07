@@ -77,7 +77,7 @@ class BankStatementDetailFragment : Fragment(R.layout.fragment_bank_statement_de
     }
 
     private fun setupShareIntent(imageUri: Uri): Intent {
-        return  Intent().apply {
+        return Intent().apply {
             action = Intent.ACTION_SEND
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             setDataAndType(
@@ -88,5 +88,4 @@ class BankStatementDetailFragment : Fragment(R.layout.fragment_bank_statement_de
             type = "image/png"
         }
     }
-
 }

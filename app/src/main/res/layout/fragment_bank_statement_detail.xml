@@ -153,9 +153,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_def"
             android:layout_marginTop="@dimen/margin_xs"
-            app:layout_constraintTop_toBottomOf="@id/text_authentication"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/margin_def"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_authentication"
             tools:text="123445345" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
