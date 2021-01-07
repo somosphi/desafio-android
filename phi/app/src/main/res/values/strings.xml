@@ -2,4 +2,7 @@
     <string name="app_name">Phi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_balance">Seu saldo</string>
+    <string name="extract">Extrato</string>
+    <string name="receipt">Comprovante</string>
 </resources>
