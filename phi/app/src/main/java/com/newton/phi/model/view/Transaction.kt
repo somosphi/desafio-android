@@ -1,4 +1,4 @@
-package com.newton.phi.model
+package com.newton.phi.model.view
 
 class Transaction (
     var description : String,
