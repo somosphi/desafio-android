@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.newton.phi.R
 import com.newton.phi.databinding.ViewholderItemMovementBinding
-import com.newton.phi.model.Transaction
+import com.newton.phi.model.view.Transaction
 
 class TransactionsAdapter(private val onClick: (Int) -> Unit) : RecyclerView.Adapter<TransactionsAdapter.TransactionAdapterViewHolder>() {
 
@@ -27,15 +27,17 @@ class TransactionsAdapter(private val onClick: (Int) -> Unit) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: TransactionAdapterViewHolder, position: Int) {
+
         holder.binding?.run {
-            list?.let {
-                data.apply {
-                    date = it[position].date
-                    description = it[position].description
-                    name = it[position].name
-                    value = it[position].value
-                    pix = it[position].pix
-                }
+            list?.get(position).let { item ->
+                val itemView = Transaction(
+                    description = item?.description ?: "",
+                    name = item?.name ?: "",
+                    value = item?.value ?: "",
+                    pix = item?.pix ?: false,
+                    date = item?.date ?: ""
+                )
+                data = itemView
             }
 
             root.setOnClickListener { onClick(position) }
