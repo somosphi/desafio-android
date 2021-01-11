@@ -1,0 +1,29 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- default value DP   -->
+    <dimen name="default_0dp">0dp</dimen>
+    <dimen name="default_1dp">1dp</dimen>
+    <dimen name="default_2dp">2dp</dimen>
+    <dimen name="default_4dp">4dp</dimen>
+    <dimen name="default_6dp">6dp</dimen>
+    <dimen name="default_8dp">8dp</dimen>
+    <dimen name="default_10dp">10dp</dimen>
+    <dimen name="default_12dp">12dp</dimen>
+    <dimen name="default_14dp">14dp</dimen>
+    <dimen name="default_16dp">16dp</dimen>
+    <dimen name="default_18dp">18dp</dimen>
+    <dimen name="default_20dp">20dp</dimen>
+    <dimen name="default_30dp">30dp</dimen>
+    <dimen name="default_40dp">40dp</dimen>
+    <dimen name="default_45dp">45dp</dimen>
+    <dimen name="default_50dp">50dp</dimen>
+    <dimen name="default_130dp">130dp</dimen>
+
+    <!-- default value DP   -->
+    <dimen name="default_6sp">6sp</dimen>
+    <dimen name="default_16sp">16sp</dimen>
+    <dimen name="default_18sp">18sp</dimen>
+    <dimen name="default_24sp">24sp</dimen>
+
+</resources>

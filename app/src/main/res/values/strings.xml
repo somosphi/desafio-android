@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Phi App</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="proof">Comprovante</string>
+    <string name="movement_type">Tipo de movimentação</string>
+    <string name="value">Valor</string>
+    <string name="receiver">Recebedor</string>
+    <string name="bank_institution">Instituição bancária</string>
+    <string name="date_hour">Data/Hora</string>
+    <string name="authentication">Autenticação</string>
+    <string name="share">Compartilhar</string>
+    <string name="your_amount">Seu saldo</string>
+    <string name="your_movements">Suas movimentações</string>
+    <string name="title">titulo</string>
+    <string name="name">nome</string>
+    <string name="date">data</string>
+    <string name="pix">Pix</string>
+    <string name="statement">Extrato</string>
+
+
+</resources>

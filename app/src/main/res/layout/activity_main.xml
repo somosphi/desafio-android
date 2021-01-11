@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
+
+    <TextView
+        android:id="@+id/textViewStatementTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/statement"
+        android:layout_marginTop="@dimen/default_18dp"
+        android:textSize="@dimen/default_18sp"
+        android:textStyle="bold"
+        android:textColor="@color/default_black_202021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_18dp"
+        android:background="@color/default_gray_F8F8F8"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatementTitle">
+
+        <TextView
+            android:id="@+id/textViewMyAmountTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_8dp"
+            android:text="@string/your_amount"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageShowHideAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageShowHideAmount" />
+
+        <ImageView
+            android:id="@+id/imageShowHideAmount"
+            app:layout_constraintStart_toEndOf="@+id/textViewMyAmountTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/default_8dp"
+            android:layout_width="@dimen/default_50dp"
+            android:layout_height="@dimen/default_30dp"
+            android:src="@mipmap/eye_blue" />
+
+        <View
+            android:id="@+id/viewWithoutAmount"
+            android:layout_width="@dimen/default_130dp"
+            android:layout_height="@dimen/default_4dp"
+            android:background="@color/default_blue_00C1AF"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAmount"
+            app:layout_constraintStart_toStartOf="@+id/textViewAmount"
+            app:layout_constraintTop_toTopOf="@+id/textViewAmount"
+            app:layout_constraintVertical_bias="0.35" />
+
+        <TextView
+            android:id="@+id/textViewAmount"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_8dp"
+            android:layout_marginTop="@dimen/default_14dp"
+            android:paddingBottom="@dimen/default_12dp"
+            tools:text="@string/your_amount"
+            android:textColor="@color/default_blue_00C1AF"
+            android:textSize="@dimen/default_24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMyAmountTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/movements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_movements"
+        android:textColor="@color/default_black_202021"
+        android:textStyle="bold"
+        android:textSize="@dimen/default_16sp"
+        android:layout_marginTop="@dimen/default_12dp"
+        android:layout_marginStart="@dimen/default_8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/default_12dp"
+        android:layout_marginStart="@dimen/default_8dp"
+        app:layout_constraintTop_toBottomOf="@+id/movements"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_list" />
+
+    <include
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        layout="@layout/progress_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

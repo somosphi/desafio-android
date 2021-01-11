@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.details.DetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/default_18dp" >
+
+        <TextView
+            android:id="@+id/textViewStatementTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/proof"
+            android:layout_marginTop="@dimen/default_18dp"
+            android:textSize="@dimen/default_18sp"
+            android:textStyle="bold"
+            android:textColor="@color/default_black_202021"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/viewSeparator"
+            android:layout_width="@dimen/default_0dp"
+            android:layout_height="@dimen/default_2dp"
+            android:layout_marginEnd="@dimen/default_18dp"
+            android:layout_marginTop="@dimen/default_18dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewStatementTitle" />
+
+        <TextView
+            android:id="@+id/textViewTypeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/movement_type"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/default_18dp"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewSeparator" />
+
+        <TextView
+            android:id="@+id/textViewType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/movement_type"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTypeTitle" />
+
+        <TextView
+            android:id="@+id/textViewValueTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/value"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/default_18dp"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewType" />
+
+        <TextView
+            android:id="@+id/textViewValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/value"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewValueTitle" />
+
+        <TextView
+            android:id="@+id/textViewReceiverTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/receiver"
+            android:textStyle="bold"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewValue" />
+
+        <TextView
+            android:id="@+id/textViewReceiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/receiver"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewReceiverTitle" />
+
+        <TextView
+            android:id="@+id/textViewInstitutionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bank_institution"
+            android:textStyle="bold"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewReceiver" />
+
+        <TextView
+            android:id="@+id/textViewInstitution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/bank_institution"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewInstitutionTitle" />
+
+        <TextView
+            android:id="@+id/textViewDateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_hour"
+            android:textStyle="bold"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewInstitution" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/date_hour"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDateTitle" />
+
+        <TextView
+            android:id="@+id/textViewAuthenticationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/authentication"
+            android:textStyle="bold"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            android:layout_marginTop="@dimen/default_18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
+
+        <TextView
+            android:id="@+id/textViewAuthentication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_4dp"
+            tools:text="@string/authentication"
+            android:textColor="@color/default_black_202021"
+            android:textSize="@dimen/default_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAuthenticationTitle" />
+
+        <Button
+            android:id="@+id/buttonShare"
+            android:layout_width="@dimen/default_0dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@string/share"
+            android:backgroundTint="@color/default_blue_00C1AF"
+            android:layout_marginTop="@dimen/default_18dp"
+            android:layout_marginEnd="@dimen/default_18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAuthentication" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
