@@ -7,4 +7,13 @@
     <string name="receipt">Comprovante</string>
     <string name="pix">Pix</string>
     <string name="your_moves">Suas movimentações</string>
+    <string name="without_internet">Sem Internet</string>
+    <string name="share">Compartilhar</string>
+    <string name="type_of_movement">Tipo de movimentação</string>
+    <string name="value">Valor</string>
+    <string name="receiver">Recebedor</string>
+    <string name="banking_institution">Tipo de movimentação</string>
+    <string name="date_hour">Data/Hora</string>
+    <string name="authentication">Autenticação</string>
+    <string name="dialog_error">Ocorreu um erro, tente novamente mais tarde.</string>
 </resources>

@@ -14,5 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/black</item>
     </style>
+    <style name="Theme.Button" parent="Theme.MaterialComponents.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/green_light</item>
+    </style>
 
 </resources>
