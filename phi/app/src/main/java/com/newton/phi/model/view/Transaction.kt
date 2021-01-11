@@ -6,4 +6,6 @@ class Transaction (
     var value : String,
     var pix : Boolean,
     var date : String,
+    var id : String,
+    var credit : Boolean
 )
