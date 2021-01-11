@@ -12,7 +12,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navController = findNavController(R.id.fragment)// where nav_host_fragment is the id for your Main NavHost fragment
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val appBarConfiguration = AppBarConfiguration(setOf(
+                R.id.extractFragment,
+                R.id.receiptFragment
+        ))
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }
