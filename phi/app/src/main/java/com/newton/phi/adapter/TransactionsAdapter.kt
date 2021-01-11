@@ -9,7 +9,7 @@ import com.newton.phi.R
 import com.newton.phi.databinding.ViewholderItemMovementBinding
 import com.newton.phi.model.view.Transaction
 
-class TransactionsAdapter(private val onClick: (Int) -> Unit) : RecyclerView.Adapter<TransactionsAdapter.TransactionAdapterViewHolder>() {
+class TransactionsAdapter(private val onClick: (String) -> Unit) : RecyclerView.Adapter<TransactionsAdapter.TransactionAdapterViewHolder>() {
 
     private var list: List<Transaction>? = null
 
@@ -30,17 +30,24 @@ class TransactionsAdapter(private val onClick: (Int) -> Unit) : RecyclerView.Ada
 
         holder.binding?.run {
             list?.get(position).let { item ->
+                var cash = item?.value ?: ""
+                if (!item?.credit!!){
+                    cash = "- $cash"
+                }
+
                 val itemView = Transaction(
-                    description = item?.description ?: "",
-                    name = item?.name ?: "",
-                    value = item?.value ?: "",
-                    pix = item?.pix ?: false,
-                    date = item?.date ?: ""
+                    description = item.description ?: "",
+                    name = item.name,
+                    value = cash,
+                    pix = item.pix,
+                    date = item.date,
+                        id = item.id,
+                        credit = item.credit
                 )
                 data = itemView
             }
 
-            root.setOnClickListener { onClick(position) }
+            root.setOnClickListener { onClick(list!![position].id) }
         }
     }
 
