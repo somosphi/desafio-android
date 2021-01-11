@@ -87,11 +87,14 @@ class ReceiptFragment : Fragment() {
 
     private fun getBitmapFromView(v: View) {
 
-            val bit = binding.cardView.drawToBitmap(Bitmap.Config.ARGB_8888)
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "image/png"
-            intent.putExtra(Intent.EXTRA_STREAM, bit)
-            startActivity(Intent.createChooser(intent, getString(R.string.receipt)))
+//            val bit = binding.cardView.drawToBitmap(Bitmap.Config.ARGB_8888)
+//            val intent = Intent(Intent.ACTION_SEND)
+//            intent.type = "image/png"
+//            intent.putExtra(Intent.EXTRA_STREAM, bit)
+//            startActivity(Intent.createChooser(intent, getString(R.string.receipt)))
+
+        val snackbar = Snackbar.make(binding.root, getString(R.string.inform_user_coming_soon), Snackbar.LENGTH_LONG)
+        snackbar.show()
 
 
     }

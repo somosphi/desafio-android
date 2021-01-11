@@ -16,4 +16,5 @@
     <string name="date_hour">Data/Hora</string>
     <string name="authentication">Autenticação</string>
     <string name="dialog_error">Ocorreu um erro, tente novamente mais tarde.</string>
+    <string name="inform_user_coming_soon">Em breve</string>
 </resources>
