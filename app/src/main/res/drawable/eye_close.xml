@@ -1,0 +1,20 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/dp24"
+    android:height="@dimen/dp24"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+
+    <clip-path
+        android:name="strike_mask"
+        android:pathData="M0,0H24V24H0Z M4,4L20,20L21,19L5,3Z" />
+
+    <path
+        android:fillColor="@color/colorPrimary"
+        android:pathData="M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z" />
+
+    <path
+        android:name="strike"
+        android:fillColor="@color/colorPrimary"
+        android:pathData="M4,4L20,20L19,21L3,5Z" />
+
+</vector>

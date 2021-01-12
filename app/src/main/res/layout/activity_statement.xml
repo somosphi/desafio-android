@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="br.com.phi.challenge.viewmodel.statement.StatementViewModel" />
+
+        <variable
+            name="toolbarVM"
+            type="br.com.phi.challenge.viewmodel.base.toolbar.ToolbarViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.statement.StatementActivity">
+
+        <include
+            android:id="@+id/statementToolbar"
+            layout="@layout/layout_toolbar"
+            app:toolbarViewModel="@{toolbarVM}"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_statement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/statementToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:paddingTop="@dimen/dp16"
+            android:paddingBottom="@dimen/dp16"
+            android:background="@color/gray_200">
+
+            <TextView
+                android:id="@+id/tv_title_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/title_my_statement"
+                tools:text="@string/title_my_statement"
+                style="@style/TextMonsterrat16BlackRegular"/>
+
+            <ImageView
+                android:id="@+id/iv_hide_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_amount"
+                android:layout_marginStart="@dimen/dp16"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/eye_open"
+                android:onClick="@{() -> viewModel.updateBalanceVisibility()}"
+                app:changeIconEye="@{viewModel.balanceVisibility}"/>
+
+            <TextView
+                android:id="@+id/tv_amount_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_amount"
+                android:text="@{viewModel.balance.amount}"
+                android:layout_marginTop="@dimen/dp12"
+                style="@style/TextMonsterrat18TealBold"
+                tools:text="R$ 1.345,00"
+                android:visibility="@{viewModel.balanceVisibility}"/>
+
+            <View
+                android:id="@+id/view_balance_hidden"
+                android:layout_width="@dimen/dp132"
+                android:layout_height="@dimen/dp6"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_amount"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dp12"
+                app:reverseVisibility="@{viewModel.balanceVisibility}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_info_statements"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp16"
+            android:text="@string/title_info_movements"
+            tools:text="@string/title_info_movements"
+            style="@style/TextMonsterrat16BlackBold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/content_statement"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_statements"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp22"
+            app:layout_constraintTop_toBottomOf="@id/tv_info_statements"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/layout_item_statement"
+            android:visibility="@{viewModel.hasStatements}"
+            app:setAdapter="@{viewModel.statementAdapter}"
+            app:loadMoreItems="@{() -> viewModel.loadMoreItems() }"/>
+
+        <include
+            layout="@layout/content_loading_and_error"
+            app:loading="@{viewModel.loading}"
+            app:errorMessage="@{viewModel.msgError}"
+            app:errorVisible="@{viewModel.errorVisibility}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

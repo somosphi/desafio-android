@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet
+        android:id="@+id/start">
+
+        <Constraint
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/size_image_logo"
+            android:layout_height="@dimen/size_image_logo"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent">
+
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/size_image_logo"
+            android:layout_height="@dimen/size_image_logo"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent">
+
+        </Constraint>
+
+    </ConstraintSet>
+
+    <Transition
+        motion:duration="1500"
+        motion:constraintSetEnd="@id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:autoTransition="animateToEnd">
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                motion:motionTarget="@id/iv_logo"
+                motion:framePosition="50"
+                android:rotationY="30"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/iv_logo"
+                motion:framePosition="80"
+                android:rotationY="-30"/>
+
+        </KeyFrameSet>
+    </Transition>
+
+</MotionScene>

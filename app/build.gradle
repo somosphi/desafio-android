@@ -1,0 +1,108 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'org.jetbrains.kotlin.android.extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
+
+    defaultConfig {
+        applicationId App.applicationId
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+        testInstrumentationRunner App.testRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "APP_BASE_URL", '"https://desafio-mobile-bff.herokuapp.com"'
+            buildConfigField "String", "APP_TOKEN", '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "APP_BASE_URL", '"https://desafio-mobile-bff.herokuapp.com"'
+            buildConfigField "String", "APP_TOKEN", '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+        animationsDisabled = true
+    }
+}
+
+dependencies {
+    implementation Deps.kotlin_stdlib
+    implementation Deps.core_ktx
+    implementation Deps.app_compat_androidx
+    implementation Deps.google_material
+    implementation Deps.constraint_layout
+
+    // Koin
+    implementation Deps.koin_android
+    implementation Deps.koin_scope
+    implementation Deps.koin_viewmodel
+
+    // Lifecycle
+    implementation Deps.lifecycle
+
+    // RecycleView
+    implementation Deps.recycle_view
+
+    // Retrofit & Square
+    implementation Deps.retrofit
+    implementation Deps.retrofit_converter
+    implementation Deps.picasso
+
+    // Http3 and logging
+    implementation Deps.okhttp
+    implementation Deps.okhttp_logging
+
+    // Coroutines
+    implementation Deps.coroutines_core
+    implementation Deps.coroutines_android
+
+    // ViewModel and Lifecycle
+    implementation Deps.lifecycle_extensions
+    implementation Deps.lifecycle_viewmodel
+    implementation Deps.lifecycle_livedata
+    implementation Deps.lifecycle_common
+    annotationProcessor Deps.lifecycle_runtime
+
+    kapt Deps.data_binding
+
+    testImplementation Deps.junit
+    testImplementation Deps.mockito_core
+    testImplementation Deps.mockito_inline
+    testImplementation Deps.arch_testing
+    testImplementation Deps.kotlix_coroutines
+
+    androidTestImplementation Deps.junit_test
+    androidTestImplementation Deps.espresso
+
+}

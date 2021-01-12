@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="br.com.phi.challenge.viewmodel.statementdetail.StatementDetailViewModel" />
+
+        <variable
+            name="toolbarVM"
+            type="br.com.phi.challenge.viewmodel.base.toolbar.ToolbarViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_detail_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.statementdetail.StatementDetailActivity">
+
+        <include
+            android:id="@+id/statementDetailToolbar"
+            layout="@layout/layout_toolbar"
+            app:toolbarViewModel="@{toolbarVM}"/>
+
+        <ScrollView
+            android:id="@+id/content_statement_info"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/statementDetailToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:reverseVisibility="@{viewModel.errorVisibility}">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp22">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/info"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/dp22">
+
+                    <TextView
+                        android:id="@+id/tv_receipt_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/dp4"
+                        android:text="@string/title_receipt"
+                        style="@style/Text18BlackBold"/>
+
+                    <View
+                        android:id="@+id/view_divider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp1"
+                        android:background="@color/gray_500"
+                        android:layout_marginTop="@dimen/dp16"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_receipt_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/label_transaction_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat16BlackBold"
+                        android:text="@string/title_transaction_type"
+                        app:layout_constraintTop_toTopOf="@id/view_divider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp22"/>
+
+                    <TextView
+                        android:id="@+id/tv_transaction_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat14BlackRegular"
+                        android:text="@{viewModel.statementDetail.description}"
+                        app:layout_constraintTop_toBottomOf="@id/label_transaction_type"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp8"
+                        tools:text="Transacao enviada"/>
+
+                    <TextView
+                        android:id="@+id/label_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat16BlackBold"
+                        android:text="@string/title_value"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_transaction_type"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp22" />
+
+                    <TextView
+                        android:id="@+id/tv_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat14BlackRegular"
+                        android:text="@{viewModel.statementDetail.amount}"
+                        app:layout_constraintTop_toBottomOf="@id/label_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp8"
+                        tools:text="22,00"/>
+
+                    <TextView
+                        android:id="@+id/label_destiny"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat16BlackBold"
+                        android:text="@string/title_destiny"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp22" />
+
+                    <TextView
+                        android:id="@+id/tv_destiny"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat14BlackRegular"
+                        android:text="@{viewModel.statementDetail.destiny}"
+                        app:layout_constraintTop_toBottomOf="@id/label_destiny"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp8"
+                        tools:text="22,00"/>
+
+                    <TextView
+                        android:id="@+id/label_bank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat16BlackBold"
+                        android:text="@string/title_bank"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_destiny"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp22" />
+
+                    <TextView
+                        android:id="@+id/tv_bank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat14BlackRegular"
+                        android:text="@string/title_bank_no_value"
+                        app:layout_constraintTop_toBottomOf="@id/label_bank"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp8"
+                        tools:text="@string/title_bank_no_value"/>
+
+                    <TextView
+                        android:id="@+id/label_datetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat16BlackBold"
+                        android:text="@string/title_date_time"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_bank"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp22" />
+
+                    <TextView
+                        android:id="@+id/tv_datetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat14BlackRegular"
+                        android:text="@{viewModel.statementDetail.date}"
+                        app:layout_constraintTop_toBottomOf="@id/label_datetime"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp8"
+                        tools:text="00/00/0000 - 00:00:00"/>
+
+                    <TextView
+                        android:id="@+id/label_authentication"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat16BlackBold"
+                        android:text="@string/title_authentication"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_datetime"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp22" />
+
+                    <TextView
+                        android:id="@+id/tv_authentication"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextMonsterrat14BlackRegular"
+                        android:text="@{viewModel.statementDetail.authentication}"
+                        app:layout_constraintTop_toBottomOf="@id/label_authentication"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp8"
+                        tools:text="12345678"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btn_share_receipt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/dp32"
+                    app:layout_constraintTop_toBottomOf="@+id/info"
+                    android:background="@color/colorPrimary"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:layout_marginStart="@dimen/dp8"
+                    android:layout_marginEnd="@dimen/dp8"
+                    android:text="@string/title_btn_share"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <include
+            layout="@layout/content_loading_and_error"
+            app:loading="@{viewModel.loading}"
+            app:errorMessage="@{viewModel.msgError}"
+            app:errorVisible="@{viewModel.errorVisibility}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

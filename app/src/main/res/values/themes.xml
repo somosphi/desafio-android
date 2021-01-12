@@ -1,0 +1,70 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="ThemePhiChallenge" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorSecondary">@color/teal_200</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ThemePhiChallengeSplash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/black_800</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@color/black_800</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextMonsterrat16BlackRegular">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/text16</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextMonsterrat14BlackRegular">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/text14</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextMonsterrat16GrayRegular">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/text16</item>
+        <item name="android:textColor">@color/gray_500</item>
+    </style>
+
+    <style name="TextMonsterrat14GrayRegular">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/text14</item>
+        <item name="android:textColor">@color/gray_500</item>
+    </style>
+
+    <style name="TextMonsterrat16BlackBold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/text16</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Text18BlackBold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/text18</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Text14WhiteRegular">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">@dimen/text14</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextMonsterrat18TealBold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/text18</item>
+        <item name="android:textColor">@color/teal_200</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textSize">@dimen/text18</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

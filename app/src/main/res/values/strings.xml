@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Phi Challenge Android</string>
+    <string name="string_empty" />
+    <string name="server_error">Ops!\n Algo está errado, \n tente novamente mais tarde.</string>
+
+    <string name="title_statement">Extrato</string>
+    <string name="title_pix">Pix</string>
+    <string name="title_my_statement">Seu saldo</string>
+    <string name="title_info_movements">Suas movimentações</string>
+
+    <string name="title_receipt">Comprovante</string>
+    <string name="title_transaction_type">Tipo de movimentação</string>
+    <string name="title_value">Valor</string>
+    <string name="title_destiny">Recebedor</string>
+    <string name="title_bank">Instituição bancária</string>
+    <string name="title_bank_no_value">---</string>
+    <string name="title_date_time">Data/Hora</string>
+    <string name="title_authentication">Autenticação</string>
+    <string name="title_btn_share">Compartilhar</string>
+    <string name="error_to_share_receipt">Erro ao compartilhar seu comprovante</string>
+    <string name="file_name_shared">Comprovante.jpg</string>
+
+</resources>
