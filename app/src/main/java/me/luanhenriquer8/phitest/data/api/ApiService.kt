@@ -6,11 +6,10 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiService {
+class ApiService {
 
     /** Declaring all variables */
     private var retrofit: Retrofit = makeRetrofit()
-    private const val BASE_URL = "https://desafio-mobile-bff.herokuapp.com/"
 
     fun statement(): IStatementRepository =
         retrofit.create(IStatementRepository::class.java)
@@ -19,7 +18,7 @@ object ApiService {
 
     /** Method to create and an instance of retrofit */
     private fun makeRetrofit(vararg interceptors: Interceptor) = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(Companion.BASE_URL)
         .client(makeHttpClient(interceptors))
         .addConverterFactory(GsonConverterFactory.create(createGsonConverter()))
         .build()
@@ -46,6 +45,10 @@ object ApiService {
                 )
                 .build()
         )
+    }
+
+    companion object {
+        private const val BASE_URL = "https://desafio-mobile-bff.herokuapp.com/"
     }
 
 }

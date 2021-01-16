@@ -11,7 +11,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class MainViewModel(private val apiService: ApiService) : ViewModel() {
 
     private val _myBalance = MutableLiveData<Balance>()
     val myBalance: LiveData<Balance> = _myBalance
@@ -26,7 +26,7 @@ class MainViewModel : ViewModel() {
     val operationFailed: LiveData<Boolean> = _operationFailed
 
     fun fetchMyBalance() {
-        ApiService.balance().get().enqueue(object : Callback<Balance> {
+        apiService.balance().get().enqueue(object : Callback<Balance> {
             override fun onResponse(call: Call<Balance>, response: Response<Balance>) {
                 if (response.isSuccessful) _myBalance.postValue(response.body())
                 else _operationFailed.postValue(true)
@@ -39,7 +39,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun fetchStatement(offset: Int = 1) {
-        ApiService.statement().get(offset).enqueue(object : Callback<Transaction> {
+        apiService.statement().get(offset).enqueue(object : Callback<Transaction> {
             override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
                 if (response.isSuccessful) _myStatementList.postValue(response.body()?.items)
                 else _operationFailed.postValue(true)
@@ -52,7 +52,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun fetchStatementDetail(statementId: String) {
-        ApiService.statement().get(statementId).enqueue(object : Callback<Statement> {
+        apiService.statement().get(statementId).enqueue(object : Callback<Statement> {
             override fun onResponse(call: Call<Statement>, response: Response<Statement>) {
                 if (response.isSuccessful) _myStatement.postValue(response.body())
                 else _operationFailed.postValue(true)

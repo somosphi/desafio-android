@@ -8,25 +8,29 @@ import android.os.Bundle
 import android.provider.MediaStore.Images
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import me.luanhenriquer8.phitest.R
+import me.luanhenriquer8.phitest.data.api.ApiService
 import me.luanhenriquer8.phitest.databinding.ActivityTransactionDetailBinding
 import me.luanhenriquer8.phitest.ui.home.MainViewModel
 import me.luanhenriquer8.phitest.utils.STATEMENT_ID
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import java.lang.Exception
 
 
 class TransactionDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTransactionDetailBinding
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_transaction_detail)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding.lifecycleOwner = this
         initializeListeners()
         initializeObservers()

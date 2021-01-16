@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import me.luanhenriquer8.phitest.R
 import me.luanhenriquer8.phitest.adapters.TransactionsAdapter
@@ -19,6 +18,8 @@ import me.luanhenriquer8.phitest.databinding.ActivityMainBinding
 import me.luanhenriquer8.phitest.utils.BALANCE_FILE_NAME
 import me.luanhenriquer8.phitest.utils.MUST_SHOW_MY_BALANCE
 import me.luanhenriquer8.phitest.utils.SIZE_REQUEST_LIST
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,15 +28,15 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
     private lateinit var incrementStatementListBR: IncrementStatementListBR
     private lateinit var sharedPreferences: SharedPreferences
     private var mustShowMyBalance = false
+    private val apiService: ApiService by inject()
+    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding.lifecycleOwner = this
 
         createSlideDownLoader()
@@ -137,7 +138,7 @@ class MainActivity : AppCompatActivity() {
             val offset =
                 (viewModel.myStatementList.value?.size?.div(SIZE_REQUEST_LIST) ?: 1).plus(1)
 
-            ApiService.statement().get(offset).enqueue(object : Callback<Transaction> {
+            apiService.statement().get(offset).enqueue(object : Callback<Transaction> {
                 override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
                     if (response.isSuccessful) {
                         val adapter =
