@@ -3,4 +3,20 @@
     <string name="statement">Extrato</string>
     <string name="countValue">R$ %d</string>
     <string name="pix">Pix</string>
+    <string name="share">Compartilhar</string>
+    <string name="bank_institute">Instituição Financeira</string>
+    <string name="receiver">Recebedor</string>
+    <string name="value">Valor</string>
+    <string name="transaction_type">Tipo de movimentação</string>
+    <string name="CheckCopy">Comprovante</string>
+    <string name="user_transactions">Suas Movimentações</string>
+    <string name="sended_transaction">Tranferência enviada</string>
+    <string name="name_place_holder">David Bond</string>
+    <string name="value_placeholder">- R$ 500,00</string>
+    <string name="date_placeholder">13/10</string>
+    <string name="bank_placeholder">Banco do povo</string>
+    <string name="date_time">Data/Hora</string>
+    <string name="auth">Autenticação</string>
+    <string name="datetime_placeholder">13/10/2020-15:27:02</string>
+    <string name="auth_placeholder">1233445456</string>
 </resources>
