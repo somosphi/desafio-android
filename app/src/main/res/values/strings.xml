@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Ph</string>
+    <string name="app_name">Phi</string>
     <string name="statement">Extrato</string>
-    <string name="countValue">R$ %d</string>
+    <string name="countValue">R$ 0,0</string>
     <string name="pix">Pix</string>
     <string name="share">Compartilhar</string>
     <string name="bank_institute">Instituição Financeira</string>

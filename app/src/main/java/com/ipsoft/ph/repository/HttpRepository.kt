@@ -1,5 +1,6 @@
 package com.ipsoft.ph.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.ipsoft.ph.repository.model.Balance
 import com.ipsoft.ph.repository.model.Transaction
@@ -26,18 +27,19 @@ object HttpRepository {
 
         val call = RetrofitClient.getService.getBalance()
 
-        call.enqueue(object : Callback<Double>{
+        call.enqueue(object : Callback<Balance> {
 
-            override fun onFailure(call: Call<Double>, t: Throwable) {
-                TODO("Not yet implemented")
+            override fun onFailure(call: Call<Balance>, t: Throwable) {
+                Log.e("Anthoni", "getBalance Fail")
             }
-            override fun onResponse(call: Call<Double>, response: Response<Double>) {
+
+            override fun onResponse(call: Call<Balance>, response: Response<Balance>) {
 
                 val data = response.body()
 
-                val balance = data!!
+                val balance = data?.value
 
-                balanceLiveData.value = Balance(balance)
+                balanceLiveData.value = Balance(balance ?: 0.0)
 
             }
 
@@ -53,7 +55,7 @@ object HttpRepository {
 
         val call = RetrofitClient.getService.getTransactions()
 
-        call.enqueue(object : Callback<List<Transaction>>{
+        call.enqueue(object : Callback<List<Transaction>> {
             override fun onResponse(
                 call: Call<List<Transaction>>,
                 response: Response<List<Transaction>>
@@ -64,7 +66,7 @@ object HttpRepository {
             }
 
             override fun onFailure(call: Call<List<Transaction>>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.e("Anthoni", "getTransactions Fail")
             }
 
         })
@@ -79,14 +81,14 @@ object HttpRepository {
 
         val call = RetrofitClient.getService.getDetailTransaction(id)
 
-        call.enqueue(object : Callback<Transaction>{
+        call.enqueue(object : Callback<Transaction> {
             override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
                 val data = response.body()
                 detailsLiveData.value = data
             }
 
             override fun onFailure(call: Call<Transaction>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.e("Anthoni", "getDetails Fail")
             }
 
         })

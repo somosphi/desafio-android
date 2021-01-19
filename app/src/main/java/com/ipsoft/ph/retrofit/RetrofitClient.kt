@@ -1,6 +1,5 @@
 package com.ipsoft.ph.retrofit
 
-import com.ipsoft.ph.repository.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,18 +13,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    const val MainServer = Constants.BASE_URL
+    private const val MainServer = Constants.BASE_URL
 
 
-    val retrofitClient: Retrofit.Builder by lazy {
+    private val retrofitClient: Retrofit.Builder by lazy {
 
 
-        val okhttpClient = OkHttpClient.Builder()
+        val okHttpClient = OkHttpClient.Builder()
 
 
         Retrofit.Builder()
             .baseUrl(MainServer)
-            .client(okhttpClient.build())
+            .client(okHttpClient.build())
             .addConverterFactory(GsonConverterFactory.create())
     }
 

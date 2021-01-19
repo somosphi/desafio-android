@@ -1,5 +1,7 @@
 package com.ipsoft.ph.repository.model
 
+import com.google.gson.annotations.SerializedName
+
 /**
  *
  *  Author:     Anthoni Ipiranga
@@ -7,4 +9,6 @@ package com.ipsoft.ph.repository.model
  *  Date:       19/01/2021
  */
 
-data class Balance(val value: Double = 0.0)
+data class Balance(
+    @SerializedName("amount")
+    val value: Double = 0.0)

@@ -1,10 +1,11 @@
 package com.ipsoft.ph.retrofit
 
-import com.ipsoft.ph.repository.Constants.BALANCE_URL
-import com.ipsoft.ph.repository.Constants.EXTRACT_DETAIL_URL
-import com.ipsoft.ph.repository.Constants.EXTRACT_URL
-import com.ipsoft.ph.repository.Constants.TOKEN
+import com.ipsoft.ph.repository.model.Balance
 import com.ipsoft.ph.repository.model.Transaction
+import com.ipsoft.ph.retrofit.Constants.BALANCE_URL
+import com.ipsoft.ph.retrofit.Constants.EXTRACT_DETAIL_URL
+import com.ipsoft.ph.retrofit.Constants.EXTRACT_URL
+import com.ipsoft.ph.retrofit.Constants.TOKEN
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -20,7 +21,7 @@ import retrofit2.http.Path
 interface GetService {
     @Headers("token: $TOKEN")
     @GET(BALANCE_URL)
-     fun getBalance(): Call<Double>
+     fun getBalance(): Call<Balance>
 
     @Headers("token: $TOKEN")
     @GET(EXTRACT_URL)

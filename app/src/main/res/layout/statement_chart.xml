@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/light_gray"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imgHideBalance"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/openeye"
@@ -25,6 +27,7 @@
         app:layout_constraintStart_toEndOf="@+id/txtPersonalBalance"
         app:layout_constraintBottom_toBottomOf="@id/txtPersonalBalance"/>
     <TextView
+        android:id="@+id/txtPersonalBalanceField"
         android:textStyle="bold"
         android:textSize="24sp"
        android:padding="24dp"
@@ -35,5 +38,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtPersonalBalance"
         />
+
+    <View
+        android:layout_marginLeft="24dp"
+        android:visibility="invisible"
+        android:id="@+id/divider3"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:background="@color/green"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPersonalBalanceField"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtPersonalBalanceField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
