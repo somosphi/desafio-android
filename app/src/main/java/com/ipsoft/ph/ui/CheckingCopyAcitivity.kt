@@ -1,10 +1,7 @@
-package com.ipsoft.ui
+package com.ipsoft.ph.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
-import com.ipsoft.ph.R
 import com.ipsoft.ph.databinding.ActivityCheckingCopyAcitivityBinding
 
 class CheckingCopyAcitivity : AppCompatActivity() {

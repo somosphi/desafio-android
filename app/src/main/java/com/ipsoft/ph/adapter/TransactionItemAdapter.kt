@@ -1,4 +1,4 @@
-package com.ipsoft.adapter
+package com.ipsoft.ph.adapter
 
 /**
  *

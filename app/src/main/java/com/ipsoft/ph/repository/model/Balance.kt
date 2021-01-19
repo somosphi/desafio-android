@@ -1,4 +1,4 @@
-package com.ipsoft.repository.model
+package com.ipsoft.ph.repository.model
 
 /**
  *
