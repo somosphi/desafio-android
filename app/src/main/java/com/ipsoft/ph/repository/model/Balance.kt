@@ -7,4 +7,4 @@ package com.ipsoft.ph.repository.model
  *  Date:       19/01/2021
  */
 
-data class Balance(val value: Float = 0.0f, val isVisible: Boolean = true)
+data class Balance(val value: Double = 0.0)

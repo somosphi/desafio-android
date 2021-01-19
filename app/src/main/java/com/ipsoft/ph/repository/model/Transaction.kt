@@ -12,17 +12,21 @@ import com.google.gson.annotations.SerializedName
 
 data class Transaction(
     @SerializedName("amount")
-    val amount: Double,
+    val amount: Double = 0.0,
     @SerializedName("id")
-    val id: String,
+    val id: String = "0",
     @SerializedName("authentication")
-    val authentication: String,
+    val authentication: String = "" ,
     @SerializedName("tType")
-    val tType: String,
+    val tType: String = "",
     @SerializedName("createdAt")
-    val createdAd: String,
+    val createdAd: String = "",
     @SerializedName("to")
-    val receiver: String,
+    val sender: String = "",
     @SerializedName("description")
-    val description: String
+    val description: String = "",
+    @SerializedName("error")
+    val error: Boolean = false,
+    @SerializedName("reason")
+    val reason: String = ""
 )

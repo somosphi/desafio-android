@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CheckingCopyAcitivity">
+    tools:context=".view.CheckingCopyAcitivity">
 
     <include
         android:id="@+id/toolbar"
@@ -174,13 +174,12 @@
 
 
     <Button
-        style="@style/Widget.AppCompat.Button"
+        app:backgroundTint="@color/green"
         android:id="@+id/buttonShare"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/green"
-        android:backgroundTint="@color/green"
+
         android:text="@string/share"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

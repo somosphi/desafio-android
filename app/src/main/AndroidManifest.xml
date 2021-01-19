@@ -10,11 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ph">
-        <activity android:name="com.ipsoft.ph.ui.CheckingCopyAcitivity"
-            android:parentActivityName="com.ipsoft.ph.ui.StatementActivity"
+        android:theme="@style/Theme.Ph"
+        android:usesCleartextTraffic="true">
+        <activity android:name="com.ipsoft.ph.view.CheckingCopyAcitivity"
+            android:parentActivityName="com.ipsoft.ph.view.StatementActivity"
             ></activity>
-        <activity android:name="com.ipsoft.ph.ui.StatementActivity">
+        <activity android:name="com.ipsoft.ph.view.StatementActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
