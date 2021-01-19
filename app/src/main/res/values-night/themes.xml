@@ -3,7 +3,7 @@
     <style name="Theme.Ph" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/green</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

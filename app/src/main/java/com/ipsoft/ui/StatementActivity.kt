@@ -1,16 +1,17 @@
 package com.ipsoft.ui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ipsoft.ph.R
+import androidx.appcompat.app.AppCompatActivity
+import com.ipsoft.ph.databinding.ActivityStatementBinding
 
 class StatementActivity : AppCompatActivity() {
+    private lateinit var statementBiding: ActivityStatementBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_statement)
+        statementBiding = ActivityStatementBinding.inflate(layoutInflater)
+        val view = statementBiding.root
+        setContentView(view)
 
-        startActivity(Intent(this,CheckingCopyAcitivity::class.java))
 
     }
 }

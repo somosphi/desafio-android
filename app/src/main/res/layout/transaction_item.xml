@@ -37,7 +37,7 @@
        android:paddingTop="16dp"
         app:layout_constraintStart_toEndOf="@id/dot"
         android:id="@+id/txt_transaction_description"
-        android:text="Tranferência enviada"
+        android:text="@string/sended_transaction"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content" />
     <TextView
@@ -45,14 +45,14 @@
         android:id="@+id/txt_transaction_sender"
         app:layout_constraintStart_toEndOf="@id/dot"
         app:layout_constraintTop_toBottomOf="@id/txt_transaction_description"
-        android:text="David Bond"
+        android:text="@string/name_place_holder"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         />
     <TextView
         android:id="@+id/txt_transaction_value"
         android:paddingBottom="16dp"
-        android:text="- R$ 500,00"
+        android:text="@string/value_placeholder"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         app:layout_constraintStart_toEndOf="@id/dot"
@@ -64,7 +64,7 @@
         android:textSize="18sp"
         android:id="@+id/txt_transaction_date"
         android:layout_margin="16dp"
-        android:text="13/10"
+        android:text="@string/date_placeholder"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
