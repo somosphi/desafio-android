@@ -19,4 +19,5 @@
     <string name="auth">Autenticação</string>
     <string name="datetime_placeholder"></string>
     <string name="auth_placeholder"></string>
+    <string name="transaction_info_error">Erro ao obter dados da transação</string>
 </resources>

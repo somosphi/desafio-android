@@ -50,7 +50,7 @@ class StatementActivity : AppCompatActivity(), CellClickListener {
         recyclerView.setHasFixedSize(true)
 
         val llm = LinearLayoutManager(this)
-        llm.setAutoMeasureEnabled(false)
+        llm.isAutoMeasureEnabled = false
         recyclerView.layoutManager = llm
 
 
@@ -81,7 +81,7 @@ class StatementActivity : AppCompatActivity(), CellClickListener {
     private fun initViewModel() {
 
         viewModel = ViewModelProvider(
-            this, MainViewModel.StatementViewModelFactory(
+            this, MainViewModel.MainViewModelFactory(
                 HttpRepository
             )
         ).get(MainViewModel::class.java)
@@ -108,16 +108,13 @@ class StatementActivity : AppCompatActivity(), CellClickListener {
     }
 
     override fun onCellClickListener(data: Transaction) {
-        viewModel.getDetailTransaction(data.id)
-            .observe(this, Observer {
 
 
                 val intent = Intent(this, CheckingCopyAcitivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                intent.putExtra("transaction", it)
+                intent.putExtra("id",data.id)
                 startActivity(intent)
 
-            })
+            }
     }
 
-}

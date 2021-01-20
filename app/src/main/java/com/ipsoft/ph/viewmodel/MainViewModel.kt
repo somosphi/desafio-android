@@ -42,7 +42,7 @@ class MainViewModel(private val repository: HttpRepository) : ViewModel() {
     }
 
 
-    class StatementViewModelFactory(private val repository: HttpRepository) :
+    class MainViewModelFactory(private val repository: HttpRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return MainViewModel(repository) as T
