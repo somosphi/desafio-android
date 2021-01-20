@@ -1,5 +1,6 @@
 package com.ipsoft.ph.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +33,12 @@ class TransactionItemAdapter(transactions: List<Transaction>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val isPix = transactionList[position].tType == "PIXCASHIN"
+
         holder.pixTag.visibility =
-            if (transactionList[position].tType == "PIXCASHIN") View.VISIBLE else View.INVISIBLE
+            if (isPix) View.VISIBLE else View.INVISIBLE
+        holder.root.setBackgroundColor(if (isPix) Color.LTGRAY else Color.WHITE)
         holder.transactionDate.text = transactionList[position].createdAd
         holder.transactionDescription.text = transactionList[position].description
         holder.transactionSender.text = transactionList[position].sender
@@ -44,6 +49,7 @@ class TransactionItemAdapter(transactions: List<Transaction>) :
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        val root: View = transactionBinding.transactionCard
         val pixTag: TextView = transactionBinding.txtPixTag
         val transactionDescription: TextView = transactionBinding.txtTransactionDescription
         val transactionSender: TextView = transactionBinding.txtTransactionSender

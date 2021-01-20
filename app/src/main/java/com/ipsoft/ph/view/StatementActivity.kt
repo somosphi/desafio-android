@@ -11,6 +11,7 @@ import com.ipsoft.ph.R
 import com.ipsoft.ph.adapter.TransactionItemAdapter
 import com.ipsoft.ph.databinding.ActivityStatementBinding
 import com.ipsoft.ph.repository.HttpRepository
+import com.ipsoft.ph.repository.model.Transaction
 import com.ipsoft.ph.viewmodel.MainViewModel
 
 class StatementActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class StatementActivity : AppCompatActivity() {
 
     // Iniciando a RecyclerView
     var transactionItemAdapter: TransactionItemAdapter? = null
-    var linearLayoutManager: LinearLayoutManager? = null
+    private var linearLayoutManager: LinearLayoutManager? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,13 +46,13 @@ class StatementActivity : AppCompatActivity() {
 
     }
 
-    private fun initRecyclerView() {
+    private fun initRecyclerView( list: List<Transaction>) {
 
-
+        transactionItemAdapter = TransactionItemAdapter(list)
         recyclerView = statementBiding.rvTransactions
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = TransactionItemAdapter(HttpRepository.transactionsList,this)
+        recyclerView.adapter = transactionItemAdapter
 
     }
 
@@ -92,7 +93,7 @@ class StatementActivity : AppCompatActivity() {
 
         viewModel.getTransactions().observe(this, Observer {
 
-            initRecyclerView()
+            initRecyclerView(HttpRepository.transactionsList)
 
 
 
