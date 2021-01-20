@@ -23,6 +23,7 @@ import com.ipsoft.ph.viewmodel.MainViewModel
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.util.*
 
 
 class CheckingCopyAcitivity : AppCompatActivity() {
@@ -109,7 +110,7 @@ class CheckingCopyAcitivity : AppCompatActivity() {
 
         val directory: File = cw.filesDir
 
-        val imageFile = File(directory, "UniqueFileName" + ".jpg")
+        val imageFile = File(directory, UUID.randomUUID().toString() + ".jpg")
 
         Log.d("path", imageFile.toString())
         var fos: FileOutputStream? = null
@@ -134,7 +135,7 @@ class CheckingCopyAcitivity : AppCompatActivity() {
         shareIntent.putExtra(
             Intent.EXTRA_STREAM, contentUri
         )
-        startActivity(Intent.createChooser(shareIntent, "Compartilhar"))
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share)))
 
 
     }

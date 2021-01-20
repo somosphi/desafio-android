@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ipsoft.ph.databinding.TransactionItemBinding
 import com.ipsoft.ph.repository.model.Transaction
 import com.ipsoft.ph.util.CellClickListener
+import com.ipsoft.ph.util.DateUtils
 
 
 /**
@@ -48,6 +49,8 @@ class TransactionItemAdapter(
 
         val data = transactionList[position]
 
+        val date = DateUtils.convertDate(transactionList[position].createdAd)
+
         val isPix =
             transactionList[position].tType == "PIXCASHIN" || transactionList[position].tType == "PIXCASHOUT"
         val isPositive =
@@ -59,7 +62,7 @@ class TransactionItemAdapter(
         holder.pixTag.visibility =
             if (isPix) View.VISIBLE else View.INVISIBLE
         holder.root.setBackgroundColor(if (isPix) Color.LTGRAY else Color.WHITE)
-        holder.transactionDate.text = transactionList[position].createdAd
+        holder.transactionDate.text = date
         holder.transactionDescription.text = transactionList[position].description
         holder.transactionSender.text = transactionList[position].sender
         holder.transactionValue.text =
