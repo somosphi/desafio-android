@@ -1,5 +1,6 @@
 package com.ipsoft.ph.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +13,11 @@ import com.ipsoft.ph.adapter.TransactionItemAdapter
 import com.ipsoft.ph.databinding.ActivityStatementBinding
 import com.ipsoft.ph.repository.HttpRepository
 import com.ipsoft.ph.repository.model.Transaction
+import com.ipsoft.ph.util.CellClickListener
 import com.ipsoft.ph.viewmodel.MainViewModel
 
-class StatementActivity : AppCompatActivity() {
+class StatementActivity : AppCompatActivity(), CellClickListener {
+
 
     private var showBalance: Boolean = true
 
@@ -24,7 +27,7 @@ class StatementActivity : AppCompatActivity() {
 
     // Iniciando a RecyclerView
     var transactionItemAdapter: TransactionItemAdapter? = null
-    private var linearLayoutManager: LinearLayoutManager? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,29 +36,25 @@ class StatementActivity : AppCompatActivity() {
         val view = statementBiding.root
         setContentView(view)
 
-
-
-
         initViewModel()
         initObservers()
         initOnClick()
 
-
-
-
-
     }
 
-    private fun initRecyclerView( list: List<Transaction>) {
+    private fun initRecyclerView(list: List<Transaction>) {
 
-        transactionItemAdapter = TransactionItemAdapter(list)
         recyclerView = statementBiding.rvTransactions
-        linearLayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = linearLayoutManager
+        transactionItemAdapter = TransactionItemAdapter(list, this)
         recyclerView.adapter = transactionItemAdapter
+        recyclerView.setHasFixedSize(true)
+
+        val llm = LinearLayoutManager(this)
+        llm.setAutoMeasureEnabled(false)
+        recyclerView.layoutManager = llm
+
 
     }
-
 
 
     private fun initOnClick() {
@@ -93,16 +92,12 @@ class StatementActivity : AppCompatActivity() {
 
         viewModel.getTransactions().observe(this, Observer {
 
-            initRecyclerView(HttpRepository.transactionsList)
 
+            initRecyclerView(it.items)
 
 
         })
 
-        viewModel.getDetailTransaction("0B5BFD44-0DF1-4005-A7CF-66C9C0438380")
-            .observe(this, Observer {
-
-            })
         viewModel.getBalance().observe(this, Observer { balance ->
 
             statementBiding.acountChart.txtPersonalBalanceField.text =
@@ -110,6 +105,19 @@ class StatementActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    override fun onCellClickListener(data: Transaction) {
+        viewModel.getDetailTransaction(data.id)
+            .observe(this, Observer {
+
+
+                val intent = Intent(this, CheckingCopyAcitivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                intent.putExtra("transaction", it)
+                startActivity(intent)
+
+            })
     }
 
 }

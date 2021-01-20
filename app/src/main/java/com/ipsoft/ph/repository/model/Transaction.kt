@@ -1,6 +1,9 @@
 package com.ipsoft.ph.repository.model
 
+
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 /**
  *
@@ -9,7 +12,7 @@ import com.google.gson.annotations.SerializedName
  *  Date:       18/01/2021
  */
 
-
+@Parcelize
 data class Transaction(
     @SerializedName("amount")
     val amount: Double = 0.0,
@@ -25,4 +28,4 @@ data class Transaction(
     val sender: String = "",
     @SerializedName("description")
     val description: String = ""
-)
+) : Parcelable

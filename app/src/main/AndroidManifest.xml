@@ -15,7 +15,9 @@
         <activity android:name="com.ipsoft.ph.view.CheckingCopyAcitivity"
             android:parentActivityName="com.ipsoft.ph.view.StatementActivity"
             ></activity>
-        <activity android:name="com.ipsoft.ph.view.StatementActivity">
+        <activity android:name="com.ipsoft.ph.view.StatementActivity"
+            android:launchMode="singleTop"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ipsoft.ph.R
 import com.ipsoft.ph.databinding.TransactionItemBinding
 import com.ipsoft.ph.repository.model.Transaction
+import com.ipsoft.ph.util.CellClickListener
+
 
 /**
  *
@@ -17,24 +18,43 @@ import com.ipsoft.ph.repository.model.Transaction
  *  Date:       18/01/2021
  */
 
-class TransactionItemAdapter(transactions: List<Transaction>) :
+class TransactionItemAdapter(
+    transactions: List<Transaction>,
+    private val cellClickListener: CellClickListener
+) :
     RecyclerView.Adapter<TransactionItemAdapter.ViewHolder>() {
 
+
     private lateinit var transactionBinding: TransactionItemBinding
+
 
     private var transactionList: List<Transaction> = transactions
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.transaction_item, parent, false)
 
-        return ViewHolder(view)
+
+        transactionBinding =
+            TransactionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val rootView = transactionBinding.root
+
+
+        return ViewHolder(rootView)
+
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val isPix = transactionList[position].tType == "PIXCASHIN"
+        val data = transactionList[position]
+
+        val isPix =
+            transactionList[position].tType == "PIXCASHIN" || transactionList[position].tType == "PIXCASHOUT"
+        val isPositive =
+            transactionList[position].tType == "TRANSFERIN" || transactionList[position].tType == "PIXCASHIN"
+                    || transactionList[position].tType == "BANKSLIPCASHIN"
+
+        val newValue = transactionList[position].amount.toString().replace(".", ",")
 
         holder.pixTag.visibility =
             if (isPix) View.VISIBLE else View.INVISIBLE
@@ -42,7 +62,12 @@ class TransactionItemAdapter(transactions: List<Transaction>) :
         holder.transactionDate.text = transactionList[position].createdAd
         holder.transactionDescription.text = transactionList[position].description
         holder.transactionSender.text = transactionList[position].sender
-        holder.transactionValue.text = transactionList[position].amount.toString()
+        holder.transactionValue.text =
+            if (isPositive) "R$ $newValue" else "- R$ $newValue"
+
+        holder.itemView.setOnClickListener {
+            cellClickListener.onCellClickListener(data)
+        }
     }
 
     override fun getItemCount() = transactionList.count()

@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+
 }
 
 android {
@@ -32,6 +35,9 @@ android {
     }
     viewBinding {
         enabled = true
+    }
+    androidExtensions {
+        experimental = true
     }
 }
 

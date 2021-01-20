@@ -22,33 +22,22 @@ class MainViewModel(private val repository: HttpRepository) : ViewModel() {
     var balanceLiveData = MutableLiveData<Balance>()
     var detailsLiveData = MutableLiveData<Transaction>()
 
-
-
-
-
-
-
     fun getBalance(): LiveData<Balance> {
 
-        balanceLiveData = HttpRepository.getBalance()
+        balanceLiveData = repository.getBalance()
         return balanceLiveData
-
-
     }
 
     fun getTransactions() : LiveData<TransactionResponse> {
 
-        transactionsLiveData = HttpRepository.getTransactions()
+        transactionsLiveData = repository.getTransactions()
         return transactionsLiveData
-
-
     }
 
     fun getDetailTransaction(id: String) : LiveData<Transaction> {
 
-        detailsLiveData = HttpRepository.getDetailTransaction(id)
+        detailsLiveData = repository.getDetailTransaction(id)
         return detailsLiveData
-
 
     }
 

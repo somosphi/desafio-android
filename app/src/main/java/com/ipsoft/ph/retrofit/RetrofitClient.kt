@@ -15,7 +15,6 @@ object RetrofitClient {
 
     private const val MainServer = Constants.BASE_URL
 
-
     private val retrofitClient: Retrofit.Builder by lazy {
 
 
