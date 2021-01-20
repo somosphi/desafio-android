@@ -37,7 +37,7 @@ object HttpRepository {
 
             override fun onResponse(call: Call<Balance>, response: Response<Balance>) {
 
-                Log.d("Anthoni", "getBalance Sucess")
+
 
                 val data = response.body()
 
@@ -65,7 +65,7 @@ object HttpRepository {
                 response: Response<TransactionResponse>
             ) {
 
-                Log.d("Anthoni", "getTransactions Sucess")
+
                 val data = response.body()
 
 
@@ -95,7 +95,6 @@ object HttpRepository {
 
         call.enqueue(object : Callback<Transaction> {
             override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
-                Log.d("Anthoni", "getDetailsTransaction Sucess")
                 val data = response.body()
                 detailsLiveData.value = data
             }

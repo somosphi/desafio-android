@@ -9,6 +9,7 @@ import com.ipsoft.ph.repository.model.Balance
 import com.ipsoft.ph.repository.model.Transaction
 import com.ipsoft.ph.repository.model.TransactionResponse
 
+
 /**
  *
  *  Author:     Anthoni Ipiranga
@@ -28,13 +29,13 @@ class MainViewModel(private val repository: HttpRepository) : ViewModel() {
         return balanceLiveData
     }
 
-    fun getTransactions() : LiveData<TransactionResponse> {
+    fun getTransactions(): LiveData<TransactionResponse> {
 
         transactionsLiveData = repository.getTransactions()
         return transactionsLiveData
     }
 
-    fun getDetailTransaction(id: String) : LiveData<Transaction> {
+    fun getDetailTransaction(id: String): LiveData<Transaction> {
 
         detailsLiveData = repository.getDetailTransaction(id)
         return detailsLiveData
@@ -50,3 +51,7 @@ class MainViewModel(private val repository: HttpRepository) : ViewModel() {
 
     }
 }
+
+
+
+
