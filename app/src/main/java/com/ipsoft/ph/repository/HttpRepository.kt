@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.ipsoft.ph.repository.model.Balance
 import com.ipsoft.ph.repository.model.Transaction
+import com.ipsoft.ph.repository.model.TransactionResponse
 import com.ipsoft.ph.retrofit.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,9 +19,10 @@ import retrofit2.Response
 
 object HttpRepository {
 
-    val transactionsLiveData = MutableLiveData<List<Transaction>>()
+    val transactionsLiveData = MutableLiveData<TransactionResponse>()
     val balanceLiveData = MutableLiveData<Balance>()
     val detailsLiveData = MutableLiveData<Transaction>()
+    var transactionsList = mutableListOf<Transaction>()
 
 
     fun getBalance(): MutableLiveData<Balance> {
@@ -34,6 +36,8 @@ object HttpRepository {
             }
 
             override fun onResponse(call: Call<Balance>, response: Response<Balance>) {
+
+                Log.d("Anthoni", "getBalance Sucess")
 
                 val data = response.body()
 
@@ -51,21 +55,29 @@ object HttpRepository {
 
     }
 
-    fun getTransactions(): MutableLiveData<List<Transaction>> {
+    fun getTransactions(): MutableLiveData<TransactionResponse> {
 
         val call = RetrofitClient.getService.getTransactions()
 
-        call.enqueue(object : Callback<List<Transaction>> {
+        call.enqueue(object : Callback<TransactionResponse> {
             override fun onResponse(
-                call: Call<List<Transaction>>,
-                response: Response<List<Transaction>>
+                call: Call<TransactionResponse>,
+                response: Response<TransactionResponse>
             ) {
+
+                Log.d("Anthoni", "getTransactions Sucess")
                 val data = response.body()
 
+
+
+
                 transactionsLiveData.value = data
+                transactionsList = data?.items as MutableList<Transaction>
+
+
             }
 
-            override fun onFailure(call: Call<List<Transaction>>, t: Throwable) {
+            override fun onFailure(call: Call<TransactionResponse>, t: Throwable) {
                 Log.e("Anthoni", "getTransactions Fail")
             }
 
@@ -83,6 +95,7 @@ object HttpRepository {
 
         call.enqueue(object : Callback<Transaction> {
             override fun onResponse(call: Call<Transaction>, response: Response<Transaction>) {
+                Log.d("Anthoni", "getDetailsTransaction Sucess")
                 val data = response.body()
                 detailsLiveData.value = data
             }
@@ -98,6 +111,7 @@ object HttpRepository {
 
 
     }
+
 }
 
 

@@ -2,6 +2,7 @@ package com.ipsoft.ph.retrofit
 
 import com.ipsoft.ph.repository.model.Balance
 import com.ipsoft.ph.repository.model.Transaction
+import com.ipsoft.ph.repository.model.TransactionResponse
 import com.ipsoft.ph.retrofit.Constants.BALANCE_URL
 import com.ipsoft.ph.retrofit.Constants.EXTRACT_DETAIL_URL
 import com.ipsoft.ph.retrofit.Constants.EXTRACT_URL
@@ -25,7 +26,7 @@ interface GetService {
 
     @Headers("token: $TOKEN")
     @GET(EXTRACT_URL)
-     fun getTransactions(): Call<List<Transaction>>
+     fun getTransactions(): Call<TransactionResponse>
 
     @Headers("token: $TOKEN")
     @GET(EXTRACT_DETAIL_URL)

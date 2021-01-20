@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ipsoft.ph.R
 import com.ipsoft.ph.adapter.TransactionItemAdapter
@@ -20,22 +21,52 @@ class StatementActivity : AppCompatActivity() {
     private lateinit var statementBiding: ActivityStatementBinding
     private lateinit var recyclerView: RecyclerView
 
+    // Iniciando a RecyclerView
+    var transactionItemAdapter: TransactionItemAdapter? = null
+    var linearLayoutManager: LinearLayoutManager? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         statementBiding = ActivityStatementBinding.inflate(layoutInflater)
         val view = statementBiding.root
         setContentView(view)
 
+
+
+
+        initViewModel()
+        initObservers()
+        initOnClick()
+
+
+
+
+
+    }
+
+    private fun initRecyclerView() {
+
+
         recyclerView = statementBiding.rvTransactions
+        linearLayoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = linearLayoutManager
+        recyclerView.adapter = TransactionItemAdapter(HttpRepository.transactionsList,this)
+
+    }
+
+
+
+    private fun initOnClick() {
         val hideBalance = statementBiding.acountChart.imgHideBalance
         hideBalance.setOnClickListener {
 
-            if(showBalance) {
+            if (showBalance) {
                 showBalance = false
                 statementBiding.acountChart.txtPersonalBalanceField.visibility = View.INVISIBLE
                 hideBalance.setImageResource(R.drawable.closedeye)
                 statementBiding.acountChart.divider3.visibility = View.VISIBLE
-            }else {
+            } else {
                 showBalance = true
                 statementBiding.acountChart.txtPersonalBalanceField.visibility = View.VISIBLE
                 hideBalance.setImageResource(R.drawable.openeye)
@@ -45,6 +76,9 @@ class StatementActivity : AppCompatActivity() {
 
 
         }
+    }
+
+    private fun initViewModel() {
 
         viewModel = ViewModelProvider(
             this, MainViewModel.StatementViewModelFactory(
@@ -52,22 +86,26 @@ class StatementActivity : AppCompatActivity() {
             )
         ).get(MainViewModel::class.java)
 
-        viewModel.getBalance()
-        viewModel.getTransactions()
-       // viewModel.getDetailTransaction("0B5BFD44-0DF1-4005-A7CF-66C9C0438380")
+    }
 
-        viewModel.transactionsLiveData.observe(this, Observer { transactions ->
+    private fun initObservers() {
 
-            recyclerView.adapter = TransactionItemAdapter(transactions)
+        viewModel.getTransactions().observe(this, Observer {
+
+            initRecyclerView()
 
 
-        })
-        viewModel.detailsLiveData.observe(this, Observer {
 
         })
-        viewModel.balanceLiveData.observe(this, Observer { balance ->
 
-            statementBiding.acountChart.txtPersonalBalanceField.text = "R$ ${balance.value}".replace(".",",")
+        viewModel.getDetailTransaction("0B5BFD44-0DF1-4005-A7CF-66C9C0438380")
+            .observe(this, Observer {
+
+            })
+        viewModel.getBalance().observe(this, Observer { balance ->
+
+            statementBiding.acountChart.txtPersonalBalanceField.text =
+                "R$ ${balance.value}".replace(".", ",")
 
         })
 

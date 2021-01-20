@@ -16,7 +16,7 @@ import com.ipsoft.ph.repository.model.Transaction
  *  Date:       18/01/2021
  */
 
-class TransactionItemAdapter(private val transactions: List<Transaction>) :
+class TransactionItemAdapter(transactions: List<Transaction>) :
     RecyclerView.Adapter<TransactionItemAdapter.ViewHolder>() {
 
     private lateinit var transactionBinding: TransactionItemBinding

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ipsoft.ph.repository.HttpRepository
 import com.ipsoft.ph.repository.model.Balance
 import com.ipsoft.ph.repository.model.Transaction
+import com.ipsoft.ph.repository.model.TransactionResponse
 
 /**
  *
@@ -17,9 +18,10 @@ import com.ipsoft.ph.repository.model.Transaction
 
 class MainViewModel(private val repository: HttpRepository) : ViewModel() {
 
-    var transactionsLiveData = MutableLiveData<List<Transaction>>()
+    var transactionsLiveData = MutableLiveData<TransactionResponse>()
     var balanceLiveData = MutableLiveData<Balance>()
     var detailsLiveData = MutableLiveData<Transaction>()
+
 
 
 
@@ -34,7 +36,7 @@ class MainViewModel(private val repository: HttpRepository) : ViewModel() {
 
     }
 
-    fun getTransactions() : LiveData<List<Transaction>> {
+    fun getTransactions() : LiveData<TransactionResponse> {
 
         transactionsLiveData = HttpRepository.getTransactions()
         return transactionsLiveData
@@ -49,6 +51,7 @@ class MainViewModel(private val repository: HttpRepository) : ViewModel() {
 
 
     }
+
 
     class StatementViewModelFactory(private val repository: HttpRepository) :
         ViewModelProvider.Factory {

@@ -24,9 +24,5 @@ data class Transaction(
     @SerializedName("to")
     val sender: String = "",
     @SerializedName("description")
-    val description: String = "",
-    @SerializedName("error")
-    val error: Boolean = false,
-    @SerializedName("reason")
-    val reason: String = ""
+    val description: String = ""
 )
