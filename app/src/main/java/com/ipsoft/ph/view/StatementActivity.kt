@@ -13,6 +13,7 @@ import com.ipsoft.ph.adapter.TransactionItemAdapter
 import com.ipsoft.ph.databinding.ActivityStatementBinding
 import com.ipsoft.ph.repository.HttpRepository
 import com.ipsoft.ph.repository.model.Transaction
+
 import com.ipsoft.ph.util.CellClickListener
 import com.ipsoft.ph.viewmodel.MainViewModel
 
@@ -61,16 +62,21 @@ class StatementActivity : AppCompatActivity(), CellClickListener {
         val hideBalance = statementBiding.acountChart.imgHideBalance
         hideBalance.setOnClickListener {
 
+
+
+
             if (showBalance) {
                 showBalance = false
                 statementBiding.acountChart.txtPersonalBalanceField.visibility = View.INVISIBLE
                 hideBalance.setImageResource(R.drawable.closedeye)
                 statementBiding.acountChart.divider3.visibility = View.VISIBLE
+
             } else {
                 showBalance = true
                 statementBiding.acountChart.txtPersonalBalanceField.visibility = View.VISIBLE
                 hideBalance.setImageResource(R.drawable.openeye)
                 statementBiding.acountChart.divider3.visibility = View.INVISIBLE
+
 
             }
 

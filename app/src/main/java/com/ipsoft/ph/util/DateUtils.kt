@@ -12,6 +12,7 @@ class DateUtils {
     companion object {
         fun convertDate(date: String) : String {
 
+            date.replace("2020","20")
             val fDate = date.split("-").toTypedArray()
 
             return "${fDate[1]}/${fDate[0]}"
