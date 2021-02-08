@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">phi-test</string>
+
+    <!-- Balance region -->
+    <!-- Statement region -->
+    <!-- Statement Detail region -->
+
+    <!--Others-->
+    <string name="key_shared_preferences">key_shared</string>
+    <string name="state_visibility_balance">state_visibility_balance</string>
+    <string name="dialog_generic_error_decription">OPPS!! Algo não deu certo</string>
+    <string name="dialog_generic_error_btn_label">OK,tentar mais tarde</string>
+    <string name="activity_statement_dateil_btn_back_accessibility">botão voltar</string>
+    <string name="activity_statement_datail_title">Comprovante</string>
+    <string name="activity_statement_datail_operation_type_label">Tipo de movimentacao</string>
+    <string name="activity_statement_datail_amount_label">Valor</string>
+    <string name="activity_statement_datail_reciver_label">Recebedor</string>
+    <string name="activity_statement_datail_bank_label">Instituicao Bancaria</string>
+    <string name="activity_statement_datail_date_label">Data/Hora</string>
+    <string name="activity_statement_datail_auth_label">Autenticacao</string>
+    <string name="activity_statement_datail_btn_share_label">Compartilhar</string>
+    <string name="activity_main_title">Extrato</string>
+    <string name="activity_main_your_balance_label">Seu saldo</string>
+    <string name="activity_main_your_operations">Suas Movimentações</string>
+    <string name="activity_main_hide_balance_accessibility">ocultar saldo</string>
+    <string name="activity_main_show_balance_accessibility">Exibir saldo</string>
+</resources>
