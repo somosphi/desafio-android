@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="balance"
+            type="com.chavesdev.phiapp.views.BalanceViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.BalanceAndStatementsActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/balance_container"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/default_padding"
+            android:background="#f8f8f8">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seu Saldo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/label_balance"
+                android:textColor="#000"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/img_balance_visibility"
+                android:src="@{balance.isVisible ? @drawable/ic_balance_visible : @drawable/ic_balance_invisible}"
+                tools:src="@drawable/ic_balance_visible"
+                android:onClick="@{balance.showHideBalance}"
+                android:layout_marginStart="@dimen/margin_between_elements"
+                app:layout_constraintStart_toEndOf="@id/label_balance"
+                app:layout_constraintTop_toTopOf="@id/label_balance"
+                app:layout_constraintBottom_toBottomOf="@id/label_balance"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_balance"
+                android:text="@{balance.amount}"
+                tools:text="R$ 1.450,90"
+                android:visibility="@{balance.isVisible() ? View.VISIBLE : View.GONE}"/>
+
+            <View
+                android:layout_width="120dp"
+                android:layout_height="3dp"
+                android:background="@color/colorAccent"
+                android:layout_marginTop="@dimen/default_padding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_balance"
+                android:visibility="@{balance.isVisible() ? View.GONE : View.VISIBLE}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
