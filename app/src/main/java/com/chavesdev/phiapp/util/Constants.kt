@@ -12,4 +12,10 @@ class Constants {
             const val myBalance = "myBalance"
         }
     }
+
+    class Preferences {
+        companion object {
+            const val balanceVisibility = "balance_visibility"
+        }
+    }
 }

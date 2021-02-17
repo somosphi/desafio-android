@@ -1,36 +1,51 @@
 package com.chavesdev.phiapp.views
 
+import android.app.Application
+import android.content.Context
 import android.view.View
-import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.chavesdev.phiapp.PhiAppApplication
 import com.chavesdev.phiapp.repo.AccountRepo
+import com.chavesdev.phiapp.util.Constants
+import com.chavesdev.phiapp.util.PreferenceUtil
 import com.chavesdev.phiapp.util.formatNumber
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.NumberFormat
-import java.util.*
 
-class BalanceViewModel(private val accountRepo: AccountRepo) : ViewModel() {
-    var isVisible = ObservableBoolean(true)
-    var amount : MutableLiveData<String> = MutableLiveData("-")
+class BalanceViewModel(private val accountRepo: AccountRepo, application: Application) : AndroidViewModel(
+    application
+) {
+    var isVisible = MutableLiveData(false)
+    var amount = MutableLiveData("-")
 
-    var showHideBalance = View.OnClickListener {
-        isVisible.set(!isVisible.get())
+    init {
+        isVisible.postValue(isAmountHide())
     }
 
+    var showHideBalance = View.OnClickListener { showHideAmount() }
+
     fun loadBalance() {
-        //check if is already loaded
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             val response = accountRepo.getBalance()
-            if(response.isSuccessful) {
+            if (response.isSuccessful) {
                 withContext(Dispatchers.Main) {
                     amount.postValue(response.body()?.amount?.formatNumber())
                 }
             }
         }
+    }
+
+    private fun isAmountHide(): Boolean {
+        return PreferenceUtil.isBalanceVisible(getApplication())
+    }
+
+    private fun showHideAmount() {
+        PreferenceUtil.saveBooleanPref(getApplication(), Constants.Preferences.balanceVisibility, !isVisible.value!!)
+        isVisible.postValue(!isVisible.value!!)
     }
 
 
