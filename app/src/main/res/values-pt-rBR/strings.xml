@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Phi App</string>
+    <string name="your_amount">Seu Saldo</string>
+    <string name="your_statements">Suas movimentações</string>
+    <string name="pix">Pix</string>
+    <string name="exception_error">Houve um problema ao carregar as informações</string>
+</resources>

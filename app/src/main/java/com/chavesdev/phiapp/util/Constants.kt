@@ -10,6 +10,7 @@ class Constants {
     class Endpoints {
         companion object {
             const val myBalance = "myBalance"
+            const val myStatement = "myStatement/{limit}/{offset}"
         }
     }
 
