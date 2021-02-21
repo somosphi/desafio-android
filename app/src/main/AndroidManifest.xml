@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PhiApp">
-        <activity android:name=".views.BalanceAndStatementsActivity">
+        <activity android:name=".views.statement_details.StatementDetailsActivity"></activity>
+        <activity android:name=".views.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

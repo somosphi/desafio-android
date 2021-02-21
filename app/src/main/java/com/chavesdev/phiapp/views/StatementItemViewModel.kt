@@ -1,5 +1,6 @@
 package com.chavesdev.phiapp.views
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.chavesdev.phiapp.repo.api.messages.StatementMessage
 import com.chavesdev.phiapp.repo.api.messages.StatementMessage.StatementType
@@ -14,6 +15,8 @@ class StatementItemViewModel(
     val date: String
 ) :
     ViewModel() {
+
+    lateinit var onClick : View.OnClickListener
 
     companion object {
         fun translateMessage(message: StatementMessage): StatementItemViewModel {

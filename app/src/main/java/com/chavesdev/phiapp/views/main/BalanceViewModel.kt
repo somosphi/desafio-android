@@ -1,4 +1,4 @@
-package com.chavesdev.phiapp.views
+package com.chavesdev.phiapp.views.main
 
 import android.app.Application
 import android.content.Context

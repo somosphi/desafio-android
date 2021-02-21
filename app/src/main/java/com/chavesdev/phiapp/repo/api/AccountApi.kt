@@ -18,4 +18,7 @@ interface AccountApi {
         @Path("limit") limit: Int,
         @Path("offset") offset: Int
     ): Response<ListStatementsResponse>
+
+    @GET(Constants.Endpoints.statementDetail)
+    suspend fun getStatementDetail(@Path("id") id: String) : Response<StatementMessage>
 }

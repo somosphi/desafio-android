@@ -27,6 +27,9 @@ class StatementMessage : Serializable {
     @SerializedName("from")
     var from: String? = null
 
+    @SerializedName("authentication")
+    var authentication: String? = null
+
     enum class StatementType {
         TRANSFEROUT,
         TRANSFERIN,

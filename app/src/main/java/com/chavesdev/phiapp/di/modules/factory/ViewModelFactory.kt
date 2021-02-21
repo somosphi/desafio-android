@@ -3,9 +3,8 @@ package com.chavesdev.phiapp.di.modules.factory
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.chavesdev.phiapp.PhiAppApplication
 import com.chavesdev.phiapp.repo.AccountRepo
-import com.chavesdev.phiapp.views.BalanceViewModel
+import com.chavesdev.phiapp.views.main.BalanceViewModel
 import com.chavesdev.phiapp.views.StatementsViewModel
 import javax.inject.Inject
 import javax.inject.Singleton

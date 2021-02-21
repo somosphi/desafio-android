@@ -14,7 +14,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@{statement.pix ? @color/background : @color/white}">
+        android:background="@{statement.pix ? @color/background : @color/white}"
+        android:onClick="@{statement.onClick}">
 
         <View
             android:layout_width="2dp"

@@ -11,6 +11,7 @@ class Constants {
         companion object {
             const val myBalance = "myBalance"
             const val myStatement = "myStatement/{limit}/{offset}"
+            const val statementDetail = "myStatement/detail/{id}"
         }
     }
 

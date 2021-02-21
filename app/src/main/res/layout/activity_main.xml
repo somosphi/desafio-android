@@ -7,7 +7,7 @@
 
         <variable
             name="balance"
-            type="com.chavesdev.phiapp.views.BalanceViewModel" />
+            type="com.chavesdev.phiapp.views.main.BalanceViewModel" />
 
         <variable
             name="loading"
@@ -20,7 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".views.BalanceAndStatementsActivity">
+            tools:context=".views.main.MainActivity">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

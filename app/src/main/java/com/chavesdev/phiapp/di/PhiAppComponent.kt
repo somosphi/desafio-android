@@ -2,7 +2,8 @@ package com.chavesdev.phiapp.di
 
 import android.app.Application
 import com.chavesdev.phiapp.di.modules.*
-import com.chavesdev.phiapp.views.BalanceAndStatementsActivity
+import com.chavesdev.phiapp.views.main.MainActivity
+import com.chavesdev.phiapp.views.statement_details.StatementDetailsActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,6 +18,7 @@ import javax.inject.Singleton
     ]
 )
 interface PhiAppComponent {
-    fun inject(balanceAndStatementsActivity: BalanceAndStatementsActivity)
+    fun inject(mainActivity: MainActivity)
+    fun inject(statementDetailsActivity: StatementDetailsActivity)
     fun application(): Application
 }

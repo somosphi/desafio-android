@@ -8,4 +8,6 @@ class AccountRepo(private val accountApi: AccountApi) : ViewModel() {
     suspend fun getBalance() = accountApi.getBalance()
 
     suspend fun getStatements(perPage : Int, page: Int)  = accountApi.getStatements(perPage, page)
+
+    suspend fun getStatementDetails(id: String) = accountApi.getStatementDetail(id)
 }
