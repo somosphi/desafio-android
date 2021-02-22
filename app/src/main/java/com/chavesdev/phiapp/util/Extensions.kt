@@ -13,3 +13,7 @@ fun Long.formatNumber() : String {
     formater.negativePrefix = "-$symbol "
     return formater.format(this)
 }
+
+fun Date.format(format: String) : String {
+    return android.text.format.DateFormat.format(format, this).toString()
+}

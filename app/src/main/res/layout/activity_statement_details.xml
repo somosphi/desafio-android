@@ -1,9 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.statement_details.StatementDetailsActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="details"
+            type="com.chavesdev.phiapp.views.statement_details.StatementDetailsActivity.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.statement_details.StatementDetailsActivity">
+
+        <ScrollView
+            android:id="@+id/scroll_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:id="@+id/label_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/movimentation_type"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_elements"
+                    android:text="@{details.type}"
+                    tools:text="Transferencia enviada" />
+
+                <TextView
+                    android:id="@+id/label_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_blocks"
+                    android:text="@string/value"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_elements"
+                    tools:text="R$ 1.000,00"
+                    android:text="@{details.amount}"/>
+
+                <TextView
+                    android:id="@+id/label_origin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_blocks"
+                    android:text="@string/receiver"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_origin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_elements"
+                    android:text="@{details.receiver}"
+                    tools:text="Francisco" />
+
+                <TextView
+                    android:id="@+id/label_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_blocks"
+                    android:text="@string/bank_name"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_elements"
+                    tools:text="Banco Phi"
+                    android:text="@{details.bankName}"/>
+
+                <TextView
+                    android:id="@+id/label_datetime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_blocks"
+                    android:text="@string/label_datetime"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_datetime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_elements"
+                    tools:text="13/10/2020 - 15:17:02"
+                    android:text="@{details.datetime}"/>
+
+
+                <TextView
+                    android:id="@+id/label_auth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_blocks"
+                    android:text="@string/label_authentication"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txt_auth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_elements"
+                    tools:text="12312323123"
+                    android:text="@{details.auth}"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_padding"
+            android:text="@string/action_share"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -15,7 +15,6 @@ import com.chavesdev.phiapp.R
 import com.chavesdev.phiapp.databinding.ActivityMainBinding
 import com.chavesdev.phiapp.di.modules.factory.ViewModelFactory
 import com.chavesdev.phiapp.views.StatementsPageAdapter
-import com.chavesdev.phiapp.views.StatementsViewModel
 import com.chavesdev.phiapp.views.statement_details.StatementDetailsActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

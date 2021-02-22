@@ -4,4 +4,5 @@
     <dimen name="default_padding">14dp</dimen>
 
     <dimen name="margin_between_elements">10dp</dimen>
+    <dimen name="margin_between_blocks">16dp</dimen>
 </resources>

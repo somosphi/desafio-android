@@ -8,12 +8,18 @@
         android:name=".PhiAppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/main_title"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PhiApp">
-        <activity android:name=".views.statement_details.StatementDetailsActivity"></activity>
-        <activity android:name=".views.main.MainActivity">
+
+        <activity android:name=".views.statement_details.StatementDetailsActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/statement_details_title"/>
+
+        <activity android:name=".views.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/main_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

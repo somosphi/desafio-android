@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.chavesdev.phiapp.repo.api.messages.StatementMessage
 import com.chavesdev.phiapp.repo.api.messages.StatementMessage.StatementType
+import com.chavesdev.phiapp.util.format
 import com.chavesdev.phiapp.util.formatNumber
 
 class StatementItemViewModel(
@@ -21,30 +22,13 @@ class StatementItemViewModel(
     companion object {
         fun translateMessage(message: StatementMessage): StatementItemViewModel {
             return StatementItemViewModel(
-                getOrigin(message),
+                message.getOrigin(),
                 message.description,
-                checkamount(message.amount, message.type).formatNumber(),
+                message.formatedNumber(),
                 message.type == StatementType.PIXCASHIN || message.type == StatementType.PIXCASHOUT,
                 message.type,
-                android.text.format.DateFormat.format("dd/MM", message.date).toString()
+                message.date.format("dd/MM")
             )
-        }
-
-        private fun checkamount(amount: Int, type: StatementType) : Long {
-            return if(type == StatementType.TRANSFEROUT || type == StatementType.PIXCASHOUT) {
-                amount * -1
-            } else {
-                amount
-            }.toLong()
-        }
-
-        private fun getOrigin(message: StatementMessage) : String {
-            if(message.to != null) {
-                return message.to!!
-            } else if(message.from != null) {
-                return message.from !!
-            }
-            return ""
         }
     }
 }

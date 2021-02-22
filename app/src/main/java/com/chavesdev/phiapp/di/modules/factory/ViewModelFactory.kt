@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.chavesdev.phiapp.repo.AccountRepo
 import com.chavesdev.phiapp.views.main.BalanceViewModel
-import com.chavesdev.phiapp.views.StatementsViewModel
+import com.chavesdev.phiapp.views.main.StatementsViewModel
+import com.chavesdev.phiapp.views.statement_details.StatementDetailViewModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,6 +18,9 @@ class ViewModelFactory @Inject constructor(val accountRepo: AccountRepo, val app
         }
         if(modelClass.isAssignableFrom(StatementsViewModel::class.java)) {
             return StatementsViewModel(accountRepo) as T
+        }
+        if(modelClass.isAssignableFrom(StatementDetailViewModel::class.java)) {
+            return StatementDetailViewModel(accountRepo) as T
         }
         throw IllegalArgumentException("Invalid ViewModel")
     }

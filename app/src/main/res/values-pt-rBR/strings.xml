@@ -5,4 +5,13 @@
     <string name="your_statements">Suas movimentações</string>
     <string name="pix">Pix</string>
     <string name="exception_error">Houve um problema ao carregar as informações</string>
+    <string name="action_share">Compartilhar</string>
+    <string name="label_authentication">Autenticação</string>
+    <string name="label_datetime">Data/Hora</string>
+    <string name="bank_name">Instituição bancária</string>
+    <string name="receiver">Recebedor</string>
+    <string name="value">Valor</string>
+    <string name="movimentation_type">Tipo de movimentação</string>
+    <string name="main_title">Extrato</string>
+    <string name="statement_details_title">Comprovante</string>
 </resources>

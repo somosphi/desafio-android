@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">Phi App</string>
+    <string name="main_title">Statement</string>
+    <string name="statement_details_title">Receipt</string>
     <string name="your_amount">Amount</string>
     <string name="your_statements">Your statements</string>
     <string name="pix">Pix</string>
     <string name="exception_error">There was a problem on loading info</string>
+    <string name="action_share">share</string>
+    <string name="label_authentication">Authentication</string>
+    <string name="label_datetime">Date/Time</string>
+    <string name="bank_name">Bank</string>
+    <string name="receiver">Receiver</string>
+    <string name="value">Value</string>
+    <string name="movimentation_type">Movimentation type</string>
 </resources>
