@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintMoves"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/viewLineVerticalOne"
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="40dp"
+            android:background="@color/grey_custom_600"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewBall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/ic_iconfinder_point"
+            app:layout_constraintEnd_toEndOf="@+id/viewLineVerticalOne"
+            app:layout_constraintStart_toStartOf="@+id/viewLineVerticalOne"
+            app:layout_constraintTop_toBottomOf="@+id/viewLineVerticalOne"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/viewLineVerticalTwo"
+            android:layout_width="1dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/grey_custom_600"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewBall" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/viewLineVerticalOne"
+            app:layout_constraintTop_toTopOf="@+id/viewLineVerticalOne"
+            tools:layout_editor_absoluteY="16dp"
+            tools:text="Transferência enviada" />
+
+        <TextView
+            android:id="@+id/textViewOrigin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/viewLineVerticalOne"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+            tools:text="David Bond" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+            tools:text="13/10" />
+
+        <TextView
+            android:id="@+id/textViewValue"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/viewLineVerticalTwo"
+            app:layout_constraintTop_toBottomOf="@+id/textViewOrigin"
+            tools:text="-R$ 100,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
