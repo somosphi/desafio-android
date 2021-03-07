@@ -5,7 +5,6 @@
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">0dp</item>
         <item name="materialThemeOverlay">@style/CustomCardOverlay</item>
-        <item name="cardBackgroundColor">@color/grey_custom_100</item>
     </style>
 
     <style name="CustomCardOverlay" parent="">
