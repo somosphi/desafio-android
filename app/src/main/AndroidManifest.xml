@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".Main"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +17,7 @@
         android:theme="@style/Theme.DesafioAndroid"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.ExtractActivity">
+        <activity android:name=".ui.statement.ExtractActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
