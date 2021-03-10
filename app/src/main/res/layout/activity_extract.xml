@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.statement.ExtractActivity">
+        tools:context=".ui.statement.list.ExtractActivity">
 
         <TextView
             android:id="@+id/textViewExtract"
@@ -16,6 +16,7 @@
             android:layout_margin="16dp"
             android:text="@string/extract"
             android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -126,7 +127,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:clipToPadding="false"
-                android:paddingBottom="385dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/adapter_moves" />
 

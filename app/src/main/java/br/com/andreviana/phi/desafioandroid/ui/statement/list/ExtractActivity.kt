@@ -1,5 +1,6 @@
-package br.com.andreviana.phi.desafioandroid.ui.statement
+package br.com.andreviana.phi.desafioandroid.ui.statement.list
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import br.com.andreviana.phi.desafioandroid.databinding.ActivityExtractBinding
 import br.com.andreviana.phi.desafioandroid.util.helper.PreferencesHelper
 import br.com.andreviana.phi.desafioandroid.util.ktx.convertCentsToReal
 import br.com.andreviana.phi.desafioandroid.util.ktx.moneyFormat
+import br.com.andreviana.phi.desafioandroid.util.ktx.navigationToStatementDetail
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -30,10 +32,25 @@ class ExtractActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupUI() {
-        binding.swipeRefreshMoves.setColorSchemeColors(ContextCompat.getColor(this, R.color.teal_custom_300))
+        binding.swipeRefreshMoves.setColorSchemeColors(
+            ContextCompat.getColor(
+                this,
+                R.color.teal_custom_300
+            )
+        )
         binding.imageViewHideBalance.setOnClickListener(this)
         binding.imageViewShowBalance.setOnClickListener(this)
         checkVisibilityBalance()
+        val mode =
+            binding.root.context.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)
+        if (mode == Configuration.UI_MODE_NIGHT_YES) {
+            binding.cardViewBalance.setBackgroundColor(
+                ContextCompat.getColor(
+                    applicationContext,
+                    R.color.grey_custom_900
+                )
+            )
+        }
     }
 
     private fun checkVisibilityBalance() {
@@ -68,7 +85,7 @@ class ExtractActivity : AppCompatActivity(), View.OnClickListener {
                 is DataState.Success -> {
                     Timber.tag(TAG).i("Sucesso: ${dataState.data}")
                     binding.recyclerViewMoves.adapter = ExtractAdapter(dataState.data.items) {
-                        Timber.tag(TAG).i("ITEM ID: $it")
+                        navigationToStatementDetail(it)
                     }
                 }
 
@@ -92,7 +109,8 @@ class ExtractActivity : AppCompatActivity(), View.OnClickListener {
 
                 is DataState.Success -> {
                     Timber.tag(TAG).i("Sucesso: ${dataState.data}")
-                    binding.textViewBalanceValue.text = convertCentsToReal(dataState.data.amount).moneyFormat()
+                    binding.textViewBalanceValue.text =
+                        convertCentsToReal(dataState.data.amount).moneyFormat()
                 }
 
                 is DataState.Failure -> {

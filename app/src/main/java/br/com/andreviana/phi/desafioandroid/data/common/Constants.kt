@@ -8,4 +8,7 @@ object Constants {
 
     //PREFERENCES
     const val PREFERENCES_NAME = "PHI.FINANCIAL"
+
+    //BUNDLE KEY
+    const val STATEMENT_ID = "statementId"
 }

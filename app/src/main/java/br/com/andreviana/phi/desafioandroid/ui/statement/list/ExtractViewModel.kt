@@ -1,4 +1,4 @@
-package br.com.andreviana.phi.desafioandroid.ui.statement
+package br.com.andreviana.phi.desafioandroid.ui.statement.list
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import br.com.andreviana.phi.desafioandroid.data.repository.StatementRepository
 
 class ExtractViewModel
 @ViewModelInject constructor(
-        private val statementRepository: StatementRepository
+    private val statementRepository: StatementRepository
 ) : ViewModel() {
 
     fun getBalance() = liveData {
