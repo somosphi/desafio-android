@@ -6,7 +6,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import br.com.andreviana.phi.desafioandroid.data.repository.StatementRepository
 
-class ExtractViewModel
+class StatementViewModel
 @ViewModelInject constructor(
     private val statementRepository: StatementRepository
 ) : ViewModel() {

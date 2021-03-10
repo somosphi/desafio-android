@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="br.com.andreviana.phi.desafioandroid.data.model.Item" />
+            type="br.com.andreviana.phi.desafioandroid.data.model.StatementViewList" />
     </data>
 
     <com.google.android.material.card.MaterialCardView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -112,7 +112,6 @@
                 tools:text="-R$ 100,00" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
 

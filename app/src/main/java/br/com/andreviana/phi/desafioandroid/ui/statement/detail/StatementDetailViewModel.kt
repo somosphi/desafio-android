@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import br.com.andreviana.phi.desafioandroid.data.common.ItemModel
-import br.com.andreviana.phi.desafioandroid.data.model.StatementDetail
+import br.com.andreviana.phi.desafioandroid.data.model.StatementViewDetail
 import br.com.andreviana.phi.desafioandroid.data.repository.StatementRepository
 import br.com.andreviana.phi.desafioandroid.util.helper.DateFormat
 import br.com.andreviana.phi.desafioandroid.util.ktx.convertCentsToReal
@@ -20,7 +20,7 @@ class StatementDetailViewModel
         emitSource(statementRepository.fetchStatementDetail(id).asLiveData())
     }
 
-    fun createViewProof(detail: StatementDetail) = if (isBankNameValid(detail.bankName)) {
+    fun createViewProof(detail: StatementViewDetail) = if (isBankNameValid(detail.bankName)) {
         listOf(
             ItemModel("Tipo de movimentação", detail.description),
             ItemModel("Valor", convertCentsToReal(detail.amount).moneyFormat()),

@@ -17,6 +17,7 @@ import br.com.andreviana.phi.desafioandroid.util.helper.getBitmapFromView
 import br.com.andreviana.phi.desafioandroid.util.helper.saveBitmapFile
 import br.com.andreviana.phi.desafioandroid.util.ktx.showToastLong
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class StatementDetailActivity : AppCompatActivity(), View.OnClickListener,
@@ -50,6 +51,7 @@ class StatementDetailActivity : AppCompatActivity(), View.OnClickListener,
         )
         binding.buttonShare.setOnClickListener(this)
         binding.imageViewBack.setOnClickListener(this)
+        binding.swipeRefreshProof.setOnRefreshListener(this)
     }
 
     private fun getStatementDetail() {
@@ -57,21 +59,19 @@ class StatementDetailActivity : AppCompatActivity(), View.OnClickListener,
             viewModel.getStatementDetail(it).observe(this, { dataState ->
                 when (dataState) {
                     is DataState.Loading -> showProgress()
-
                     is DataState.Success -> {
                         hideProgress()
                         val proof = viewModel.createViewProof(dataState.data)
                         binding.recyclerViewProof.adapter = StatementDetailAdapter(proof)
                     }
-
                     is DataState.Failure -> {
                         hideProgress()
                         showToastLong(dataState.message)
                     }
-
                     is DataState.Error -> {
                         hideProgress()
                         showToastLong(GENERIC_ERROR)
+                        Timber.tag(TAG).e(dataState.throwable)
                     }
                 }
             })
@@ -94,12 +94,10 @@ class StatementDetailActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun showProgress() {
-        binding.swipeRefreshProof.isEnabled = true
         binding.swipeRefreshProof.isRefreshing = true
     }
 
     private fun hideProgress() {
-        binding.swipeRefreshProof.isEnabled = false
         binding.swipeRefreshProof.isRefreshing = false
     }
 
@@ -122,5 +120,9 @@ class StatementDetailActivity : AppCompatActivity(), View.OnClickListener,
             R.id.buttonShare -> photoShare()
             R.id.imageViewBack -> onBackPressed()
         }
+    }
+
+    companion object {
+        private const val TAG = "StatementDetailActivity"
     }
 }
