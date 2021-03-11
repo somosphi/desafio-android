@@ -4,9 +4,11 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import br.com.andreviana.phi.desafioandroid.data.repository.StatementRepository
+import kotlinx.coroutines.launch
 
-class ExtractViewModel
+class StatementViewModel
 @ViewModelInject constructor(
     private val statementRepository: StatementRepository
 ) : ViewModel() {

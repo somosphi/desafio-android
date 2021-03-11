@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="br.com.andreviana.phi.desafioandroid.data.model.Item" />
+            type="br.com.andreviana.phi.desafioandroid.data.model.StatementViewList" />
     </data>
 
     <com.google.android.material.card.MaterialCardView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:text="@{item.to}"
+                android:text="@{item.to != null ? item.to : item.from}"
                 app:layout_constraintStart_toEndOf="@+id/viewLineVerticalOne"
                 app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
                 tools:text="David Bond" />
@@ -112,7 +112,6 @@
                 tools:text="-R$ 100,00" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
 

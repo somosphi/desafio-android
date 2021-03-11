@@ -22,7 +22,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".ui.statement.detail.StatementDetailActivity" />
-        <activity android:name=".ui.statement.list.ExtractActivity">
+        <activity android:name=".ui.statement.list.StatementListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
