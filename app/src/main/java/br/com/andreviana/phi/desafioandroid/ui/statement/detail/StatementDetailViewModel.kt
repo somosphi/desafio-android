@@ -24,7 +24,7 @@ class StatementDetailViewModel
         listOf(
             ItemModel("Tipo de movimentação", detail.description),
             ItemModel("Valor", convertCentsToReal(detail.amount).moneyFormat()),
-            ItemModel("Recebedor", detail.to),
+            ItemModel("Recebedor", detail.to ?: detail.from),
             ItemModel("Instituição bancária", detail.bankName),
             ItemModel("Data/Hora", DateFormat.dateHourCompleteFormat(detail.createdAt)),
             ItemModel("Autenticação", detail.authentication)
@@ -33,7 +33,7 @@ class StatementDetailViewModel
         listOf(
             ItemModel("Tipo de movimentação", detail.description),
             ItemModel("Valor", convertCentsToReal(detail.amount).moneyFormat()),
-            ItemModel("Recebedor", detail.to),
+            ItemModel("Recebedor", detail.to ?: detail.from),
             ItemModel("Data/Hora", DateFormat.dateHourCompleteFormat(detail.createdAt)),
             ItemModel("Autenticação", detail.authentication)
         )

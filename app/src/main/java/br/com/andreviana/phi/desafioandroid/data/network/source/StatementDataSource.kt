@@ -1,5 +1,6 @@
 package br.com.andreviana.phi.desafioandroid.data.network.source
 
+import br.com.andreviana.phi.desafioandroid.data.common.Constants.GENERIC_EMPTY
 import br.com.andreviana.phi.desafioandroid.data.common.Constants.GENERIC_FAILED
 import br.com.andreviana.phi.desafioandroid.data.common.DataState
 import br.com.andreviana.phi.desafioandroid.data.model.*
@@ -38,7 +39,11 @@ class StatementDataSourceImpl @Inject constructor(
         val response = statementService.getMyStatement(limit = limit, offset = offset)
         if (response.isSuccessful) {
             response.body()
-                ?.let { statement -> emit(DataState.Success(statement.mapperToItemsList())) }
+                ?.let { statement ->
+                    if (statement.items.isNotEmpty()) {
+                        emit(DataState.Success(statement.mapperToItemsList()))
+                    } else emit(DataState.Failure(204, GENERIC_EMPTY))
+                }
         } else {
             emit(DataState.Failure(response.code(), GENERIC_FAILED))
         }

@@ -7,6 +7,7 @@ data class StatementViewList(
     val description: String,
     val amount: Int,
     val to: String?,
+    val from: String?,
     val createdAt: Date,
     val transactionType: String
 )

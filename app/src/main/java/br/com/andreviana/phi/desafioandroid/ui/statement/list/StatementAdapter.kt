@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.andreviana.phi.desafioandroid.BR
 import br.com.andreviana.phi.desafioandroid.R
@@ -15,9 +17,9 @@ import br.com.andreviana.phi.desafioandroid.databinding.AdapterMovesBinding
 import br.com.andreviana.phi.desafioandroid.util.ktx.convertCentsToReal
 import br.com.andreviana.phi.desafioandroid.util.ktx.moneyFormat
 
-class StatementAdapter : RecyclerView.Adapter<StatementAdapter.ViewHolder>() {
+class StatementAdapter :
+    ListAdapter<StatementViewList, StatementAdapter.ViewHolder>(STATEMENT_COMPARATOR) {
 
-    private var itemList: HashSet<StatementViewList> = hashSetOf()
     private var _listener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,20 +33,14 @@ class StatementAdapter : RecyclerView.Adapter<StatementAdapter.ViewHolder>() {
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bindView(itemList.elementAt(position))
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val statement = getItem(position)
+        if (statement != null) holder.bindView(statement)
+    }
 
-    override fun getItemCount(): Int = itemList.size
 
     fun runOnItemClickListener(itemClick: OnItemClickListener) {
         _listener = itemClick
-    }
-
-    fun addStatementItems(items: HashSet<StatementViewList>) {
-        itemList.addAll(items)
-        val sortedByDescending = itemList.sortedBy { it.createdAt }
-        itemList = sortedByDescending.toHashSet()
-        notifyDataSetChanged()
     }
 
     class ViewHolder(
@@ -87,6 +83,22 @@ class StatementAdapter : RecyclerView.Adapter<StatementAdapter.ViewHolder>() {
 
                 binding.imageViewPix.visibility = View.VISIBLE
             }
+        }
+    }
+
+    companion object {
+        private val STATEMENT_COMPARATOR = object : DiffUtil.ItemCallback<StatementViewList>() {
+            override fun areItemsTheSame(
+                oldItem: StatementViewList,
+                newItem: StatementViewList
+            ): Boolean =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(
+                oldItem: StatementViewList,
+                newItem: StatementViewList
+            ): Boolean =
+                oldItem == newItem
         }
     }
 }

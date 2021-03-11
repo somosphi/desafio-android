@@ -15,7 +15,7 @@ data class ItemResponse(
 )
 
 fun ItemResponse.mapperToStatementDetail() =
-    StatementViewDetail(description, amount, to, bankName, createdAt, authentication)
+    StatementViewDetail(description, amount, to, from, bankName, createdAt, authentication)
 
 fun ItemResponse.mapperToStatementList() =
-    StatementViewList(id, description, amount, to, createdAt, tType)
+    StatementViewList(id, description, amount, to, from, createdAt, tType)

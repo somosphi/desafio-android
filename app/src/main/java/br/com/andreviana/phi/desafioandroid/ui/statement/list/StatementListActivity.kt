@@ -6,7 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import br.com.andreviana.phi.desafioandroid.R
@@ -19,9 +19,6 @@ import br.com.andreviana.phi.desafioandroid.util.ktx.moneyFormat
 import br.com.andreviana.phi.desafioandroid.util.ktx.navigationToStatementDetail
 import br.com.andreviana.phi.desafioandroid.util.ktx.showToastLong
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -44,32 +41,36 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun setupUI() {
-        binding.swipeRefreshMoves.setColorSchemeColors(
-            ContextCompat.getColor(
-                this,
-                R.color.teal_custom_300
-            )
-        )
+        val color = ContextCompat.getColor(this, R.color.teal_custom_300)
+        binding.swipeRefreshMoves.setColorSchemeColors(color)
         binding.imageViewHideBalance.setOnClickListener(this)
         binding.imageViewShowBalance.setOnClickListener(this)
         binding.swipeRefreshMoves.setOnRefreshListener(this)
         binding.recyclerViewMoves.adapter = adapter
         checkVisibilityBalance()
         checkUiNightMode()
-        binding.recyclerViewMoves.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                if (recyclerView.canScrollVertically(-1)) {
-                    val scrollState = binding.recyclerViewMoves.scrollState
-                    Timber.tag(TAG).i("SCROLL STATE: $scrollState ")
-                }
-            }
-        })
+        setupScrollListener()
 
         adapter.runOnItemClickListener { statementId ->
             navigationToStatementDetail(statementId)
         }
+    }
+
+    private fun setupScrollListener() {
+        val layoutManager = binding.recyclerViewMoves.layoutManager as LinearLayoutManager
+        binding.recyclerViewMoves.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val totalItemCount = layoutManager.itemCount
+                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+
+                if (lastVisibleItem + 1 == totalItemCount) {
+                    ++mCounter
+                    getMyStatement("10", mCounter.toString())
+                }
+            }
+        })
     }
 
     private fun checkVisibilityBalance() {
@@ -110,12 +111,17 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
     private fun getMyStatement(limit: String, offset: String) {
         viewModel.getStatement(limit, offset).observe(this, { dataState ->
             when (dataState) {
+                is DataState.Loading -> showProgress()
                 is DataState.Success -> {
-                    adapter.addStatementItems(dataState.data.toHashSet())
-                    //jobStartRequisition()
+                    hideProgress()
+                    adapter.submitList(dataState.data)
                 }
-                is DataState.Failure -> showToastLong(dataState.message)
+                is DataState.Failure -> {
+                    hideProgress()
+                    showToastLong(dataState.message)
+                }
                 is DataState.Error -> {
+                    hideProgress()
                     showToastLong(Constants.GENERIC_ERROR)
                     Timber.e(dataState.throwable)
                 }
@@ -123,29 +129,22 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
         })
     }
 
-    private fun jobStartRequisition() {
-        CoroutineScope(lifecycleScope.coroutineContext).launch {
-            delay(10000L)
-            ++mCounter
-            getMyStatement("10", mCounter.toString())
-        }
-    }
-
     private fun getMyBalance() {
         viewModel.getBalance().observe(this, { dataState ->
             when (dataState) {
-                is DataState.Loading -> showProgress()
                 is DataState.Success -> {
                     hideProgress()
                     binding.textViewBalanceValue.text =
                         convertCentsToReal(dataState.data.amount).moneyFormat()
                 }
-
                 is DataState.Failure -> {
                     hideProgress()
                     showToastLong(dataState.message)
                 }
-                is DataState.Error -> showToastLong(Constants.GENERIC_ERROR)
+                is DataState.Error -> {
+                    hideProgress()
+                    showToastLong(Constants.GENERIC_ERROR)
+                }
 
             }
         })
@@ -161,7 +160,7 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
 
 
     override fun onRefresh() {
-        getMyStatement("10", mCounter.toString())
+        getMyStatement("10", "0")
         Timber.tag(TAG).i("ON_REFRESH")
     }
 
