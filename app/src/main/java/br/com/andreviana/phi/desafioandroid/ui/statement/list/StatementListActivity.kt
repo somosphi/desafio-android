@@ -45,6 +45,7 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
         binding.swipeRefreshMoves.setColorSchemeColors(color)
         binding.imageViewHideBalance.setOnClickListener(this)
         binding.imageViewShowBalance.setOnClickListener(this)
+        binding.buttonAddList.setOnClickListener(this)
         binding.swipeRefreshMoves.setOnRefreshListener(this)
         binding.recyclerViewMoves.adapter = adapter
         checkVisibilityBalance()
@@ -114,7 +115,7 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
                 is DataState.Loading -> showProgress()
                 is DataState.Success -> {
                     hideProgress()
-                    adapter.submitList(dataState.data)
+                    adapter.postValueStatement(dataState.data)
                 }
                 is DataState.Failure -> {
                     hideProgress()
@@ -133,7 +134,6 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
         viewModel.getBalance().observe(this, { dataState ->
             when (dataState) {
                 is DataState.Success -> {
-                    hideProgress()
                     binding.textViewBalanceValue.text =
                         convertCentsToReal(dataState.data.amount).moneyFormat()
                 }
@@ -161,13 +161,13 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
 
     override fun onRefresh() {
         getMyStatement("10", "0")
-        Timber.tag(TAG).i("ON_REFRESH")
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.imageViewHideBalance -> hideBalance()
             R.id.imageViewShowBalance -> showBalance()
+            //R.id.buttonAddList -> getMyStatement("2", (++mCounter).toString())
         }
     }
 
