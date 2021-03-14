@@ -6,12 +6,14 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import br.com.andreviana.phi.desafioandroid.R
 import br.com.andreviana.phi.desafioandroid.data.common.Constants
 import br.com.andreviana.phi.desafioandroid.data.common.DataState
+import br.com.andreviana.phi.desafioandroid.data.model.mapperToStatementList
 import br.com.andreviana.phi.desafioandroid.databinding.ActivityStatementListBinding
 import br.com.andreviana.phi.desafioandroid.util.helper.PreferencesHelper
 import br.com.andreviana.phi.desafioandroid.util.ktx.convertCentsToReal
@@ -19,11 +21,11 @@ import br.com.andreviana.phi.desafioandroid.util.ktx.moneyFormat
 import br.com.andreviana.phi.desafioandroid.util.ktx.navigationToStatementDetail
 import br.com.andreviana.phi.desafioandroid.util.ktx.showToastLong
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class StatementListActivity : AppCompatActivity(), View.OnClickListener,
-    SwipeRefreshLayout.OnRefreshListener {
+class StatementListActivity : AppCompatActivity(), View.OnClickListener {
 
     private val viewModel: StatementViewModel by viewModels()
     private val binding by lazy { ActivityStatementListBinding.inflate(layoutInflater) }
@@ -35,9 +37,9 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        onRefresh()
         getMyBalance()
         setupUI()
+        getMyStatement()
     }
 
     private fun setupUI() {
@@ -46,7 +48,6 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
         binding.imageViewHideBalance.setOnClickListener(this)
         binding.imageViewShowBalance.setOnClickListener(this)
         binding.buttonAddList.setOnClickListener(this)
-        binding.swipeRefreshMoves.setOnRefreshListener(this)
         binding.recyclerViewMoves.adapter = adapter
         checkVisibilityBalance()
         checkUiNightMode()
@@ -68,7 +69,6 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
 
                 if (lastVisibleItem + 1 == totalItemCount) {
                     ++mCounter
-                    getMyStatement("10", mCounter.toString())
                 }
             }
         })
@@ -109,25 +109,12 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
 
     }
 
-    private fun getMyStatement(limit: String, offset: String) {
-        viewModel.getStatement(limit, offset).observe(this, { dataState ->
-            when (dataState) {
-                is DataState.Loading -> showProgress()
-                is DataState.Success -> {
-                    hideProgress()
-                    adapter.postValueStatement(dataState.data)
-                }
-                is DataState.Failure -> {
-                    hideProgress()
-                    showToastLong(dataState.message)
-                }
-                is DataState.Error -> {
-                    hideProgress()
-                    showToastLong(Constants.GENERIC_ERROR)
-                    Timber.e(dataState.throwable)
-                }
+    private fun getMyStatement() {
+        lifecycleScope.launch {
+            viewModel.getStatementPagination().collectLatest {
+                adapter.submitData(it.map { item -> item.mapperToStatementList() })
             }
-        })
+        }
     }
 
     private fun getMyBalance() {
@@ -156,11 +143,6 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
 
     private fun hideProgress() {
         binding.swipeRefreshMoves.isRefreshing = false
-    }
-
-
-    override fun onRefresh() {
-        getMyStatement("10", "0")
     }
 
     override fun onClick(view: View?) {

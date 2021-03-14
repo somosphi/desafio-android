@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.andreviana.phi.desafioandroid.BR
 import br.com.andreviana.phi.desafioandroid.R
+import br.com.andreviana.phi.desafioandroid.data.model.ItemResponse
 import br.com.andreviana.phi.desafioandroid.data.model.StatementViewList
 import br.com.andreviana.phi.desafioandroid.data.model.TransactionType
 import br.com.andreviana.phi.desafioandroid.databinding.AdapterMovesBinding

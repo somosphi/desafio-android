@@ -3,6 +3,7 @@ package br.com.andreviana.phi.desafioandroid.ui.statement.list
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import br.com.andreviana.phi.desafioandroid.data.model.ItemResponse
 import br.com.andreviana.phi.desafioandroid.data.model.StatementViewList
 
 class StatementAdapter :
@@ -10,28 +11,18 @@ class StatementAdapter :
 
     private var _listener: OnItemClickListener? = null
 
-    private var _statementList: MutableList<StatementViewList> = mutableListOf()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatementViewHolder {
         return StatementViewHolder.create(parent, _listener)
     }
 
     override fun onBindViewHolder(holder: StatementViewHolder, position: Int) {
-        val statement = _statementList[position]
-        holder.bind(statement)
-    }
-
-    override fun getItemCount(): Int = _statementList.size
-
-    fun postValueStatement(statementList: List<StatementViewList>) {
-        _statementList.addAll(statementList)
-        notifyDataSetChanged()
+        val statement = getItem(position)
+        if (statement != null) holder.bind(statement)
     }
 
     fun runOnItemClickListener(itemClick: OnItemClickListener) {
         _listener = itemClick
     }
-
 
     companion object {
         private val STATEMENT_COMPARATOR = object : DiffUtil.ItemCallback<StatementViewList>() {
