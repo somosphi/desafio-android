@@ -22,7 +22,7 @@ interface StatementService {
         @Header("token") token: String = TOKEN,
         @Path("limit") limit: String,
         @Path("offset") offset: String
-    ): Response<StatementResponse>
+    ): StatementResponse
 
     @GET(STATEMENT_DETAIL)
     suspend fun getMyStatementDetail(

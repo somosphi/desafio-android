@@ -6,71 +6,54 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.map
 import br.com.andreviana.phi.desafioandroid.R
 import br.com.andreviana.phi.desafioandroid.data.common.Constants
 import br.com.andreviana.phi.desafioandroid.data.common.DataState
+import br.com.andreviana.phi.desafioandroid.data.model.mapperToStatementList
 import br.com.andreviana.phi.desafioandroid.databinding.ActivityStatementListBinding
+import br.com.andreviana.phi.desafioandroid.ui.statement.list.adapter.StatementAdapter
+import br.com.andreviana.phi.desafioandroid.ui.statement.list.adapter.StatementLoadAdapter
 import br.com.andreviana.phi.desafioandroid.util.helper.PreferencesHelper
 import br.com.andreviana.phi.desafioandroid.util.ktx.convertCentsToReal
 import br.com.andreviana.phi.desafioandroid.util.ktx.moneyFormat
 import br.com.andreviana.phi.desafioandroid.util.ktx.navigationToStatementDetail
 import br.com.andreviana.phi.desafioandroid.util.ktx.showToastLong
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class StatementListActivity : AppCompatActivity(), View.OnClickListener,
-    SwipeRefreshLayout.OnRefreshListener {
+class StatementListActivity : AppCompatActivity(), View.OnClickListener {
 
     private val viewModel: StatementViewModel by viewModels()
     private val binding by lazy { ActivityStatementListBinding.inflate(layoutInflater) }
     private val preferences: PreferencesHelper by lazy { PreferencesHelper(applicationContext) }
 
     private val adapter: StatementAdapter by lazy { StatementAdapter() }
-    private var mCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        onRefresh()
         getMyBalance()
         setupUI()
+        getMyStatement()
     }
 
     private fun setupUI() {
-        val color = ContextCompat.getColor(this, R.color.teal_custom_300)
-        binding.swipeRefreshMoves.setColorSchemeColors(color)
         binding.imageViewHideBalance.setOnClickListener(this)
         binding.imageViewShowBalance.setOnClickListener(this)
-        binding.swipeRefreshMoves.setOnRefreshListener(this)
-        binding.recyclerViewMoves.adapter = adapter
+        binding.recyclerViewMoves.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = StatementLoadAdapter { adapter.retry() },
+            footer = StatementLoadAdapter { adapter.retry() }
+        )
         checkVisibilityBalance()
         checkUiNightMode()
-        setupScrollListener()
 
         adapter.runOnItemClickListener { statementId ->
             navigationToStatementDetail(statementId)
         }
-    }
-
-    private fun setupScrollListener() {
-        val layoutManager = binding.recyclerViewMoves.layoutManager as LinearLayoutManager
-        binding.recyclerViewMoves.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                val totalItemCount = layoutManager.itemCount
-                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-
-                if (lastVisibleItem + 1 == totalItemCount) {
-                    ++mCounter
-                    getMyStatement("10", mCounter.toString())
-                }
-            }
-        })
     }
 
     private fun checkVisibilityBalance() {
@@ -108,60 +91,25 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
 
     }
 
-    private fun getMyStatement(limit: String, offset: String) {
-        viewModel.getStatement(limit, offset).observe(this, { dataState ->
-            when (dataState) {
-                is DataState.Loading -> showProgress()
-                is DataState.Success -> {
-                    hideProgress()
-                    adapter.submitList(dataState.data)
-                }
-                is DataState.Failure -> {
-                    hideProgress()
-                    showToastLong(dataState.message)
-                }
-                is DataState.Error -> {
-                    hideProgress()
-                    showToastLong(Constants.GENERIC_ERROR)
-                    Timber.e(dataState.throwable)
-                }
+    private fun getMyStatement() {
+        lifecycleScope.launch {
+            viewModel.getStatementPagination().collectLatest {
+                adapter.submitData(it.map { item -> item.mapperToStatementList() })
             }
-        })
+        }
     }
 
     private fun getMyBalance() {
         viewModel.getBalance().observe(this, { dataState ->
             when (dataState) {
                 is DataState.Success -> {
-                    hideProgress()
                     binding.textViewBalanceValue.text =
                         convertCentsToReal(dataState.data.amount).moneyFormat()
                 }
-                is DataState.Failure -> {
-                    hideProgress()
-                    showToastLong(dataState.message)
-                }
-                is DataState.Error -> {
-                    hideProgress()
-                    showToastLong(Constants.GENERIC_ERROR)
-                }
-
+                is DataState.Failure -> showToastLong(dataState.message)
+                is DataState.Error -> showToastLong(Constants.GENERIC_ERROR)
             }
         })
-    }
-
-    private fun showProgress() {
-        binding.swipeRefreshMoves.isRefreshing = true
-    }
-
-    private fun hideProgress() {
-        binding.swipeRefreshMoves.isRefreshing = false
-    }
-
-
-    override fun onRefresh() {
-        getMyStatement("10", "0")
-        Timber.tag(TAG).i("ON_REFRESH")
     }
 
     override fun onClick(view: View?) {
@@ -170,9 +118,4 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener,
             R.id.imageViewShowBalance -> showBalance()
         }
     }
-
-    companion object {
-        private const val TAG = "StatementListActivity"
-    }
-
 }
