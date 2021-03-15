@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Desafio Android</string>
+    <string name="extract">Extrato</string>
+    <string name="your_balance">Seu saldo</string>
+    <string name="your_moves">Suas movimentações</string>
+    <string name="proof">Comprovante</string>
+    <string name="share">Compartilhar</string>
+    <string name="retry">Tente novamente</string>
 </resources>
