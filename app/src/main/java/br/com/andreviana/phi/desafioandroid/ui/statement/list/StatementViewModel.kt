@@ -20,10 +20,6 @@ class StatementViewModel
         emitSource(statementRepository.fetchBalance().asLiveData())
     }
 
-    fun getStatement(limit: String, offset: String) = liveData {
-        emitSource(statementRepository.fetchStatement(limit, offset).asLiveData())
-    }
-
     fun getStatementPagination(): Flow<PagingData<ItemResponse>> {
         return statementRepository.getStatement().cachedIn(viewModelScope)
     }

@@ -3,14 +3,13 @@
     <style name="Theme.DesafioAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/grey_custom_600</item>
-        <item name="colorPrimaryVariant">@color/grey_custom_100</item>
+        <item name="colorPrimaryVariant">@color/grey_custom_900</item>
         <item name="colorOnPrimary">@color/grey_custom_900</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_custom_300</item>
         <item name="colorOnSecondary">@color/grey_custom_900</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/transparent</item>
     </style>
 </resources>

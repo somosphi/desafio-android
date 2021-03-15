@@ -17,6 +17,8 @@ private const val STARTING_OFFSET = 0
 
 interface StatementDataSource {
     suspend fun getBalance(): Flow<DataState<Balance>>
+
+    @Deprecated("Função descontinuada, substituída por load do Pager.")
     suspend fun getStatement(
         limit: String,
         offset: String

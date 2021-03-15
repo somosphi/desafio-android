@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.andreviana.phi.desafioandroid.R
 import br.com.andreviana.phi.desafioandroid.data.common.Constants
 import br.com.andreviana.phi.desafioandroid.data.common.DataState
 import br.com.andreviana.phi.desafioandroid.data.model.mapperToStatementList
 import br.com.andreviana.phi.desafioandroid.databinding.ActivityStatementListBinding
+import br.com.andreviana.phi.desafioandroid.ui.statement.list.adapter.StatementAdapter
+import br.com.andreviana.phi.desafioandroid.ui.statement.list.adapter.StatementLoadAdapter
 import br.com.andreviana.phi.desafioandroid.util.helper.PreferencesHelper
 import br.com.andreviana.phi.desafioandroid.util.ktx.convertCentsToReal
 import br.com.andreviana.phi.desafioandroid.util.ktx.moneyFormat
@@ -32,7 +32,6 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener {
     private val preferences: PreferencesHelper by lazy { PreferencesHelper(applicationContext) }
 
     private val adapter: StatementAdapter by lazy { StatementAdapter() }
-    private var mCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,35 +42,18 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setupUI() {
-        val color = ContextCompat.getColor(this, R.color.teal_custom_300)
-        binding.swipeRefreshMoves.setColorSchemeColors(color)
         binding.imageViewHideBalance.setOnClickListener(this)
         binding.imageViewShowBalance.setOnClickListener(this)
-        binding.buttonAddList.setOnClickListener(this)
-        binding.recyclerViewMoves.adapter = adapter
+        binding.recyclerViewMoves.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = StatementLoadAdapter { adapter.retry() },
+            footer = StatementLoadAdapter { adapter.retry() }
+        )
         checkVisibilityBalance()
         checkUiNightMode()
-        setupScrollListener()
 
         adapter.runOnItemClickListener { statementId ->
             navigationToStatementDetail(statementId)
         }
-    }
-
-    private fun setupScrollListener() {
-        val layoutManager = binding.recyclerViewMoves.layoutManager as LinearLayoutManager
-        binding.recyclerViewMoves.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                val totalItemCount = layoutManager.itemCount
-                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-
-                if (lastVisibleItem + 1 == totalItemCount) {
-                    ++mCounter
-                }
-            }
-        })
     }
 
     private fun checkVisibilityBalance() {
@@ -124,37 +106,16 @@ class StatementListActivity : AppCompatActivity(), View.OnClickListener {
                     binding.textViewBalanceValue.text =
                         convertCentsToReal(dataState.data.amount).moneyFormat()
                 }
-                is DataState.Failure -> {
-                    hideProgress()
-                    showToastLong(dataState.message)
-                }
-                is DataState.Error -> {
-                    hideProgress()
-                    showToastLong(Constants.GENERIC_ERROR)
-                }
-
+                is DataState.Failure -> showToastLong(dataState.message)
+                is DataState.Error -> showToastLong(Constants.GENERIC_ERROR)
             }
         })
-    }
-
-    private fun showProgress() {
-        binding.swipeRefreshMoves.isRefreshing = true
-    }
-
-    private fun hideProgress() {
-        binding.swipeRefreshMoves.isRefreshing = false
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.imageViewHideBalance -> hideBalance()
             R.id.imageViewShowBalance -> showBalance()
-            //R.id.buttonAddList -> getMyStatement("2", (++mCounter).toString())
         }
     }
-
-    companion object {
-        private const val TAG = "StatementListActivity"
-    }
-
 }

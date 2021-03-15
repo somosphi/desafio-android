@@ -1,9 +1,8 @@
-package br.com.andreviana.phi.desafioandroid.ui.statement.list
+package br.com.andreviana.phi.desafioandroid.ui.statement.list.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import br.com.andreviana.phi.desafioandroid.data.model.ItemResponse
 import br.com.andreviana.phi.desafioandroid.data.model.StatementViewList
 
 class StatementAdapter :
