@@ -57,7 +57,7 @@ class StatementViewHolder(
             binding.cardViewMoves.setBackgroundColor(
                 ContextCompat.getColor(
                     itemView.context,
-                    R.color.grey_custom_900
+                    R.color.black
                 )
             )
         }
@@ -78,7 +78,7 @@ class StatementViewHolder(
             binding.cardViewMoves.setBackgroundColor(
                 ContextCompat.getColor(
                     itemView.context,
-                    R.color.grey_custom_900
+                    R.color.blackLighter
                 )
             )
         }

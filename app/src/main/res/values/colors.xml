@@ -11,6 +11,7 @@
     <color name="grey_custom_100">#F8F8F8</color>
     <color name="grey_custom_600">#828282</color>
     <color name="grey_custom_900">#202021</color>
+    <color name="blackLighter">#212121</color>
 
     <color name="transparent">#00000000</color>
 </resources>
