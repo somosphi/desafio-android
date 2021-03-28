@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PhiTest</string>
+    <string name="titleActivityMain">Extrato</string>
+    <string name="pix">Pix</string>
+</resources>
