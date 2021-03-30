@@ -2,4 +2,8 @@
     <string name="app_name">PhiTest</string>
     <string name="titleActivityMain">Extrato</string>
     <string name="pix">Pix</string>
+    <string name="txtYourAmount">Seu Saldo</string>
+    <string name="txtTransactions">Suas Movimentações</string>
+
+    <string name="token">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</string>
 </resources>
