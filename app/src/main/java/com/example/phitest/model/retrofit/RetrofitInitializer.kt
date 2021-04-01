@@ -1,5 +1,6 @@
-package com.example.phitest.service.retrofit
+package com.example.phitest.model.retrofit
 
+import com.example.phitest.interfaces.TransactionInterface
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

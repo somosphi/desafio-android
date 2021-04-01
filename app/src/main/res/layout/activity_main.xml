@@ -11,8 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titleActivityMain"
-        android:textSize="24sp"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:textColor="@color/custom_black"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@color/custom_white"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout_editor_absoluteX="21dp">
 
@@ -35,6 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtYourAmount"
+                android:textSize="20sp"
+                android:textColor="@color/custom_black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -45,7 +51,7 @@
                 app:layout_constraintStart_toEndOf="@+id/txtAmount"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:srcCompat="@android:drawable/ic_menu_view"
-                app:tint="@color/purple_200" />
+                app:tint="@color/custom_blue" />
 
         </LinearLayout>
 
@@ -54,6 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textColor="@color/custom_blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -63,16 +72,21 @@
         android:id="@+id/listTransactions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTransactions" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTransactions"
+        android:padding="10dp"/>
 
     <TextView
         android:id="@+id/txtTransactions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txtTransactions"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/custom_black"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
