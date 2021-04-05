@@ -1,9 +1,7 @@
 package com.example.phitest.view.listeners
 
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.phitest.interfaces.OnLoadMoreListener
 
 class RecyclerViewInfiniteScroll : RecyclerView.OnScrollListener {

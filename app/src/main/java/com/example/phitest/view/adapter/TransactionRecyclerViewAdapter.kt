@@ -12,8 +12,6 @@ import com.example.phitest.interfaces.OnItemClickListener
 import com.example.phitest.model.Transaction
 import com.example.phitest.model.TransactionTypeEnum
 import com.example.phitest.util.VsFunctions
-import java.time.ZonedDateTime
-import java.time.format.DateTimeParseException
 
 class TransactionRecyclerViewAdapter(
         private var mTransactions: ArrayList<Transaction.Items?>,
@@ -28,7 +26,7 @@ class TransactionRecyclerViewAdapter(
         fun bind(transaction: Transaction.Items?, clickListener: OnItemClickListener) {
             //bind data
             itemView.setOnClickListener {
-                clickListener.onItemClicked(transaction)
+                transaction?.let { clickListener.onItemClicked(transaction) }
             }
         }
     }
@@ -43,6 +41,7 @@ class TransactionRecyclerViewAdapter(
         }
     }
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder.itemViewType == VsFunctions.VIEW_TYPE_ITEM) {
@@ -53,14 +52,6 @@ class TransactionRecyclerViewAdapter(
             val txtDate = holder.itemView.findViewById<TextView>(R.id.txtDate)
             val txtAmount = holder.itemView.findViewById<TextView>(R.id.txtAmount)
             val txtPix = holder.itemView.findViewById<TextView>(R.id.txtPix)
-
-            var dateStr = ""
-            try {
-                val date = ZonedDateTime.parse(transaction?.createdAt)
-                dateStr = dateStr.plus(date.dayOfMonth.toString().plus("/").plus(date.monthValue))
-            } catch (e: DateTimeParseException) {
-                //TODO
-            }
 
             when (transaction?.tType) {
                 TransactionTypeEnum.TRANSFEROUT.name -> { txtPix.visibility = View.INVISIBLE }
@@ -75,7 +66,7 @@ class TransactionRecyclerViewAdapter(
             transaction?.from?.let { txtToFrom.text = it }
 
             txtType.text = transaction?.description
-            txtDate.text = dateStr
+            txtDate.text = transaction?.createdAt?.let { VsFunctions.toDateDayMonthString(it) }
             txtAmount.text = transaction?.amount?.let { VsFunctions.formatToCurrency(it) }
 
             holder.bind(mTransactions[position], itemClickListener)

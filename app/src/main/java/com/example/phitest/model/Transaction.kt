@@ -1,5 +1,7 @@
 package com.example.phitest.model
 
+import java.io.Serializable
+
 data class Transaction(val items: ArrayList<Items?>) {
 
     data class Items(
@@ -9,6 +11,7 @@ data class Transaction(val items: ArrayList<Items?>) {
         val to: String,
         val from: String,
         val description: String,
-        val tType: String)
+        val tType: String,
+        val bankName: String) : Serializable
 
 }

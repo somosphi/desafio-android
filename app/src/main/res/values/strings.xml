@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">PhiTest</string>
     <string name="titleActivityMain">Extrato</string>
+    <string name="titleActivityDetail">Comprovante</string>
     <string name="pix">Pix</string>
     <string name="txtYourAmount">Seu Saldo</string>
     <string name="txtTransactions">Suas Movimentações</string>
+    <string name="txtTransactionTypeDetail">Tipo de movimentação</string>
+    <string name="txtAmount">Valor</string>
+    <string name="txtToFrom">Recebedor</string>
+    <string name="txtBank">Instituição bancária</string>
+    <string name="txtDateTime">Data/Hora</string>
+    <string name="txtAuthentication">Autenticação</string>
+    <string name="btnShare">Compartilhar</string>
 </resources>
