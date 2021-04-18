@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.henrique.desafio_android.HomeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeActivity">
+
+        <TextView
+            android:id="@+id/homeTitle"
+            style="@style/HomeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_spacing_xx_small"
+            android:text="@string/home_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/homeConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_height_constraint_home"
+            android:layout_marginTop="@dimen/size_spacing_x_small"
+            android:background="@color/white_smoke"
+            android:paddingStart="@dimen/size_spacing_medium"
+            android:paddingEnd="@dimen/size_spacing_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeTitle">
+
+            <TextView
+                android:id="@+id/homeBalanceTitle"
+                style="@style/Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_spacing_small"
+                android:text="@string/home_balance_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/homeBalanceIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_spacing_small"
+                android:contentDescription="@string/home_show_hide_icon_description"
+                android:onClick="@{() -> viewModel.toggleBalanceVisibility()}"
+                android:src="@{ viewModel.isBalanceVisible() == true ? @drawable/ic_visibility_off_24 : @drawable/ic_visibility_24}"
+                app:layout_constraintStart_toEndOf="@+id/homeBalanceTitle"
+                app:layout_constraintTop_toTopOf="@+id/homeBalanceTitle"
+                tools:src="@drawable/ic_visibility_off_24" />
+
+            <TextView
+                android:id="@+id/homeBalanceAmount"
+                style="@style/BalanceAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_spacing_small"
+                android:layout_marginBottom="@dimen/size_spacing_small"
+                android:text="@{viewModel.balanceAmount}"
+                android:visibility="@{ viewModel.isBalanceVisible() == true ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeBalanceTitle"
+                tools:text="R$ 1.345,00" />
+
+            <View
+                android:id="@+id/homeBalanceView"
+                android:layout_width="@dimen/size_width_view_home"
+                android:layout_height="@dimen/size_height_view_home"
+                android:background="@color/vivid_cyan"
+                android:visibility="@{ viewModel.isBalanceVisible() ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/homeBalanceTitle"
+                app:layout_constraintTop_toBottomOf="@+id/homeBalanceTitle" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/homeBalanceSubtitle"
+            style="@style/Body1.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_medium"
+            android:layout_marginTop="@dimen/size_spacing_x_small"
+            android:text="@string/home_subtitle"
+            app:layout_constraintStart_toStartOf="@+id/homeConstraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/homeConstraintLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_spacing_x_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeBalanceSubtitle"
+            tools:listitem="@layout/item_movimentation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

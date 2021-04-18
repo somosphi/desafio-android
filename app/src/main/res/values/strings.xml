@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">desafio-android</string>
+
+    <!-- Home -->
+    <string name="home_title">Extrato</string>
+    <string name="home_balance_title">Seu saldo</string>
+    <string name="home_subtitle">Suas movimentações</string>
+    <string name="home_show_hide_icon_description">Ícone para mostrar saldo</string>
+
+    <!-- Movimentation Item -->
+    <string name="movimentation_pix">Pix</string>
+
 </resources>
