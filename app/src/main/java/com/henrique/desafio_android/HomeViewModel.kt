@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
 
-    val isBalanceVisible = MutableLiveData(false)
+    val isBalanceVisible = MutableLiveData(true)
     val balanceAmount = MutableLiveData("R$ 1.345,00")
 
     fun toggleBalanceVisibility() {

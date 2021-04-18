@@ -7,7 +7,7 @@ import com.henrique.desafio_android.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
-    val mViewModel = HomeViewModel()
+    private val mViewModel = HomeViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

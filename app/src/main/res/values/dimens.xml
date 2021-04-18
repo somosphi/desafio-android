@@ -13,4 +13,9 @@
     <dimen name="size_font_medium">20.00sp</dimen>
     <dimen name="size_font_small">16.00sp</dimen>
 
+    <!-- COMPONENTS SIZE -->
+    <dimen name="size_height_constraint_home">108.00dp</dimen>
+    <dimen name="size_width_view_home">145.00dp</dimen>
+    <dimen name="size_height_view_home">3.00dp</dimen>
+
 </resources>
