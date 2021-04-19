@@ -10,4 +10,6 @@
     <!-- Movimentation Item -->
     <string name="movimentation_pix">Pix</string>
 
+    <!-- Generic Error -->
+    <string name="generic_error_message">Não foi possível obter as informações</string>
 </resources>

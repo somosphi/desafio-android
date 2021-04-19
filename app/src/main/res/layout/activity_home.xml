@@ -9,14 +9,15 @@
 
         <variable
             name="viewModel"
-            type="com.henrique.desafio_android.HomeViewModel" />
+            type="com.henrique.desafio_android.presenter.home.HomeViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeActivity">
+        tools:context=".presenter.home.HomeActivity"
+        android:visibility="@{viewModel.contentVisibility}">
 
         <TextView
             android:id="@+id/homeTitle"
@@ -70,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_spacing_small"
                 android:layout_marginBottom="@dimen/size_spacing_small"
-                android:text="@{viewModel.balanceAmount}"
+                android:text="@{viewModel.balanceAmountText}"
                 android:visibility="@{ viewModel.isBalanceVisible() == true ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

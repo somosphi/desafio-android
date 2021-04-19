@@ -9,7 +9,7 @@
 
         <variable
             name="movimentationItem"
-            type="com.henrique.desafio_android.movimentation.MovimentationItem" />
+            type="com.henrique.desafio_android.presenter.movimentation.MovimentationItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
