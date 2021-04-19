@@ -19,6 +19,17 @@
         tools:context=".presenter.home.HomeActivity"
         android:visibility="@{viewModel.contentVisibility}">
 
+        <!--<ProgressBar
+            android:id="@+id/homeProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
         <TextView
             android:id="@+id/homeTitle"
             style="@style/HomeTitle"
@@ -103,12 +114,14 @@
             app:layout_constraintTop_toBottomOf="@+id/homeConstraintLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/homeMovimentationList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/size_spacing_x_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeBalanceSubtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_movimentation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

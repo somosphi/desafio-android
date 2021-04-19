@@ -1,6 +1,7 @@
 package com.henrique.desafio_android
 
 import com.henrique.desafio_android.domain.home.GetBalanceInteractor
+import com.henrique.desafio_android.domain.home.GetMyStatementInteractor
 import com.henrique.desafio_android.network.API
 import com.henrique.desafio_android.network.RemoteDataSource
 import com.henrique.desafio_android.network.Repository
@@ -24,13 +25,19 @@ private val interactorModule = module {
             resources = androidContext().resources
         )
     }
+    factory {
+        GetMyStatementInteractor(
+            repository = get(),
+            resources = androidContext().resources
+        )
+    }
 }
 
 private val viewModelModule = module {
-    viewModel { (balanceInteractor: GetBalanceInteractor) ->
+    viewModel { (balanceInteractor: GetBalanceInteractor, myStatementInteractor: GetMyStatementInteractor) ->
         HomeViewModel(
             balanceInteractor = balanceInteractor,
-            resources = androidContext().resources
+            myStatementInteractor = myStatementInteractor
         )
     }
 }

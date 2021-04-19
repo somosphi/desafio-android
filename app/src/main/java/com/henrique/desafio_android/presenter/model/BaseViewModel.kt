@@ -8,11 +8,11 @@ open class BaseViewModel : ViewModel() {
 
     val requestState = MediatorLiveData<RequestState<Any>>()
 
-    val isLoading = MediatorLiveData<Boolean>().apply {
+    val isLoading = MediatorLiveData<Int>().apply {
         addSource(requestState) {
             value = when (it) {
-                is RequestState.Loading -> true
-                else -> false
+                is RequestState.Loading -> View.VISIBLE
+                else -> View.GONE
             }
         }
     }
@@ -31,7 +31,7 @@ open class BaseViewModel : ViewModel() {
             value = when (it) {
                 is RequestState.Idle,
                 is RequestState.Success -> View.VISIBLE
-                else -> View.GONE
+                else -> View.VISIBLE
             }
         }
     }
