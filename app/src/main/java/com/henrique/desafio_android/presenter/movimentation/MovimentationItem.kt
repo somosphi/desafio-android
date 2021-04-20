@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.movimentation
+package com.henrique.desafio_android.presenter.movimentation
 
 data class MovimentationItem(
     val title: String,
