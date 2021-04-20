@@ -7,9 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.henrique.desafio_android.R
-import com.henrique.desafio_android.databinding.ItemMovimentationBinding
 import com.henrique.desafio_android.network.response.MyStatementResponse
-import com.henrique.desafio_android.utils.formatCurrency
 
 class MovimentationAdapter(context: Context) : RecyclerView.Adapter<MovimentationViewHolder>() {
 

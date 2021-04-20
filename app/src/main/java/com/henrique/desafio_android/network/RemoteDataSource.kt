@@ -1,6 +1,7 @@
 package com.henrique.desafio_android.network
 
 import com.henrique.desafio_android.network.response.BalanceResponse
+import com.henrique.desafio_android.network.response.MyStatementResponse
 import com.henrique.desafio_android.network.response.MyStatementResponseList
 
 class RemoteDataSource(private val api: API) : Repository {
@@ -15,6 +16,10 @@ class RemoteDataSource(private val api: API) : Repository {
         val response = api.getMyStatement(limit, offset)
         requireNotNull(response.items)
         return response
+    }
+
+    override suspend fun getStatementDetail(id: String): MyStatementResponse {
+        return api.getStatementDetail(id)
     }
 
 }

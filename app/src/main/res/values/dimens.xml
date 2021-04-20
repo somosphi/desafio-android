@@ -2,7 +2,8 @@
 <resources>
 
     <!-- SIZE -->
-    <dimen name="size_spacing_medium">24.00dp</dimen>
+    <dimen name="size_spacing_large">24.00dp</dimen>
+    <dimen name="size_spacing_medium">20.00dp</dimen>
     <dimen name="size_spacing_small">16.00dp</dimen>
     <dimen name="size_spacing_x_small">12.00dp</dimen>
     <dimen name="size_spacing_xx_small">8.00dp</dimen>

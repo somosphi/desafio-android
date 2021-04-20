@@ -7,6 +7,7 @@ import com.henrique.desafio_android.network.RemoteDataSource
 import com.henrique.desafio_android.network.Repository
 import com.henrique.desafio_android.network.RetrofitClient
 import com.henrique.desafio_android.presenter.home.HomeViewModel
+import com.henrique.desafio_android.presenter.movimentation.detail.MovimentationDetailViewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -39,6 +40,9 @@ private val viewModelModule = module {
             balanceInteractor = balanceInteractor,
             myStatementInteractor = myStatementInteractor
         )
+    }
+    viewModel { (myStatementInteractor: GetMyStatementInteractor) ->
+        MovimentationDetailViewModel(myStatementInteractor)
     }
 }
 

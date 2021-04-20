@@ -19,20 +19,9 @@
         tools:context=".presenter.home.HomeActivity"
         android:visibility="@{viewModel.contentVisibility}">
 
-        <!--<ProgressBar
-            android:id="@+id/homeProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
-
         <TextView
             android:id="@+id/homeTitle"
-            style="@style/HomeTitle"
+            style="@style/Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_spacing_xx_small"
@@ -47,8 +36,8 @@
             android:layout_height="@dimen/size_height_constraint_home"
             android:layout_marginTop="@dimen/size_spacing_x_small"
             android:background="@color/white_smoke"
-            android:paddingStart="@dimen/size_spacing_medium"
-            android:paddingEnd="@dimen/size_spacing_medium"
+            android:paddingStart="@dimen/size_spacing_large"
+            android:paddingEnd="@dimen/size_spacing_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeTitle">
@@ -107,7 +96,7 @@
             style="@style/Body1.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_spacing_medium"
+            android:layout_marginStart="@dimen/size_spacing_large"
             android:layout_marginTop="@dimen/size_spacing_x_small"
             android:text="@string/home_subtitle"
             app:layout_constraintStart_toStartOf="@+id/homeConstraintLayout"

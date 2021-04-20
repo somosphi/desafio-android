@@ -8,6 +8,9 @@ data class MyStatementResponse(
     @SerializedName("id") val id: String,
     @SerializedName("amount") val amount: BigDecimal,
     @SerializedName("to") val to: String?,
+    @SerializedName("from") val from: String?,
     @SerializedName("description") val description: String,
-    @SerializedName("tType") val tType: String
+    @SerializedName("tType") val tType: String,
+    @SerializedName("bankName") val bankName: String?,
+    @SerializedName("authentication") val authentication: String?
 )

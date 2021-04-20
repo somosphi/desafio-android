@@ -7,6 +7,16 @@
     <string name="home_subtitle">Suas movimentações</string>
     <string name="home_show_hide_icon_description">Ícone para mostrar saldo</string>
 
+    <!-- Movimentation Detail -->
+    <string name="movimentation_detail_navbar_icon_description">Ícone para voltar para a tela anterior</string>
+    <string name="movimentation_detail_title">Comprovante</string>
+    <string name="movimentation_detail_type_title">Tipo de movimentação</string>
+    <string name="movimentation_detail_amount_title">Valor</string>
+    <string name="movimentation_detail_bank_title">Instituição Financeira</string>
+    <string name="movimentation_detail_date_title">Data/Hora</string>
+    <string name="movimentation_detail_authentication_title">Autenticação</string>
+    <string name="movimentation_detail_button_text">Compartilhar</string>
+
     <!-- Movimentation Item -->
     <string name="movimentation_pix">Pix</string>
 

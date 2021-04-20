@@ -1,5 +1,6 @@
 package com.henrique.desafio_android.presenter.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -10,9 +11,9 @@ import com.henrique.desafio_android.databinding.ActivityHomeBinding
 import com.henrique.desafio_android.domain.home.GetBalanceInteractor
 import com.henrique.desafio_android.domain.home.GetMyStatementInteractor
 import com.henrique.desafio_android.loadKoinModules
-import com.henrique.desafio_android.network.response.MyStatementResponse
 import com.henrique.desafio_android.presenter.movimentation.MovimentationAdapter
 import com.henrique.desafio_android.presenter.movimentation.MovimentationListener
+import com.henrique.desafio_android.presenter.movimentation.detail.MovimentationDetailActivity
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -47,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
             loadKoinModules()
         }
 
-        binding = DataBindingUtil.setContentView<ActivityHomeBinding>(this, R.layout.activity_home)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.lifecycleOwner = this@HomeActivity
         binding.setVariable(BR.viewModel, mViewModel)
 
@@ -59,8 +60,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         mAdapter.attachListener(mListener)
-        mViewModel.getBalance()
-        mViewModel.getMyStatement()
+        mViewModel.resume()
     }
 
     private fun setupMovimentationList() {
@@ -82,18 +82,26 @@ class HomeActivity : AppCompatActivity() {
             binding.homeMovimentationList.layoutManager as LinearLayoutManager,
             {
                 mViewModel.getMyStatement()
-            },
-            mViewModel.offset
-        ) {
-            override fun onListClick(movimentationResponse: MyStatementResponse) {
-                TODO("Not yet implemented")
             }
+        ) {
+            override fun onListClick(id: String) {
+                val intent = Intent(applicationContext, MovimentationDetailActivity::class.java)
+                Bundle(1).apply {
+                    putString(MovimentationDetailActivity.MOVIMENTATION_ID_EXTRAS, id)
+                    intent.putExtras(this)
+                }
+                startActivity(intent)
+            }
+
         }
     }
 
     private fun observe() {
         mViewModel.myStatementResponse.observe(this, {
-            mAdapter.updateList(it.items.toMutableList())
+            if (it.items.count() > 0) {
+                mAdapter.updateList(it.items.toMutableList())
+                mViewModel.offset++
+            }
         })
     }
 
