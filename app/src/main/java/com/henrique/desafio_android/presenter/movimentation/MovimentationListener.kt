@@ -2,25 +2,21 @@ package com.henrique.desafio_android.presenter.movimentation
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.henrique.desafio_android.network.response.MyStatementResponse
 
 abstract class MovimentationListener(
     private val layoutManager: LinearLayoutManager,
-    private val askForMore: () -> Unit,
-    private val offset: Int
+    private val askForMore: () -> Unit
 ) : RecyclerView.OnScrollListener() {
-    private var finishedPagination: Boolean = false
 
-    abstract fun onListClick(movimentationResponse: MyStatementResponse)
+    abstract fun onListClick(id: String)
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
 
-        val visibleItemCount = layoutManager.childCount
         val totalItemCount = layoutManager.itemCount
-        val firstVisiblePosition = layoutManager.findFirstVisibleItemPosition()
+        val lastVisiblePosition = layoutManager.findLastVisibleItemPosition()
 
-        if (!finishedPagination && visibleItemCount + firstVisiblePosition >= totalItemCount - offset && firstVisiblePosition >= 0 && totalItemCount >= offset) {
+        if (lastVisiblePosition == (totalItemCount - 1)) {
             askForMore()
         }
     }

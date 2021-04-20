@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.henrique.desafio_android.utils.formatCurrency
 import com.henrique.desafio_android.domain.home.GetBalanceInteractor
 import com.henrique.desafio_android.domain.home.GetMyStatementInteractor
-import com.henrique.desafio_android.network.response.MyStatementResponse
 import com.henrique.desafio_android.network.response.MyStatementResponseList
 import com.henrique.desafio_android.presenter.model.BaseViewModel
 import com.henrique.desafio_android.presenter.model.RequestState
@@ -17,7 +16,6 @@ class HomeViewModel(
 ) : BaseViewModel() {
 
     var offset = 0
-
     private val limit = 10
     private val balanceAmount = MutableLiveData<BigDecimal>()
     val isBalanceVisible = MutableLiveData(true)
@@ -57,6 +55,7 @@ class HomeViewModel(
                 is RequestState.Success -> {
                     it.result.let { response ->
                         myStatementResponse.postValue(response)
+
                     }
                 }
                 else -> { /* Intentionally left empty */
@@ -69,13 +68,19 @@ class HomeViewModel(
         isBalanceVisible.value = isBalanceVisible.value?.not()
     }
 
-    fun getBalance() {
+    private fun getBalance() {
         balanceInteractor.getBalance()
     }
 
     fun getMyStatement() {
-        myStatementInteractor.getMyStatement(limit.toString(), offset.toString())
-        offset++
+        if (myStatementInteractor.requestState.value != RequestState.Loading) {
+            myStatementInteractor.getMyStatement(limit.toString(), offset.toString())
+        }
+    }
+
+    fun resume() {
+        getBalance()
+        getMyStatement()
     }
 
 }

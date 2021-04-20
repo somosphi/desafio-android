@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@{movimentationItem.isPix == true ? @color/white_smoke : @color/white}"
-        android:paddingStart="@dimen/size_spacing_medium"
-        android:paddingEnd="@dimen/size_spacing_medium">
+        android:paddingStart="@dimen/size_spacing_large"
+        android:paddingEnd="@dimen/size_spacing_large">
 
         <View
             android:id="@+id/movimentationTopItemView"

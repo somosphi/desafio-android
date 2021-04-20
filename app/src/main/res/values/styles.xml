@@ -3,7 +3,7 @@
 
     <style name="Theme.Desafioandroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/vivid_cyan</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -12,7 +12,7 @@
         <item name="colorOnSecondary">@color/black</item>
     </style>
 
-    <style name="HomeTitle">
+    <style name="Title">
         <item name="android:textColor">@color/dark_blue</item>
         <item name="android:textSize">@dimen/size_font_medium</item>
     </style>
@@ -37,6 +37,11 @@
     <style name="BalanceAmount">
         <item name="android:textSize">@dimen/size_font_large</item>
         <item name="android:textColor">@color/vivid_cyan</item>
+    </style>
+
+    <style name="Value">
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:textSize">@dimen/size_font_medium</item>
     </style>
 
 </resources>
