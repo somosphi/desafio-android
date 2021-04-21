@@ -7,14 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.henrique.desafio_android.R
-import com.henrique.desafio_android.service.model.movimentation.MyStatementResponse
+import com.henrique.desafio_android.service.model.movimentation.MovimentationResponse
 import com.henrique.desafio_android.service.listener.MovimentationListener
 import com.henrique.desafio_android.view.viewholder.MovimentationViewHolder
 
 class MovimentationAdapter(context: Context) : RecyclerView.Adapter<MovimentationViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
-    private val mList: MutableList<MyStatementResponse> = arrayListOf()
+    private val mList: MutableList<MovimentationResponse> = arrayListOf()
     private lateinit var mListener: MovimentationListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovimentationViewHolder {
@@ -34,7 +34,7 @@ class MovimentationAdapter(context: Context) : RecyclerView.Adapter<Movimentatio
         mListener = listener
     }
 
-    fun updateList(list: MutableList<MyStatementResponse>) {
+    fun updateList(list: MutableList<MovimentationResponse>) {
         mList.addAll(list)
         notifyDataSetChanged()
     }

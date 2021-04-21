@@ -3,7 +3,7 @@ package com.henrique.desafio_android.service.model.movimentation
 import com.google.gson.annotations.SerializedName
 import java.math.BigDecimal
 
-data class MyStatementResponse(
+data class MovimentationResponse(
     @SerializedName("createdAt") val createdAt: String,
     @SerializedName("id") val id: String,
     @SerializedName("amount") val amount: BigDecimal,

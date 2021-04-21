@@ -1,9 +1,8 @@
 package com.henrique.desafio_android.service.repository
 
 import com.henrique.desafio_android.service.model.balance.BalanceResponse
-import com.henrique.desafio_android.service.model.movimentation.MyStatementResponse
-import com.henrique.desafio_android.service.model.movimentation.MyStatementResponseList
-import com.henrique.desafio_android.service.repository.Repository
+import com.henrique.desafio_android.service.model.movimentation.MovimentationResponse
+import com.henrique.desafio_android.service.model.movimentation.MovimentationResponseList
 import com.henrique.desafio_android.service.repository.remote.API
 
 class RemoteDataSource(private val api: API) : Repository {
@@ -14,14 +13,14 @@ class RemoteDataSource(private val api: API) : Repository {
         return response
     }
 
-    override suspend fun getMyStatement(limit: String, offset: String): MyStatementResponseList {
-        val response = api.getMyStatement(limit, offset)
+    override suspend fun getMovimentation(limit: String, offset: String): MovimentationResponseList {
+        val response = api.getMovimentation(limit, offset)
         requireNotNull(response.items)
         return response
     }
 
-    override suspend fun getStatementDetail(id: String): MyStatementResponse {
-        return api.getStatementDetail(id)
+    override suspend fun getMovimentationDetail(id: String): MovimentationResponse {
+        return api.getMovimentationDetail(id)
     }
 
 }

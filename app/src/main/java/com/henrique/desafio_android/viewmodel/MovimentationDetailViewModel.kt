@@ -1,7 +1,7 @@
 package com.henrique.desafio_android.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.henrique.desafio_android.service.repository.GetMyStatementInteractor
+import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
 import com.henrique.desafio_android.service.model.RequestState
 import com.henrique.desafio_android.service.utils.formatCurrency
 import com.henrique.desafio_android.service.utils.getPerson
@@ -9,7 +9,7 @@ import com.henrique.desafio_android.service.utils.getPersonType
 import com.henrique.desafio_android.service.utils.getDateTimeFormatted
 
 class MovimentationDetailViewModel(
-    private val myStatementInteractor: GetMyStatementInteractor
+    private val movimentationInteractor: GetMovimentationInteractor
 ) : BaseViewModel() {
 
     val movimentationId = MutableLiveData<String>()
@@ -23,7 +23,7 @@ class MovimentationDetailViewModel(
     val shouldCloseActivity = MutableLiveData(false)
 
     init {
-        requestState.addSource(myStatementInteractor.requestStateDetail) {
+        requestState.addSource(movimentationInteractor.requestStateDetail) {
             requestState.value = it
 
             when (it) {
@@ -61,7 +61,7 @@ class MovimentationDetailViewModel(
 
     fun getStatementDetail() {
         movimentationId.value?.let {
-            myStatementInteractor.getStatementDetail(it)
+            movimentationInteractor.getMovimentationDetail(it)
         }
     }
 }

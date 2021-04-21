@@ -9,7 +9,7 @@ import com.henrique.desafio_android.BR
 import com.henrique.desafio_android.R
 import com.henrique.desafio_android.databinding.ActivityHomeBinding
 import com.henrique.desafio_android.service.repository.GetBalanceInteractor
-import com.henrique.desafio_android.service.repository.GetMyStatementInteractor
+import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
 import com.henrique.desafio_android.service.loadKoinModules
 import com.henrique.desafio_android.view.adapter.MovimentationAdapter
 import com.henrique.desafio_android.service.listener.MovimentationListener
@@ -32,12 +32,12 @@ class HomeActivity : AppCompatActivity() {
         parametersOf()
     }
 
-    private val myStatementInteractor: GetMyStatementInteractor by inject {
+    private val movimentationInteractor: GetMovimentationInteractor by inject {
         parametersOf()
     }
 
     private val mViewModel: HomeViewModel by inject {
-        parametersOf(balanceInteractor, myStatementInteractor)
+        parametersOf(balanceInteractor, movimentationInteractor)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
         return object : MovimentationListener(
             binding.homeMovimentationList.layoutManager as LinearLayoutManager,
             {
-                mViewModel.getMyStatement()
+                mViewModel.getMovimentation()
             }
         ) {
             override fun onListClick(id: String) {
@@ -97,7 +97,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun observe() {
-        mViewModel.myStatementResponse.observe(this, {
+        mViewModel.myMovimentationResponse.observe(this, {
             if (it.items.count() > 0) {
                 mAdapter.updateList(it.items.toMutableList())
                 mViewModel.offset++

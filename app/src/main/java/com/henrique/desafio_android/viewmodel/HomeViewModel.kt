@@ -4,14 +4,14 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.henrique.desafio_android.service.utils.formatCurrency
 import com.henrique.desafio_android.service.repository.GetBalanceInteractor
-import com.henrique.desafio_android.service.repository.GetMyStatementInteractor
-import com.henrique.desafio_android.service.model.movimentation.MyStatementResponseList
+import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
+import com.henrique.desafio_android.service.model.movimentation.MovimentationResponseList
 import com.henrique.desafio_android.service.model.RequestState
 import java.math.BigDecimal
 
 class HomeViewModel(
     private val balanceInteractor: GetBalanceInteractor,
-    private val myStatementInteractor: GetMyStatementInteractor
+    private val movimentationInteractor: GetMovimentationInteractor
 ) : BaseViewModel() {
 
     var offset = 0
@@ -19,7 +19,7 @@ class HomeViewModel(
     private val balanceAmount = MutableLiveData<BigDecimal>()
     val isBalanceVisible = MutableLiveData(true)
     val balanceAmountText = MediatorLiveData<String>()
-    val myStatementResponse = MutableLiveData<MyStatementResponseList>()
+    val myMovimentationResponse = MutableLiveData<MovimentationResponseList>()
 
     init {
         balanceAmountText.addSource(balanceAmount) {
@@ -29,7 +29,7 @@ class HomeViewModel(
         }
 
         observeGetBalance()
-        observeGetMyStatements()
+        observeGetMovimentation()
     }
 
     private fun observeGetBalance() {
@@ -46,15 +46,14 @@ class HomeViewModel(
         }
     }
 
-    private fun observeGetMyStatements() {
-        requestState.addSource(myStatementInteractor.requestState) {
+    private fun observeGetMovimentation() {
+        requestState.addSource(movimentationInteractor.requestState) {
             requestState.value = it
 
             when (it) {
                 is RequestState.Success -> {
                     it.result.let { response ->
-                        myStatementResponse.postValue(response)
-
+                        myMovimentationResponse.postValue(response)
                     }
                 }
                 else -> { /* Intentionally left empty */
@@ -71,15 +70,15 @@ class HomeViewModel(
         balanceInteractor.getBalance()
     }
 
-    fun getMyStatement() {
-        if (myStatementInteractor.requestState.value != RequestState.Loading) {
-            myStatementInteractor.getMyStatement(limit.toString(), offset.toString())
+    fun getMovimentation() {
+        if (movimentationInteractor.requestState.value != RequestState.Loading) {
+            movimentationInteractor.getMovimentation(limit.toString(), offset.toString())
         }
     }
 
     fun resume() {
         getBalance()
-        getMyStatement()
+        getMovimentation()
     }
 
 }

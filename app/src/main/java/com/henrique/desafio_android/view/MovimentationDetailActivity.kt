@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.henrique.desafio_android.BR
 import com.henrique.desafio_android.R
 import com.henrique.desafio_android.databinding.ActivityMovimentationDetailBinding
-import com.henrique.desafio_android.service.repository.GetMyStatementInteractor
+import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
 import com.henrique.desafio_android.viewmodel.MovimentationDetailViewModel
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -15,12 +15,12 @@ class MovimentationDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovimentationDetailBinding
 
-    private val myStatementInteractor : GetMyStatementInteractor by inject {
+    private val movimentationInteractor : GetMovimentationInteractor by inject {
         parametersOf()
     }
 
     private val mViewModel: MovimentationDetailViewModel by inject {
-        parametersOf(myStatementInteractor)
+        parametersOf(movimentationInteractor)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
