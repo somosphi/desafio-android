@@ -22,6 +22,8 @@
             android:id="@+id/movimentationDetailNavbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_xx_small"
+            android:layout_marginTop="@dimen/size_spacing_xx_small"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -35,12 +37,14 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/movimentationDetailCoreConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/size_spacing_xx_small"
-            android:layout_marginEnd="@dimen/size_spacing_xx_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/movimentationDetailNavbar">
+            android:paddingStart="@dimen/size_spacing_x_small"
+            android:paddingEnd="@dimen/size_spacing_x_small"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/movimentationDetailNavbar"
+            app:layout_constraintBottom_toTopOf="@+id/movimentationDetailShareButton">
 
             <TextView
                 android:id="@+id/movimentationDetailTitle"
@@ -187,16 +191,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/movimentationDetailAuthenticationTitle"
                 tools:text="123445345" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/movimentation_detail_button_text"
-                android:textColor="@color/white_smoke"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{() -> viewModel.onShareClick()}"
-                android:textAllCaps="false"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/movimentationDetailShareButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_x_small"
+            android:layout_marginEnd="@dimen/size_spacing_x_small"
+            android:layout_marginBottom="@dimen/size_spacing_xx_small"
+            android:onClick="@{() -> viewModel.onShareClick()}"
+            android:text="@string/movimentation_detail_button_text"
+            android:textAllCaps="false"
+            android:textColor="@color/white_smoke"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

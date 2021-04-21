@@ -21,6 +21,7 @@ class MovimentationDetailViewModel(
     val movimentationDate = MutableLiveData<String>()
     val movimentationAuthentication = MutableLiveData<String>()
     val shouldCloseActivity = MutableLiveData(false)
+    val shouldShareActivity = MutableLiveData(false)
 
     init {
         requestState.addSource(movimentationInteractor.requestStateDetail) {
@@ -56,7 +57,7 @@ class MovimentationDetailViewModel(
     }
 
     fun onShareClick() {
-
+        shouldShareActivity.postValue(true)
     }
 
     fun getStatementDetail() {
