@@ -20,6 +20,9 @@
     <!-- Movimentation Item -->
     <string name="movimentation_pix">Pix</string>
 
+    <!-- Movimentation Receipt -->
+    <string name="movimentation_receipt_title">Comprovante</string>
+
     <!-- Generic Error -->
     <string name="generic_error_message">Não foi possível obter as informações</string>
 </resources>
