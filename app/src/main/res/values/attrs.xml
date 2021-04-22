@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyLoader">
+        <attr name="retryAction" format="reference" />
+        <attr name="loaderState" format="enum">
+            <enum name="complete" value="0" />
+            <enum name="error" value="1" />
+            <enum name="loading" value="2" />
+        </attr>
+    </declare-styleable>
+
+</resources>

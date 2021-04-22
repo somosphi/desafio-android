@@ -16,8 +16,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.home.HomeActivity"
-        android:visibility="@{viewModel.contentVisibility}">
+        tools:context=".view.home.HomeActivity">
+
+
+        <com.henrique.desafio_android.view.component.MyLoader
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:loaderState="@{viewModel.loaderState}"
+            app:retryAction="@{() -> viewModel.resume()}" />
 
         <TextView
             android:id="@+id/homeTitle"
@@ -91,27 +97,37 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/homeBalanceSubtitle"
-            style="@style/Body1.Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_spacing_large"
-            android:layout_marginTop="@dimen/size_spacing_x_small"
-            android:text="@string/home_subtitle"
-            app:layout_constraintStart_toStartOf="@+id/homeConstraintLayout"
-            app:layout_constraintTop_toBottomOf="@+id/homeConstraintLayout" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/homeMovimentationList"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/size_spacing_x_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeBalanceSubtitle"
+            app:layout_constraintStart_toStartOf="@+id/homeConstraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/homeConstraintLayout"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/item_movimentation" />
+            android:visibility="@{viewModel.contentVisibility}">
+
+            <TextView
+                android:id="@+id/homeBalanceSubtitle"
+                style="@style/Body1.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_spacing_large"
+                android:layout_marginTop="@dimen/size_spacing_x_small"
+                android:text="@string/home_subtitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homeMovimentationList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/size_spacing_x_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeBalanceSubtitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/item_movimentation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

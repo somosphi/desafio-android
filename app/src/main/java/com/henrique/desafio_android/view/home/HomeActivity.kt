@@ -17,6 +17,7 @@ import com.henrique.desafio_android.view.movimentationdetail.MovimentationDetail
 import com.henrique.desafio_android.viewmodel.home.HomeViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.KoinContextHandler
 import org.koin.core.context.startKoin
 import org.koin.core.parameter.parametersOf
 
@@ -56,6 +57,11 @@ class HomeActivity : AppCompatActivity() {
         setupMovimentationList()
         setupListener()
         observe()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        KoinContextHandler.stop()
     }
 
     override fun onResume() {

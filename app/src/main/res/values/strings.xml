@@ -25,4 +25,9 @@
 
     <!-- Generic Error -->
     <string name="generic_error_message">Não foi possível obter as informações</string>
+
+    <!-- My Loader -->
+    <string name="my_loader_loading_text">Aguarde, carregando as informações…</string>
+    <string name="my_loader_error_text">Ocorreram erros ao carregar as informações</string>
+    <string name="my_loader_retry_text">Tentar novamente</string>
 </resources>

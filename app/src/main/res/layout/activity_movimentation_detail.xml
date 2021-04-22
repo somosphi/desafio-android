@@ -15,8 +15,13 @@
         android:id="@+id/movimentationDetailConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="@{viewModel.contentVisibility}"
         tools:context=".view.home.HomeActivity">
+
+        <com.henrique.desafio_android.view.component.MyLoader
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:loaderState="@{viewModel.loaderState}"
+            app:retryAction="@{() -> viewModel.getStatementDetail()}" />
 
         <LinearLayout
             android:id="@+id/movimentationDetailNavbar"
@@ -40,11 +45,12 @@
             android:id="@+id/movimentationDetailCoreConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/white"
             android:paddingStart="@dimen/size_spacing_x_small"
             android:paddingEnd="@dimen/size_spacing_x_small"
-            android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/movimentationDetailNavbar"
-            app:layout_constraintBottom_toTopOf="@+id/movimentationDetailShareButton">
+            android:visibility="@{viewModel.contentVisibility}"
+            app:layout_constraintBottom_toTopOf="@+id/movimentationDetailShareButton"
+            app:layout_constraintTop_toBottomOf="@+id/movimentationDetailNavbar">
 
             <TextView
                 android:id="@+id/movimentationDetailTitle"
@@ -204,6 +210,7 @@
             android:text="@string/movimentation_detail_button_text"
             android:textAllCaps="false"
             android:textColor="@color/white_smoke"
+            android:visibility="@{viewModel.contentVisibility}"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

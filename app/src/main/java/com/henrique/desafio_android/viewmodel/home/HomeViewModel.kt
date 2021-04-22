@@ -37,12 +37,8 @@ class HomeViewModel(
         requestState.addSource(balanceInteractor.requestState) {
             requestState.value = it
 
-            when (it) {
-                is RequestState.Success -> {
-                    balanceAmount.postValue(it.result.amount)
-                }
-                else -> { /* Intentionally left empty */
-                }
+            if (it is RequestState.Success) {
+                balanceAmount.postValue(it.result.amount)
             }
         }
     }
@@ -50,14 +46,9 @@ class HomeViewModel(
     private fun observeGetMovimentation() {
         requestState.addSource(movimentationInteractor.requestState) {
             requestState.value = it
-
-            when (it) {
-                is RequestState.Success -> {
-                    it.result.let { response ->
-                        myMovimentationResponse.postValue(response)
-                    }
-                }
-                else -> { /* Intentionally left empty */
+            if (it is RequestState.Success) {
+                it.result.let { response ->
+                    myMovimentationResponse.postValue(response)
                 }
             }
         }
@@ -81,5 +72,4 @@ class HomeViewModel(
         getBalance()
         getMovimentation()
     }
-
 }
