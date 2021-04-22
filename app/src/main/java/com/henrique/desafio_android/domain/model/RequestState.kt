@@ -1,6 +1,6 @@
-package com.henrique.desafio_android.service.model
+package com.henrique.desafio_android.domain.model
 
-import com.henrique.desafio_android.service.model.error.ErrorResponse
+import com.henrique.desafio_android.domain.model.error.ErrorResponse
 
 sealed class RequestState<out T> {
     object Idle : RequestState<Nothing>()

@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.service.model.balance
+package com.henrique.desafio_android.domain.model.balance
 
 import com.google.gson.annotations.SerializedName
 import java.math.BigDecimal

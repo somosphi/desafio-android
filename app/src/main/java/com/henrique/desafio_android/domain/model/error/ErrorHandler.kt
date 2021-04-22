@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.service.model.error
+package com.henrique.desafio_android.domain.model.error
 
 import android.content.res.Resources
 import com.google.gson.Gson

@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.view
+package com.henrique.desafio_android.view.movimentationdetail
 
 import android.os.Bundle
 import android.view.View
@@ -7,9 +7,9 @@ import androidx.databinding.DataBindingUtil
 import com.henrique.desafio_android.BR
 import com.henrique.desafio_android.R
 import com.henrique.desafio_android.databinding.ActivityMovimentationDetailBinding
-import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
-import com.henrique.desafio_android.service.utils.shareReceipt
-import com.henrique.desafio_android.viewmodel.MovimentationDetailViewModel
+import com.henrique.desafio_android.domain.repository.GetMovimentationInteractor
+import com.henrique.desafio_android.domain.utils.shareReceipt
+import com.henrique.desafio_android.viewmodel.movimentationdetail.MovimentationDetailViewModel
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.util.*

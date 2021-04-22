@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.service.utils
+package com.henrique.desafio_android.domain.utils
 
 import android.content.Context
 import android.content.Intent

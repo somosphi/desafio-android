@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.service.repository.remote
+package com.henrique.desafio_android.domain.repository.remote
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

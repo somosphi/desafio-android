@@ -1,9 +1,9 @@
-package com.henrique.desafio_android.service.repository
+package com.henrique.desafio_android.domain.repository
 
-import com.henrique.desafio_android.service.model.balance.BalanceResponse
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponse
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponseList
-import com.henrique.desafio_android.service.repository.remote.API
+import com.henrique.desafio_android.domain.model.balance.BalanceResponse
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponse
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponseList
+import com.henrique.desafio_android.domain.repository.remote.API
 
 class RemoteDataSource(private val api: API) : Repository {
 

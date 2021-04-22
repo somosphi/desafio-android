@@ -1,13 +1,13 @@
-package com.henrique.desafio_android.service
+package com.henrique.desafio_android.di
 
-import com.henrique.desafio_android.service.repository.GetBalanceInteractor
-import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
-import com.henrique.desafio_android.service.repository.remote.API
-import com.henrique.desafio_android.service.repository.RemoteDataSource
-import com.henrique.desafio_android.service.repository.Repository
-import com.henrique.desafio_android.service.repository.remote.RetrofitClient
-import com.henrique.desafio_android.viewmodel.HomeViewModel
-import com.henrique.desafio_android.viewmodel.MovimentationDetailViewModel
+import com.henrique.desafio_android.domain.repository.GetBalanceInteractor
+import com.henrique.desafio_android.domain.repository.GetMovimentationInteractor
+import com.henrique.desafio_android.domain.repository.remote.API
+import com.henrique.desafio_android.domain.repository.RemoteDataSource
+import com.henrique.desafio_android.domain.repository.Repository
+import com.henrique.desafio_android.domain.repository.remote.RetrofitClient
+import com.henrique.desafio_android.viewmodel.home.HomeViewModel
+import com.henrique.desafio_android.viewmodel.movimentationdetail.MovimentationDetailViewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel

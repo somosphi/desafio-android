@@ -1,12 +1,13 @@
-package com.henrique.desafio_android.viewmodel
+package com.henrique.desafio_android.viewmodel.movimentationdetail
 
 import androidx.lifecycle.MutableLiveData
-import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
-import com.henrique.desafio_android.service.model.RequestState
-import com.henrique.desafio_android.service.utils.formatCurrency
-import com.henrique.desafio_android.service.utils.getPerson
-import com.henrique.desafio_android.service.utils.getPersonType
-import com.henrique.desafio_android.service.utils.getDateTimeFormatted
+import com.henrique.desafio_android.domain.repository.GetMovimentationInteractor
+import com.henrique.desafio_android.domain.model.RequestState
+import com.henrique.desafio_android.domain.utils.formatCurrency
+import com.henrique.desafio_android.domain.utils.getPerson
+import com.henrique.desafio_android.domain.utils.getPersonType
+import com.henrique.desafio_android.domain.utils.getDateTimeFormatted
+import com.henrique.desafio_android.viewmodel.BaseViewModel
 
 class MovimentationDetailViewModel(
     private val movimentationInteractor: GetMovimentationInteractor

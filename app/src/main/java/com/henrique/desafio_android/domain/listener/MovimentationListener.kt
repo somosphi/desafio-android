@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.service.listener
+package com.henrique.desafio_android.domain.listener
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

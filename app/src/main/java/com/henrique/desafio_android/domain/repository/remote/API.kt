@@ -1,8 +1,8 @@
-package com.henrique.desafio_android.service.repository.remote
+package com.henrique.desafio_android.domain.repository.remote
 
-import com.henrique.desafio_android.service.model.balance.BalanceResponse
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponse
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponseList
+import com.henrique.desafio_android.domain.model.balance.BalanceResponse
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponse
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponseList
 import retrofit2.http.GET
 import retrofit2.http.Path
 

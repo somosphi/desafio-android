@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.service.model.movimentation
+package com.henrique.desafio_android.domain.model.movimentation
 
 data class MovimentationItem(
     val title: String,

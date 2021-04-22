@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.service.model.movimentation
+package com.henrique.desafio_android.domain.model.movimentation
 
 import com.google.gson.annotations.SerializedName
 

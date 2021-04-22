@@ -9,14 +9,14 @@
 
         <variable
             name="viewModel"
-            type="com.henrique.desafio_android.viewmodel.HomeViewModel" />
+            type="com.henrique.desafio_android.viewmodel.home.HomeViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.HomeActivity"
+        tools:context=".view.home.HomeActivity"
         android:visibility="@{viewModel.contentVisibility}">
 
         <TextView

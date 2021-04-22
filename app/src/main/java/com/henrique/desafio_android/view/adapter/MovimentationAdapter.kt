@@ -7,8 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.henrique.desafio_android.R
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponse
-import com.henrique.desafio_android.service.listener.MovimentationListener
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponse
+import com.henrique.desafio_android.domain.listener.MovimentationListener
 import com.henrique.desafio_android.view.viewholder.MovimentationViewHolder
 
 class MovimentationAdapter(context: Context) : RecyclerView.Adapter<MovimentationViewHolder>() {

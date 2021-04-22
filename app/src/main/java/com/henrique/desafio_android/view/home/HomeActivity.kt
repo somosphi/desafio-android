@@ -1,4 +1,4 @@
-package com.henrique.desafio_android.view
+package com.henrique.desafio_android.view.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.henrique.desafio_android.BR
 import com.henrique.desafio_android.R
 import com.henrique.desafio_android.databinding.ActivityHomeBinding
-import com.henrique.desafio_android.service.repository.GetBalanceInteractor
-import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
-import com.henrique.desafio_android.service.loadKoinModules
+import com.henrique.desafio_android.domain.repository.GetBalanceInteractor
+import com.henrique.desafio_android.domain.repository.GetMovimentationInteractor
+import com.henrique.desafio_android.di.loadKoinModules
 import com.henrique.desafio_android.view.adapter.MovimentationAdapter
-import com.henrique.desafio_android.service.listener.MovimentationListener
-import com.henrique.desafio_android.viewmodel.HomeViewModel
+import com.henrique.desafio_android.domain.listener.MovimentationListener
+import com.henrique.desafio_android.view.movimentationdetail.MovimentationDetailActivity
+import com.henrique.desafio_android.viewmodel.home.HomeViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

@@ -1,12 +1,13 @@
-package com.henrique.desafio_android.viewmodel
+package com.henrique.desafio_android.viewmodel.home
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import com.henrique.desafio_android.service.utils.formatCurrency
-import com.henrique.desafio_android.service.repository.GetBalanceInteractor
-import com.henrique.desafio_android.service.repository.GetMovimentationInteractor
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponseList
-import com.henrique.desafio_android.service.model.RequestState
+import com.henrique.desafio_android.domain.utils.formatCurrency
+import com.henrique.desafio_android.domain.repository.GetBalanceInteractor
+import com.henrique.desafio_android.domain.repository.GetMovimentationInteractor
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponseList
+import com.henrique.desafio_android.domain.model.RequestState
+import com.henrique.desafio_android.viewmodel.BaseViewModel
 import java.math.BigDecimal
 
 class HomeViewModel(

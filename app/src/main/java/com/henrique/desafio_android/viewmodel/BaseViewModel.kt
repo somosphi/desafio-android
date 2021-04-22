@@ -3,7 +3,7 @@ package com.henrique.desafio_android.viewmodel
 import android.view.View
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
-import com.henrique.desafio_android.service.model.RequestState
+import com.henrique.desafio_android.domain.model.RequestState
 
 open class BaseViewModel : ViewModel() {
 

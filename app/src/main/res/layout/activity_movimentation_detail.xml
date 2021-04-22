@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.henrique.desafio_android.viewmodel.MovimentationDetailViewModel" />
+            type="com.henrique.desafio_android.viewmodel.movimentationdetail.MovimentationDetailViewModel" />
 
     </data>
 
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="@{viewModel.contentVisibility}"
-        tools:context=".view.HomeActivity">
+        tools:context=".view.home.HomeActivity">
 
         <LinearLayout
             android:id="@+id/movimentationDetailNavbar"

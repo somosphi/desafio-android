@@ -1,11 +1,11 @@
-package com.henrique.desafio_android.service.repository
+package com.henrique.desafio_android.domain.repository
 
 import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
-import com.henrique.desafio_android.service.model.error.ErrorHandler
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponse
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponseList
-import com.henrique.desafio_android.service.model.RequestState
+import com.henrique.desafio_android.domain.model.error.ErrorHandler
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponse
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponseList
+import com.henrique.desafio_android.domain.model.RequestState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
