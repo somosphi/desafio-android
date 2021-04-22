@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desafioandroid">
-        <activity android:name=".view.HomeActivity">
+        <activity android:name=".view.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.MovimentationDetailActivity"/>
+        <activity android:name=".view.movimentationdetail.MovimentationDetailActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

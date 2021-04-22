@@ -44,4 +44,6 @@
         <item name="android:textSize">@dimen/size_font_medium</item>
     </style>
 
+    <style name="MyLoaderStyle"/>
+
 </resources>

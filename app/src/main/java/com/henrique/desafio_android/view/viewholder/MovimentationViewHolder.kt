@@ -3,13 +3,13 @@ package com.henrique.desafio_android.view.viewholder
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.henrique.desafio_android.databinding.ItemMovimentationBinding
-import com.henrique.desafio_android.service.model.movimentation.MovimentationResponse
-import com.henrique.desafio_android.service.model.movimentation.MovimentationItem
-import com.henrique.desafio_android.service.listener.MovimentationListener
-import com.henrique.desafio_android.service.utils.formatCurrency
-import com.henrique.desafio_android.service.utils.isPixTransaction
-import com.henrique.desafio_android.service.utils.getDateFormatted
-import com.henrique.desafio_android.service.utils.getPerson
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponse
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationItem
+import com.henrique.desafio_android.domain.listener.MovimentationListener
+import com.henrique.desafio_android.domain.utils.formatCurrency
+import com.henrique.desafio_android.domain.utils.isPixTransaction
+import com.henrique.desafio_android.domain.utils.getDateFormatted
+import com.henrique.desafio_android.domain.utils.getPerson
 
 class MovimentationViewHolder(
     private val binding: ViewDataBinding,
