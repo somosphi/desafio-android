@@ -29,12 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_spacing_xx_small"
             android:layout_marginTop="@dimen/size_spacing_xx_small"
+            android:background="@color/white"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:contentDescription="@string/movimentation_detail_navbar_icon_description"
                 android:onClick="@{() -> viewModel.onBackClick()}"
                 app:srcCompat="@drawable/ic_arrow_24" />

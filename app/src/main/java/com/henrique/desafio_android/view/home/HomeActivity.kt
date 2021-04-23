@@ -17,7 +17,6 @@ import com.henrique.desafio_android.view.movimentationdetail.MovimentationDetail
 import com.henrique.desafio_android.viewmodel.home.HomeViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.KoinContextHandler
 import org.koin.core.context.startKoin
 import org.koin.core.parameter.parametersOf
 
@@ -28,6 +27,10 @@ class HomeActivity : AppCompatActivity() {
 
     private val mAdapter by lazy {
         MovimentationAdapter(this)
+    }
+
+    private val mSharedPreferences by lazy {
+        getSharedPreferences(getString(R.string.shared_preferences_balance_key), MODE_PRIVATE)
     }
 
     private val balanceInteractor: GetBalanceInteractor by inject {
@@ -56,18 +59,19 @@ class HomeActivity : AppCompatActivity() {
 
         setupMovimentationList()
         setupListener()
+        getMyPreferences()
         observe()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        KoinContextHandler.stop()
     }
 
     override fun onResume() {
         super.onResume()
         mAdapter.attachListener(mListener)
         mViewModel.resume()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        saveMyPreferences()
     }
 
     private fun setupMovimentationList() {
@@ -110,6 +114,20 @@ class HomeActivity : AppCompatActivity() {
                 mViewModel.offset++
             }
         })
+    }
+
+    private fun getMyPreferences() {
+        mViewModel.isBalanceVisible.value = mSharedPreferences.getBoolean(
+            getString(R.string.shared_preferences_balance_visible),
+            true
+        )
+    }
+
+    private fun saveMyPreferences() {
+        mViewModel.isBalanceVisible.value?.let {
+            mSharedPreferences.edit()
+                .putBoolean(getString(R.string.shared_preferences_balance_visible), it).apply()
+        }
     }
 
 }

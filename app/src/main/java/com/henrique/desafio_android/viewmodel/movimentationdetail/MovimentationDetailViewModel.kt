@@ -3,6 +3,7 @@ package com.henrique.desafio_android.viewmodel.movimentationdetail
 import androidx.lifecycle.MutableLiveData
 import com.henrique.desafio_android.domain.repository.GetMovimentationInteractor
 import com.henrique.desafio_android.domain.model.RequestState
+import com.henrique.desafio_android.domain.model.movimentation.MovimentationResponse
 import com.henrique.desafio_android.domain.utils.formatCurrency
 import com.henrique.desafio_android.domain.utils.getPerson
 import com.henrique.desafio_android.domain.utils.getPersonType
@@ -30,22 +31,7 @@ class MovimentationDetailViewModel(
 
             when (it) {
                 is RequestState.Success -> {
-                    movimentationType.postValue(it.result.description)
-                    movimentationAmount.postValue(it.result.amount.formatCurrency())
-                    movimentationPersonType.postValue(
-                        getPersonType(
-                            it.result.to.orEmpty()
-                        )
-                    )
-                    movimentationPerson.postValue(
-                        getPerson(
-                            it.result.to.orEmpty(),
-                            it.result.from.orEmpty()
-                        )
-                    )
-                    movimentationBank.postValue(it.result.bankName.orEmpty())
-                    movimentationDate.postValue(it.result.createdAt.getDateTimeFormatted())
-                    movimentationAuthentication.postValue(it.result.authentication.orEmpty())
+                    setMovimentationDetail(it.result)
                 }
                 else -> { /* Intentionally left empty */
                 }
@@ -65,5 +51,15 @@ class MovimentationDetailViewModel(
         movimentationId.value?.let {
             movimentationInteractor.getMovimentationDetail(it)
         }
+    }
+
+    private fun setMovimentationDetail(item: MovimentationResponse) {
+        movimentationType.postValue(item.description)
+        movimentationAmount.postValue(item.amount.formatCurrency())
+        movimentationPersonType.postValue(getPersonType(item.to.orEmpty()))
+        movimentationPerson.postValue(getPerson(item.to.orEmpty(), item.from.orEmpty()))
+        movimentationBank.postValue(item.bankName.orEmpty())
+        movimentationDate.postValue(item.createdAt.getDateTimeFormatted())
+        movimentationAuthentication.postValue(item.authentication.orEmpty())
     }
 }
