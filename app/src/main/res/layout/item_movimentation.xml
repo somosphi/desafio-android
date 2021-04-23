@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="movimentationItem"
+            type="com.henrique.desafio_android.domain.model.movimentation.MovimentationItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{movimentationItem.isPix == true ? @color/white_smoke : @color/white}"
+        android:paddingStart="@dimen/size_spacing_large"
+        android:paddingEnd="@dimen/size_spacing_large">
+
+        <View
+            android:id="@+id/movimentationTopItemView"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/size_spacing_xxx_small"
+            android:layout_marginBottom="2dp"
+            android:background="@color/grey"
+            app:layout_constraintBottom_toTopOf="@+id/movimentationIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/movimentationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_circle_24"
+            tools:src="@drawable/ic_circle_24" />
+
+        <View
+            android:id="@+id/movimentationBottomItemView"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/size_spacing_xxx_small"
+            android:background="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movimentationIcon" />
+
+        <TextView
+            android:id="@+id/movimentationItemTitle"
+            style="@style/Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_x_small"
+            android:layout_marginTop="@dimen/size_spacing_x_small"
+            android:text="@{movimentationItem.title}"
+            app:layout_constraintStart_toEndOf="@+id/movimentationIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Transferência enviada" />
+
+        <TextView
+            android:id="@+id/movimentationItemSubtitle"
+            style="@style/Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_x_small"
+            android:layout_marginTop="@dimen/size_spacing_x_small"
+            android:text="@{movimentationItem.subtitle}"
+            app:layout_constraintStart_toEndOf="@+id/movimentationIcon"
+            app:layout_constraintTop_toBottomOf="@id/movimentationItemTitle"
+            tools:text="David Bond" />
+
+        <TextView
+            android:id="@+id/movimentationItemAmount"
+            style="@style/Body1.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_x_small"
+            android:layout_marginTop="@dimen/size_spacing_x_small"
+            android:paddingBottom="@dimen/size_spacing_x_small"
+            android:text="@{movimentationItem.amount}"
+            app:layout_constraintStart_toEndOf="@+id/movimentationIcon"
+            app:layout_constraintTop_toBottomOf="@id/movimentationItemSubtitle"
+
+            tools:text="- R$ 100,00" />
+
+        <TextView
+            android:id="@+id/movimentationItemPix"
+            style="@style/MovimentationItemPix"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/vivid_cyan"
+            android:gravity="center"
+            android:text="@string/movimentation_pix"
+            android:visibility="@{movimentationItem.isPix ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/movimentationItemTitle"
+            app:layout_constraintEnd_toEndOf="@id/movimentationItemDate"
+            app:layout_constraintStart_toStartOf="@+id/movimentationItemDate" />
+
+        <TextView
+            android:id="@+id/movimentationItemDate"
+            style="@style/Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_spacing_x_small"
+            android:text="@{movimentationItem.date}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/movimentationItemSubtitle"
+            tools:text="13/10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

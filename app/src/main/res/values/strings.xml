@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">desafio-android</string>
+
+    <!-- Home -->
+    <string name="home_title">Extrato</string>
+    <string name="home_balance_title">Seu saldo</string>
+    <string name="home_subtitle">Suas movimentações</string>
+    <string name="home_show_hide_icon_description">Ícone para mostrar saldo</string>
+
+    <!-- Movimentation Detail -->
+    <string name="movimentation_detail_navbar_icon_description">Ícone para voltar para a tela anterior</string>
+    <string name="movimentation_detail_title">Comprovante</string>
+    <string name="movimentation_detail_type_title">Tipo de movimentação</string>
+    <string name="movimentation_detail_amount_title">Valor</string>
+    <string name="movimentation_detail_bank_title">Instituição Financeira</string>
+    <string name="movimentation_detail_date_title">Data/Hora</string>
+    <string name="movimentation_detail_authentication_title">Autenticação</string>
+    <string name="movimentation_detail_button_text">Compartilhar</string>
+
+    <!-- Movimentation Item -->
+    <string name="movimentation_pix">Pix</string>
+
+    <!-- Movimentation Receipt -->
+    <string name="movimentation_receipt_title">Comprovante</string>
+
+    <!-- Generic Error -->
+    <string name="generic_error_message">Não foi possível obter as informações</string>
+
+    <!-- My Loader -->
+    <string name="my_loader_loading_text">Aguarde, carregando as informações…</string>
+    <string name="my_loader_error_text">Ocorreram erros ao carregar as informações</string>
+    <string name="my_loader_retry_text">Tentar novamente</string>
+
+    <!-- Shared Preferences -->
+    <string name="shared_preferences_balance_key">balance_key</string>
+    <string name="shared_preferences_balance_visible">balance_visible</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- SIZE -->
+    <dimen name="size_spacing_large">24.00dp</dimen>
+    <dimen name="size_spacing_medium">20.00dp</dimen>
+    <dimen name="size_spacing_small">16.00dp</dimen>
+    <dimen name="size_spacing_x_small">12.00dp</dimen>
+    <dimen name="size_spacing_xx_small">8.00dp</dimen>
+    <dimen name="size_spacing_xxx_small">6.00dp</dimen>
+
+    <!-- FONT SIZE -->
+    <dimen name="size_font_large">28.00sp</dimen>
+    <dimen name="size_font_medium">20.00sp</dimen>
+    <dimen name="size_font_small">16.00sp</dimen>
+
+    <!-- COMPONENTS SIZE -->
+    <dimen name="size_height_constraint_home">108.00dp</dimen>
+    <dimen name="size_width_view_home">145.00dp</dimen>
+    <dimen name="size_height_view_home">3.00dp</dimen>
+
+</resources>
