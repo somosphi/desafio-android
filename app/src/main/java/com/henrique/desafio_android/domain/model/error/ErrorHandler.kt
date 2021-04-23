@@ -4,7 +4,6 @@ import android.content.res.Resources
 import com.google.gson.Gson
 import com.henrique.desafio_android.R
 import retrofit2.HttpException
-import java.lang.Exception
 
 class ErrorHandler(private val resources: Resources, private val gson: Gson = Gson()) {
 
@@ -12,7 +11,7 @@ class ErrorHandler(private val resources: Resources, private val gson: Gson = Gs
         private const val UNEXPECTED_ERROR_CODE = "NO-CODE"
     }
 
-    fun buildErrorResponse(e: Exception) = if (e is HttpException) {
+    fun buildErrorResponse(e: Exception? = null) = if (e is HttpException) {
         parseToError(e.response()?.errorBody()?.string())
     } else {
         buildGenericErrorResponse()
