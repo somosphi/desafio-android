@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            android:id="@+id/backgroundPix"
+            app:layout_constraintTop_toTopOf="@id/titleItemList"
+            app:layout_constraintBottom_toBottomOf="@id/priceItemList"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:visibility="invisible"
+            android:background="#f8f8f8"/>
+
+        <View
+            android:id="@+id/lineItemList"
+            android:layout_width="1dp"
+            android:layout_height="120dp"
+            android:background="#828282"
+            app:layout_constraintEnd_toStartOf="@id/titleItemList"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/green_circle"
+            app:layout_constraintBottom_toBottomOf="@id/lineItemList"
+            app:layout_constraintLeft_toLeftOf="@id/lineItemList"
+            app:layout_constraintRight_toRightOf="@id/lineItemList"
+            app:layout_constraintTop_toTopOf="@id/lineItemList" />
+
+        <TextView
+            android:id="@+id/titleItemList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/size18"
+            android:fontFamily="sans-serif-medium"
+            android:text="Transferência PIX enviada"
+            android:textColor="@color/darkGray"
+            android:textSize="@dimen/textSize16"
+            app:layout_constraintLeft_toLeftOf="@id/lineItemList"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameItemList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size6"
+            android:fontFamily="sans-serif-light"
+            android:text="Pedro Nery"
+            android:textSize="@dimen/textSize16"
+            app:layout_constraintLeft_toLeftOf="@id/titleItemList"
+            app:layout_constraintTop_toBottomOf="@id/titleItemList" />
+
+        <TextView
+            android:id="@+id/priceItemList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size6"
+            android:fontFamily="sans-serif-black"
+            android:text="R$18,00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize15"
+            app:layout_constraintLeft_toLeftOf="@id/titleItemList"
+            app:layout_constraintTop_toBottomOf="@id/nameItemList" />
+
+        <TextView
+            android:id="@+id/pixItemList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size20"
+            android:background="@color/primaryGreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:paddingStart="@dimen/size18"
+            android:paddingTop="@dimen/size2"
+            android:paddingEnd="@dimen/size18"
+            android:paddingBottom="@dimen/size2"
+            android:text="@string/pix"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize12"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/titleItemList" />
+
+        <TextView
+            android:id="@+id/dateItemList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="02/05"
+            android:textColor="@color/darkGray"
+            android:textSize="@dimen/textSize16"
+            android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="@id/pixItemList"
+            app:layout_constraintTop_toTopOf="@id/nameItemList" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

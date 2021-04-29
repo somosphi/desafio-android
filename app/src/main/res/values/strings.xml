@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">PedroNeryPhi</string>
+    <string name="database">PedroNeryPhi.db</string>
+    <string name="yourBalance">Seu saldo</string>
+    <string name="yourTransfers">Suas movimentações</string>
+    <string name="pix">Pix</string>
+    <string name="visibility_balance">Visibility balance</string>
+    <string name="share">Compartilhar</string>
+    <string name="authentication">Autenticação</string>
+    <string name="dateHour">Data/Hora</string>
+    <string name="receiver">Recebedor</string>
+    <string name="value">Valor</string>
+    <string name="typeMovimentation">Tipo de movimentação</string>
 </resources>
