@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemLayout"
@@ -40,10 +41,10 @@
             android:id="@+id/titleItemList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginStart="@dimen/size40"
             android:layout_marginTop="@dimen/size18"
             android:fontFamily="sans-serif-medium"
-            android:text="Transferência PIX enviada"
+            tools:text="@string/transferPixMock"
             android:textColor="@color/darkGray"
             android:textSize="@dimen/textSize16"
             app:layout_constraintLeft_toLeftOf="@id/lineItemList"
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size6"
             android:fontFamily="sans-serif-light"
-            android:text="Pedro Nery"
+            android:text="@string/nameMock"
             android:textSize="@dimen/textSize16"
             app:layout_constraintLeft_toLeftOf="@id/titleItemList"
             app:layout_constraintTop_toBottomOf="@id/titleItemList" />
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size6"
             android:fontFamily="sans-serif-black"
-            android:text="R$18,00"
+            android:text="@string/valueMock"
             android:textColor="@color/black"
             android:textSize="@dimen/textSize15"
             app:layout_constraintLeft_toLeftOf="@id/titleItemList"
@@ -95,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="02/05"
+            android:text="@string/dateMock"
             android:textColor="@color/darkGray"
             android:textSize="@dimen/textSize16"
             android:textStyle="bold"

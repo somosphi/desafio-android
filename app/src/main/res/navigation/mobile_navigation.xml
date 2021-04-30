@@ -15,9 +15,8 @@
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit">
             <argument
-                android:name="idTransfer"
-                app:argType="string"
-                android:defaultValue="" />
+                android:name="transferId"
+                app:argType="string" />
         </action>
     </fragment>
 

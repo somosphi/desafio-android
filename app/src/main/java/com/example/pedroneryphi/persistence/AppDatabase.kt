@@ -8,5 +8,5 @@ import com.example.pedroneryphi.persistence.dao.TransferDao
 @Database(entities = [TransferDetailDao::class], version = 1, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun jokeDao(): TransferDao
+    abstract fun transferDao(): TransferDao
 }

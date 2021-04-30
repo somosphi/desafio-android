@@ -11,4 +11,10 @@
     <string name="receiver">Recebedor</string>
     <string name="value">Valor</string>
     <string name="typeMovimentation">Tipo de movimentação</string>
+    <string name="phiBank">Banco Phi</string>
+    <string name="extract">Extrato</string>
+    <string name="transferPixMock">Transferência PIX enviada</string>
+    <string name="nameMock">Pedro Nery</string>
+    <string name="valueMock">R$18,00</string>
+    <string name="dateMock">02/05</string>
 </resources>

@@ -4,14 +4,11 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.net.Uri
-import android.os.Handler
 import android.os.StrictMode
 import android.view.View
-import androidx.lifecycle.Observer
 import com.example.pedroneryphi.R
 import com.example.pedroneryphi.base.BaseFragment
 import com.example.pedroneryphi.databinding.TransferDetailFragmentBinding
-import com.example.pedroneryphi.util.extensions.formatBalancePresentation
 import com.example.pedroneryphi.viewmodel.DetailViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
@@ -20,7 +17,7 @@ import java.io.FileOutputStream
 
 class DetailFragment : BaseFragment<TransferDetailFragmentBinding>() {
 
-    private var id : String? = null
+    private var id: String? = null
 
     override val fragmentLayout: Int = R.layout.transfer_detail_fragment
 
@@ -28,19 +25,8 @@ class DetailFragment : BaseFragment<TransferDetailFragmentBinding>() {
 
     override fun init() {
         id = arguments?.getString("transferId")
+        initBindingFunction()
         callTransferDetail()
-        initButtonShare()
-        initObservables()
-    }
-
-    private fun initObservables() {
-        detailViewModel.transferDetail.observe(this, Observer {
-            bind.tvDescription.text = it.description
-            bind.tvValue.text = it.value
-            bind.tvName.text = it.name
-            bind.tvDate.text = it.data
-            bind.tvAuthentication.text = it.authentication
-        })
     }
 
     override fun onResume() {
@@ -48,23 +34,27 @@ class DetailFragment : BaseFragment<TransferDetailFragmentBinding>() {
         bind.btShare.visibility = View.VISIBLE
     }
 
-    private fun callTransferDetail(){
+    private fun initBindingFunction() {
+        bind.viewmodel = detailViewModel
+        bind.fragment = this
+        bind.lifecycleOwner = this
+    }
+
+    private fun callTransferDetail() {
         id?.let { detailViewModel.findTransferDetail(it) }
     }
 
-    private fun initButtonShare(){
-        bind.btShare.setOnClickListener {
-            bind.btShare.visibility = View.GONE
-            val bitmap = loadBitmapFromView(bind.fullDetailLayout)
-            try {
-                bitmap?.let { sendBitmap(it) }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+    fun shareTransfer() {
+        bind.btShare.visibility = View.GONE
+        val bitmap = loadBitmapFromView(bind.fullDetailLayout)
+        try {
+            bitmap?.let { sendBitmap(it) }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
-    private fun sendBitmap(bitmap: Bitmap){
+    private fun sendBitmap(bitmap: Bitmap) {
         val builder: StrictMode.VmPolicy.Builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
         val externalCacheDier = context?.externalCacheDir

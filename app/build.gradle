@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 30
@@ -34,17 +35,21 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
     flavorDimensions "version"
     productFlavors {
         prod {
             dimension "version"
             buildConfigField "String", "BASE_URL", '"https://desafio-mobile-bff.herokuapp.com"'
-            buildConfigField "String", "HEADER_TOKEN", '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"'
+            buildConfigField "String", "HEADER_TOKEN", keystoreProperties["AUTHORIZATION_TOKEN"]
         }
         hml{
             dimension "version"
             buildConfigField "String", "BASE_URL", '"https://desafio-mobile-bff.herokuapp.com"'
-            buildConfigField "String", "HEADER_TOKEN", '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"'
+            buildConfigField "String", "HEADER_TOKEN", keystoreProperties["AUTHORIZATION_TOKEN"]
             applicationIdSuffix '.hml'
             versionNameSuffix '-HML'
         }
@@ -60,7 +65,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-    testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
@@ -83,10 +87,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation "com.squareup.okhttp3:logging-interceptor:3.12.1"
-
-    implementation 'com.google.dagger:dagger:2.24'
-    implementation 'com.google.dagger:dagger-android:2.17'
-    implementation 'com.google.dagger:dagger-android-support:2.17'
 
     // Room
     implementation "android.arch.persistence.room:runtime:1.0.0"

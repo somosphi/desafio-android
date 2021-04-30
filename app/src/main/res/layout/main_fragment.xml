@@ -16,33 +16,33 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:toolbarHeader="Extrato" />
+            app:toolbarHeader="@string/extract" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clBalance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F8F8F8"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
+            android:paddingTop="@dimen/size16"
+            android:paddingBottom="@dimen/size16"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <TextView
                 android:id="@+id/yourBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/size16"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/yourBalance"
                 android:textColor="@color/darkGray"
-                android:textSize="17sp"
+                android:textSize="@dimen/textSize17"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/showBalance"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/size20"
+                android:layout_height="@dimen/size20"
                 android:layout_marginStart="@dimen/size12"
                 android:src="@drawable/ic_invisible"
                 app:layout_constraintBottom_toBottomOf="@id/yourBalance"
@@ -54,7 +54,7 @@
             <View
                 android:id="@+id/placeHolderBalance"
                 android:layout_width="0dp"
-                android:layout_height="4dp"
+                android:layout_height="@dimen/size4"
                 android:background="@color/primaryGreen"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/textBalance"
@@ -66,7 +66,7 @@
                 android:id="@+id/textBalance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="@dimen/size6"
                 android:fontFamily="sans-serif-black"
                 android:textColor="@color/primaryGreen"
                 android:textSize="@dimen/textSizeBalance"

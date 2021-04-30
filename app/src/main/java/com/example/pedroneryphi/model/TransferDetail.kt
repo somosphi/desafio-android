@@ -1,7 +1,6 @@
 package com.example.pedroneryphi.model
 
 import com.example.pedroneryphi.util.extensions.formatBalancePresentation
-import com.example.pedroneryphi.util.extensions.formateDate
 import com.example.pedroneryphi.util.extensions.formateDateHour
 
 data class TransferDetail(

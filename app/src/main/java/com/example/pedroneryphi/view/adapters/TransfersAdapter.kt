@@ -3,14 +3,13 @@ package com.example.pedroneryphi.view.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pedroneryphi.R
 import com.example.pedroneryphi.databinding.TransferListItemBinding
 import com.example.pedroneryphi.model.TransferDetail
 import com.example.pedroneryphi.util.extensions.formatBalancePresentation
 import com.example.pedroneryphi.util.extensions.formateDate
+import com.example.pedroneryphi.view.fragments.MainFragmentDirections
 
 class TransfersAdapter(
     private val items: List<TransferDetail>,
@@ -30,10 +29,12 @@ class TransfersAdapter(
         fun bind(item: TransferDetail) {
             binding.pixItemList.visibility = View.INVISIBLE
             binding.backgroundPix.visibility = View.INVISIBLE
+
             binding.titleItemList.text = item.description
             binding.nameItemList.text = item.to
-            val price = item.amount.toString().formatBalancePresentation()
             binding.dateItemList.text = item.createdAt.formateDate()
+
+            val price = item.amount.toString().formatBalancePresentation()
             binding.priceItemList.text =
                 if (item.tType == "TRANSFEROUT") "- $price"
                 else price
@@ -45,8 +46,7 @@ class TransfersAdapter(
 
             binding.executePendingBindings()
             binding.itemLayout.setOnClickListener {
-                val bundle = bundleOf("transferId" to item.id)
-                navController.navigate(R.id.action_mainFragment_to_detailFragment, bundle)
+                navController.navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(item.id))
             }
         }
     }

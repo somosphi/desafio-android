@@ -20,5 +20,5 @@ val persistenceModules = module {
             .build()
     }
 
-    single { get<AppDatabase>().jokeDao() }
+    single { get<AppDatabase>().transferDao() }
 }
