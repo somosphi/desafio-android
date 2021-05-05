@@ -1,12 +1,9 @@
 package com.example.pedroneryphi.di
 
-import android.util.Log
 import com.example.pedroneryphi.BuildConfig
 import com.example.pedroneryphi.network.RequestInterceptor
 import com.example.pedroneryphi.network.TransferService
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

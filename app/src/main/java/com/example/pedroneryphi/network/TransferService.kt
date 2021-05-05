@@ -4,9 +4,10 @@ import com.example.pedroneryphi.model.Balance
 import com.example.pedroneryphi.model.TransferDetail
 import com.example.pedroneryphi.model.TransferList
 import io.reactivex.Observable
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
+
 
 interface TransferService {
 
@@ -19,5 +20,8 @@ interface TransferService {
 
     @GET("myBalance")
     fun getBalance(): Observable<Balance>
+
+    @GET("myBalance")
+    suspend fun getBalanceCoroutine(): Response<Balance>
 
 }

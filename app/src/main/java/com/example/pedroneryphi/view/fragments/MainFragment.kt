@@ -59,7 +59,7 @@ class MainFragment : BaseFragment<MainFragmentBinding>() {
 
     private fun initObservables() {
         mainViewModel.findTransferList(8, page)
-        mainViewModel.findBalance()
+        mainViewModel.findBalanceCoroutine()
         mainViewModel.transfers.observe(this, Observer {
             transferList.addAll(it)
             isLoading = false
